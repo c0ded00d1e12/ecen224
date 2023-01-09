@@ -1,7 +1,7 @@
 ---
 title: Command Line
 number: 2
-layout: under-construction
+layout: lab
 ---
 
 ## GitHub Classroom
