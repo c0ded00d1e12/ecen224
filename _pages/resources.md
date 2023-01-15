@@ -16,6 +16,8 @@ Here are some other resources that might help you:
 - *The* original book on C, [The C Programming Language](https://www.amazon.com/dp/0131103628/).
 
 - Jan Schaumann has a lot of great videos on [Advance Programming in the UNIX Environment](https://www.youtube.com/@cs631apue/videos).
+
+- Ben Eater has some great [videos](https://www.youtube.com/@BenEater) on how to build a computer, write assembly, and other computer topics.
   
 - [Computerphile](https://www.youtube.com/results?search_query=computerphile) has approachable videos on various computing topics.
 
