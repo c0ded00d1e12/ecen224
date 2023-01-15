@@ -31,7 +31,7 @@ plugins:
 # Turn on the button to allow students to submit PRs to change a page
 suggest_edits:
   enable: true
-  link: https://github.com/byu-cpe/ecen224/blob/main
+  link: https://github.com/byu-cpe/ecen224/issues/new
 
 # Set the color theme of the page
 colors:
