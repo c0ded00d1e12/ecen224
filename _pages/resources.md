@@ -65,3 +65,4 @@ For more information on the following commands, type `man` and the name of the c
 
 - [Phil's Computer Setup](https://byunetlab.notion.site/Phil-s-Computer-Setup-0722e33e22e74460aa53f58d5f2babb8)
 
+- [Chris' Computer Setup](https://kitras.io/setup/)
