@@ -50,7 +50,7 @@ What Linux command is used to:
 - make directories?
 - remove empty directories?
 - change file mode bits?
-For a brief list of commonly used commands, see the [Linux Command Summary](http://byu-cpe.github.io/ecen224/resources/linux_commands_summary/).
+For a brief list of commonly used commands, see the [Linux Command Summary]({{site.baseurl}}/resources#linux_commands_summary/).
 
 ### Keyboard Shortcuts
 Even though using the command line to do things in Linux may seem like a lot of typing, there are shortcuts in place that can tremendously reduce the number of keystrokes. With a little practice, the shortcuts become a natural part of doing work on the command line and can even be more efficient than pointing, clicking, and navigating menus in a graphical interface. With a graphical interface, a user will often need to move their hand back and forth between the keyboard and the mouse. This motion is inefficient, even though most of us get used to it. With command line operation, our fingers never need to leave the keyboard and reach for the mouse.

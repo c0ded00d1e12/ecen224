@@ -245,7 +245,10 @@ In future labs, any starter code or special resources for completing that lab wi
 - Be able to gain access remotely to the Pi Z2W
 
 ## Lab Submission
-Answer the questions in the `README.md`. 
+- Answer the questions in the `README.md`. 
+
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the Commiting and Pushing Files and Tagging Submissions section.
+
 
 ## Explore More!
 - [Learn more about the terminal](https://kitras.io/linux/shells/)
