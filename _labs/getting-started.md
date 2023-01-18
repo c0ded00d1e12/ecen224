@@ -7,6 +7,12 @@ layout: lab
 ## GitHub Classroom
 Use the GitHub Classroom link posted in the Slack channel for the lab to accept the assignment.
 
+## Objectives
+
+- Become familiar with the tools used for this lab
+- Understand how to setup a single board computer
+- Be able to gain access remotely to the Pi Z2W
+
 ## Overview
 
 <figure class="image mx-auto" style="max-width: 750px">
@@ -238,11 +244,6 @@ This downloads a copy of the lab files from to your Pi Z2W. Since this lab is fo
 
 In future labs, any starter code or special resources for completing that lab will be included alongside that lab's `README.md`.
 
-## Objectives
-
-- Become familiar with the tools used for this lab
-- Understand how to setup a single board computer
-- Be able to gain access remotely to the Pi Z2W
 
 ## Lab Submission
 - Answer the questions in the `README.md`. 
