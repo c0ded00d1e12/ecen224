@@ -11,7 +11,13 @@ Every lab will have a corresponding GitHub **respository**, or code base. This w
 
 Once you have accepted the assignment, a copy of the lab repository will be added to the GitHub user account you are using for this class. To **clone** these files, or download them to your computer (or for this lab, to the Pi Z2W), you will need to need the repository link. **This is different than the URL of your repository.** 
 
-To obtain this link click on the green `<> Code` button and make sure the **SSH** tab is selected. Copy the repository link in the textbox below and then on the machine where you wish to clone the repository type in
+To obtain this link click on the green `<> Code` button and make sure the **SSH** tab is selected. 
+
+<figure class="image mx-auto" style="max-width: 750px">
+    <img src="{% link assets/lab-setup/url.png %}" alt="select-device">
+</figure>
+
+Copy the repository link in the textbox below and then on the machine where you wish to clone the repository type in
 ```bash
 git clone your_github_repository
 ```
