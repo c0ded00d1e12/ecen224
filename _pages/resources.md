@@ -66,3 +66,8 @@ For more information on the following commands, type `man` and the name of the c
 - [Phil's Computer Setup](https://byunetlab.notion.site/Phil-s-Computer-Setup-0722e33e22e74460aa53f58d5f2babb8)
 
 - [Chris' Computer Setup](https://kitras.io/setup/)
+
+### Helpful Tutorials
+
+- [Add WiFi credentials after installation](https://howchoo.com/g/ndy1zte2yjn/how-to-set-up-wifi-on-your-raspberry-pi-without-ethernet)
+- [Install ZSH and Oh My ZSH with Powerlevel10k Theme](https://dev.to/abdfnx/oh-my-zsh-powerlevel10k-cool-terminal-1no0)
