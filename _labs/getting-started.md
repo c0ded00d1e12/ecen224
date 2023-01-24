@@ -213,6 +213,8 @@ The last we'll do in this lab to setup the Pi Z2W is to ensure that we can conne
       <img src="{% link assets/getting-started/open-folder.png %}" alt="open-folder">
     </figure>
 
+    Now you can use the left pane of VS Code to view and edit files inside the home directory on the Pi Z2W.
+
 ### Create SSH key for GitHub
 All of the labs require you to write code and upload it to a version control service called GitHub. A GitHub account is required for this class. If you do not have an account you can create one [here](http://github.com/join) otherwise you are allowed to use your personal account for this class. 
 
