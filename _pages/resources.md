@@ -61,6 +61,8 @@ For more information on the following commands, type `man` and the name of the c
 | uname      | print system information                             |
 | who        | show who is logged on                                |
 
+If you want even more commands at a glance, check out [this cheat sheet](https://github.com/trinib/Linux-Bash-Commands#quick-cheat-sheet-).
+
 ### Terminal customization
 
 - [Phil's Computer Setup](https://byunetlab.notion.site/Phil-s-Computer-Setup-0722e33e22e74460aa53f58d5f2babb8)
