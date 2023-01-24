@@ -29,10 +29,10 @@ For more information on the following commands, type `man` and the name of the c
 | Command    | Description                                          |
 | :--------- | :--------------------------------------------------- |
 | alias      | define an alternative to a command                   |
-| cat        | concatenate files and print on standard output​      |
-| cd         | change the current directory to another​             |
+| cat        | concatenate files and print on standard output​       |
+| cd         | change the current directory to another​              |
 | chmod      | change file mode bits                                |
-| cp         | copy files and directories​                          |
+| cp         | copy files and directories​                           |
 | df         | report file system disk space usage                  |
 | diff       | compare files line by line                           |
 | echo       | print a string of text                               |
@@ -44,15 +44,15 @@ For more information on the following commands, type `man` and the name of the c
 | head       | output the first part of files                       |
 | history    | list recently typed commands                         |
 | kill       | send a signal to a process (usually to end it)       |
-| less, more | show the contents of a text file​                    |
-| ls         | list directory contents​                             |
+| less, more | show the contents of a text file​                     |
+| ls         | list directory contents​                              |
 | man        | show help information about Linux commands           |
 | mkdir      | make directories                                     |
-| mv         | move or rename files​                                |
+| mv         | move or rename files​                                 |
 | passwd     | change user password                                 |
 | ping       | send an echo request to another machine              |
 | ps         | list the current processes                           |
-| pwd        | print name of current directory​                     |
+| pwd        | print name of current directory​                      |
 | rmdir      | remove empty directories                             |
 | ssh        | login to a remote machine                            |
 | tail       | output the last part of files                        |
@@ -69,5 +69,7 @@ For more information on the following commands, type `man` and the name of the c
 
 ### Helpful Tutorials
 
+- [BYU Computing Bootcamp: Git](https://byu-cpe.github.io/ComputingBootCamp/tutorials/git/)
+- [BYU Computing Bootcamp: GitHub](https://byu-cpe.github.io/ComputingBootCamp/tutorials/github/)
 - [Add WiFi credentials after installation](https://howchoo.com/g/ndy1zte2yjn/how-to-set-up-wifi-on-your-raspberry-pi-without-ethernet)
 - [Install ZSH and Oh My ZSH with Powerlevel10k Theme](https://dev.to/abdfnx/oh-my-zsh-powerlevel10k-cool-terminal-1no0)
