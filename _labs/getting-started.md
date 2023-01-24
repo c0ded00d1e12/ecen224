@@ -68,7 +68,9 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
 
 8. Once the writing process finishes, remove the SD card from your laptop and insert it into the SD card slot of the Pi Z2W. 
 
-9. Plug in the PoE adapter into the **first** micro USB port (the only one not circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
+9. Plug in the PoE adapter (the white brick) into the **first** micro USB port (the only one not circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. It is not necessary to have power and PoE plugged in at the same time. 
+
+    The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
 
 <!-- This depends on whether or not the CSRs give us HDMI cables in future semesters -->
 
@@ -118,6 +120,8 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       <img src="{% link assets/getting-started/ssh.png %}" alt="ssh">
     </figure>
 
+    You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
+
 ### Increasing Swap File Size
 With a remote connection to the Pi Z2W, we can now finish our development environment setup. First let's give the Pi Z2W some more available RAM by increasing the size of its [swap file](https://itsfoss.com/create-swap-file-linux/). Doing this will give the Pi Z2W more system resources if it ever uses up all of its onboard RAM. 
 
@@ -139,6 +143,8 @@ With a remote connection to the Pi Z2W, we can now finish our development enviro
     ```bash
     sudo dphys-swapfile swapoff
     ```
+
+    You may notice that when you start typing your password to execute this command that the cursor does not move and that no characters appear. This is the terminal's way of protecting you from any people peeping over your shoulder and trying to steal your password. Rest assured that even though nothing is moving or showing, you are still entering in your password.
 
 3. Next we edit the configuration file of the OS that controls swap behavior with
     ```bash
