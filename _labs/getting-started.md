@@ -48,7 +48,7 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
     | Setting | Value | Description |
     | ------------------------- | ---------- | ---------- |
     | Set hostname: | `doorbell-<your_netid>` | This will be the name of your Pi Z2W. This will make it easier to find on the network. |
-    | Enable SSH:   | Select **Use password authentication** | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password. |
+    | Enable SSH:   | Check **Enable SSH** and select **Use password authentication** | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password. |
     | Set username and password: | Any username and password you desire (make sure it is secure). | We change these values from the default so that you can protect your projects. You are responsible for remembering this username and password! **Any loss of these credentials may require you to re-setup your Pi Z2W.** |
     | Set locate settings: | Timezone: **America/Denver**<br/>Keyboard Layout: **us** | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout. | 
     | Configure Wireless LAN* | SSID: **name of WiFi network at home**<br/>Password:**password of network** | In case you want to work with the Pi Z2W outside of the Digital Lab. |
@@ -71,6 +71,7 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
 9. Plug in the PoE adapter into the **first** micro USB port (the only one not circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
 
 <!-- This depends on whether or not the CSRs give us HDMI cables in future semesters -->
+
 <!-- Connect the mini HDMI cable adapter (connected to the HDMI out of your lab station's monitor), the USB-Ethernet adapter, and power cable to the corresponding ports (in that order or else the video for the device will not load correctly). If all worked correctly, you should see a splash screen on your monitor followed by a lot of scrolling text. You will know that your installation is successful if you see the following prompt on your screen:
 
 ```
