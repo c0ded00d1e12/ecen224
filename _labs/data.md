@@ -204,7 +204,7 @@ Another treasure trove of information on data types exists in the `stdint.h` lib
 
 For example, if you need to store a data **t**ype as an **int**eger that is **u**nsigned (can never been negative) and is only **8** bits long, you would `#include <stdint.h>` and use the `uint8_t` type. 
 
-To understand more about the types of data types that exist in `stdint.h`, you can use the `man stdint`.
+To understand more about the types of data types that exist in `stdint.h`, you can use the `man stdint.h`.
 
 ### printf
 As you have seen in our simple C program, we can use the `printf()` function to send text out to the terminal from our program.
