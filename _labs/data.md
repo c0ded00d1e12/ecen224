@@ -10,7 +10,7 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
 ## Objectives
 - Understand basic C syntax
 - Know the difference between the standard data types
-- Experiment with `printf` a bit and maybe explain C programming
+- Experiment with `printf` a bit and different data types
 - Compilation of a program by using `gcc`
 
 ## Overview
