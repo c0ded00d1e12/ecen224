@@ -30,7 +30,7 @@ Any text that is between the slash-star and
 the star-slash will be ignored.
 */
 
-#include <stdlib.h>
+#include <stdio.h>
 
 int main()
 {
