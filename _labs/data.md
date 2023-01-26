@@ -114,9 +114,9 @@ int main()
 
 I can expect that the program will print out `5` because the **return value** that the `sum()` provided was an `int` which was the sum  of `a + b`.
 
-If I wanted to have my value return the value as a `uint8_t`, I would rewrite the signature of my function as:
+If I wanted to have my value return the value as a `float`, I would rewrite the signature of my function as:
 ```c
-uint8_t sum(int a, int b)
+float sum(float a, float b)
 {
     return a + b;
 }
