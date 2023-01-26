@@ -1,7 +1,7 @@
 ---
 title: Data
 number: 3
-layout: under-construction
+layout: lab
 ---
 
 ## GitHub Classroom
