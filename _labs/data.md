@@ -258,3 +258,7 @@ The following table is a useful cheatsheet and will give you an idea of the diff
 
 - [Understanding `man` pages](https://kitras.io/linux/man-pages/)
 - [`printf()` Cheatsheet](https://alvinalexander.com/programming/printf-format-cheat-sheet/)
+- [C data types](https://en.wikipedia.org/wiki/C_data_types)
+- [Casting in C](https://www.tutorialspoint.com/cprogramming/c_type_casting.htm)
+- [GCC Basics](https://www.cs.binghamton.edu/~rhainin1/walkthroughs/gccbasics.html)
+- [Compiled v. Interpreted Languages](https://www.geeksforgeeks.org/difference-between-compiled-and-interpreted-language/)
