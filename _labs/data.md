@@ -206,7 +206,7 @@ For example, if you need to store a data **t**ype as an **int**eger that is **u*
 
 To understand more about the types of data types that exist in `stdint.h`, you can use the `man stdint`.
 
-### PrintF
+### printf
 As you have seen in our simple C program, we can use the `printf()` function to send text out to the terminal from our program.
 ```c
 printf("Hello, World!\n");
