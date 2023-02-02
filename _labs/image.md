@@ -20,7 +20,7 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
   <figcaption style="text-align: center;">Original bitmap image that you will be editing in the lab.</figcaption>
 </figure>
 
-In this lab we be exploring the utility of data manipulation in a practical by editing an image in C. **This lab will be programming heavy** and a little more involved than previous labs. **Make sure you allow yourself enough time to complete this lab.**
+In this lab we will be exploring the utility of data manipulation in a practical application by editing an image in C. **This lab will be programming heavy** and a little more involved than previous labs. **Make sure you allow yourself enough time to complete this lab.**
 
 ### Bitmap Struct
 Unlike other programming languages that you may be familiar with, the C programming language is not an object oriented programming language. This means that there are no `class` objects that allow you to associate groups of data together.
