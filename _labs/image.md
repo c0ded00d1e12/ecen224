@@ -9,8 +9,9 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
 
 ## Objectives
 
-- Experiment with `printf` a bit and different data types
-- Compilation of a program by using `gcc`
+- Gain experience with manipulating bytes in C by modifying image files. 
+- Learn the structure of a multi-file C program (.h and .c files)
+- Get more practice with compilation of a program by using `gcc`
 
 ## Overview
 
@@ -52,7 +53,7 @@ Much like a `class`, a `struct` is a collection of different variable values all
 
 
 ### Bitmasking
-Bitmasking is is a method that allows us to manipulate (set to 1 or 0) certain bits of data. This is done general by making use of bitwise ORs and ANDs.
+Bitmasking is is a method that allows us to manipulate (set to 1 or 0) certain bits of data. This is done general by making use of bitwise ORs, ANDs, and XORs.
 
 For example if we wanted to select nothing but the last two bits of the byte (in binary) `11101011` we would use AND with a 0 on all the values we don't want and a 1 on all the values we do want in our selection:
 
