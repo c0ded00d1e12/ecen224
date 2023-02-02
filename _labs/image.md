@@ -28,7 +28,7 @@ Unlike other programming languages that you may be familiar with, the C programm
 To accomplish this, C uses a the `struct` object, which is actually a predecessor to the `class` object we see in most programs. Below is the `struct` included in the `image.h` library in the code for this lab:
 
 ```c
-typedef struct Bitmap
+typedef struct
 {
     FILE * img;
     uint8_t file_header[BMP_FILE_HEADER_SIZE];  // 14 bytes
