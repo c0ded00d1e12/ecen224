@@ -9,7 +9,8 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
 
 ## Objectives
 
-- Gain experience with manipulating bytes in C by modifying image files. 
+- Gain experience with manipulating bytes in C by modifying image files
+- Learn how to use `enum` values
 - Learn the structure of a multi-file C program (.h and .c files)
 - Get more practice with compilation of a program by using `gcc`
 
