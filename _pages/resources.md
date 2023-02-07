@@ -78,3 +78,7 @@ If you want even more commands at a glance, check out [this cheat sheet](https:/
 
     - [Meslo LGS NF Font with Icons](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf)
     - [Change terminal font](https://help.gnome.org/users/gnome-terminal/stable/app-fonts.html.en#:~:text=Custom%20font.-,Set%20a%20custom%20font,-To%20set%20a) to the font above.
+
+- [GitHub Markdown Examples](https://gist.github.com/ww9/44f08d44327a40d2ab309a349bebec57)
+
+- [GDB Cheatsheet](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)
