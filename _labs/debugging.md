@@ -111,12 +111,14 @@ If you come across a function that you want to examine, put a breakpoint on wher
 
 ### Analyzing Assembly
 
+**This exercise will be done on the `unknown` binary in your lab repo.
+
 Not only can you build your project to analyze the source code, you can also use it to analyze the machine instructions that are getting passed to the processor. This is useful, especially in digital forensics and penetration testing. Not every executable you want to analyze was compiled with the `-g` option to let a debugger look at the source code.
 
 Analyzing assembly in VSCode tends to be a little trickier and require you to use `gdb` in the terminal. You can get started by typing in your terminal
 
 ```bash
-gdb bin_file_name
+gdb unknown
 ```
 
 Once you are inside of the commandline version of `gdb`, you will see another shell that looks something like the following:
