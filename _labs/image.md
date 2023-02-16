@@ -134,7 +134,7 @@ Make sure to use the `pxl_data_cpy` list as your values that you are changing in
 
 - To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** and **Tagging Submissions** section.
 
-## Resources
+## Explore More!
 
 - [Bitwise Operations in C](https://en.wikipedia.org/wiki/Bitwise_operations_in_C)
 - [Bit Masking](https://en.wikipedia.org/wiki/Mask_(computing))

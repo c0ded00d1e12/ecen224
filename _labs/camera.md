@@ -1,5 +1,5 @@
 ---
-title: Camera I
+title: Camera
 number: 8
 layout: under-construction
 ---

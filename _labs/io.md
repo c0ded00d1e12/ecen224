@@ -1,6 +1,6 @@
 ---
-title: Assembly
-number: 6
+title: I/O Lab
+number: 7
 layout: under-construction
 ---
 
