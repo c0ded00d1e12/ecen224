@@ -1,5 +1,5 @@
 ---
-title: I/O Lab
+title: I/O
 number: 7
 layout: under-construction
 ---
