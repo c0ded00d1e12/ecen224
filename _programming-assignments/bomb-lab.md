@@ -12,7 +12,7 @@ You must complete this lab on one of the Spice Lab Linux computers. The Spice La
 ```bash
 ssh foo@ssh.et.byu.edu
 # Once SSH'd into the CAEDM computer
-ssh foo@spice-20.ee.byu.ed
+ssh foo@spice-20.ee.byu.edu
 ```
 
 Assuming your CAEDM username is foo and the Spice Lab computer you want to log into is 20. It doesn't matter which computer you log into. Your home directory is mounted to your J Drive so all folders will be synced between computers. From this SSH session, you will need to solve your bomb.
