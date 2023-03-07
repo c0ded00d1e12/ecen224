@@ -3,6 +3,6 @@ layout: homework
 title: Assembly
 icon: fa-duotone fa-microchip
 number: 3
-problems:
-layout: under-construction
+layout: homework
+file: assets/assembly_hw.pdf
 ---
