@@ -328,8 +328,12 @@ uint8_t * my_new_buf = (uint8_t *)malloc(sizeof(uint8_t) * SIZEOFYOURBUFFER);
 // Whenever we are done with a malloc'd buffer in C, don't forget to call the following line:
 free(my_new_buf);
 ```
+Breaking down the `malloc` command we see that:
+- `(uint8_t *)`: This casts the the results of the `malloc` command to match the type of our buffer
+- `sizeof(uint8_t)`: This is the size of the type of value that will be in our buffer
+- `SIZEOFYOURBUFFER`: This is a placeholder for your the actual length that you want your buffer to be.
 
-This creates your buffer in the heap where there is much more space for larger variables like this. However, whenever we declare something in C and manage its memory, we must remember to call `free()` on the object once we are done.
+This creates your buffer in the heap where there is much more space for larger variables like this. However, whenever we declare something in C and manage its memory, we must remember to call `free()` on the object once we are done. If this is not done, then there will be memory leaks inside of your program which could potentially grind your system to a halt.
 
 ### Writing to a File
 You'll notice in your lab files for this lab, you are provided with a `camera.h` and a partially filled in `camera.c`.
