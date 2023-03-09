@@ -26,6 +26,8 @@ Click [here]({% link assets/bomblab.pdf %}) for a pdf file describing this lab. 
 
 - [GDB Quick Reference]({% link assets/GDB Quick Reference.pdf %})
 
+- [Jump Instructions](https://stackoverflow.com/questions/9617877/assembly-jg-jnle-jl-jnge-after-cmp)
+
 - [Article on reading assembly](https://www.timdbg.com/posts/fakers-guide-to-assembly/)
 
 - [Compiler Explorer](https://godbolt.org). Compare C code with its corresponding assembly code.
