@@ -377,3 +377,4 @@ In this lab you are expected to ignore the following:
 ## Explore More!
 - [`fwrite()` in C](https://www.tutorialspoint.com/c_standard_library/c_function_fwrite.htm)
 - [Memory Allocation in C](https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/)
+- [Connect Camera to Raspberry Pi](https://www.arducam.com/raspberry-pi-camera-pinout/)
