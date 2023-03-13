@@ -340,7 +340,28 @@ You'll notice in your lab files for this lab, you are provided with a `camera.h`
 
 In this lab you will be expected to capture image data from a camera, save it to a file, and then show it on the screen of your new smart doorbell. In order to write information to files in C, you will be expected to know one more function than you already do: `fwrite()`.
 
-Read through the example at the bottom of the page to become familiar with this function.
+Much like reading a files as you did in the last lab, to write, you will need to open a file using `fopen()`. You may be thinking, how can I open a file when it doesn't exist yet? With `fopen()` you can name the file you want to create and what kind of mode you want to create it in by using `fopen()`. For example, to create a new file named "banana.txt", I would do the following:
+
+```c
+FILE *fp;
+fp = fopen("banana.txt", "w");
+```
+
+The second command in `fopen()` is mode we want to open the file in. This allows the compiler to know what type of content will be written to the file. In our example above, we want to write ASCII text to the file (as implied with the `.txt` extension), so we use the `w` mode. Other special modes for `fopen()` can be seen in the following table below.
+
+|Mode| Description|
+|----|------------|
+|`r` | Open text file for reading.  The stream is positioned at the beginning of the file.|
+|`r+` | Open for reading and writing.  The stream is positioned at the beginning of the file.|
+|`w` | Truncate file to zero length or create text file for writing.  The stream is positioned at the beginning of the file.|
+|`w+` | Open for reading and writing.  The file is created if it does not exist, otherwise it is truncated.  The stream is positioned at the beginning of the file.|
+|`a` | Open for appending (writing at end of file).  The file is created if it does not exist.  The stream is positioned at the end of the file.|
+|`a+` | Open for reading and appending (writing at end of file). The file is created if it does not exist.  Output is always appended to the end of the file.  POSIX is silent on what the initial read position is when using this mode. For glibc, the initial file position for reading is at the beginning of the file, but for Android/BSD/MacOS, the initial file position for reading is at the end of the file.|
+
+It is considered good practice to add a `b` at the end of the letter if you intend to write to a file in a binary format (i.e. `.bmp` files) to indicate your intent, however this extra `b` is not enforced on many modern systems like Linux.
+
+After the file is opened, you can then use the `fwrite()` command to write to this opened file. Instructions on how to use `fwrite()` can be found in the corresponding link in the **Explore More!** section at the bottom of the page. Don't forget to use `fclose()` on the file pointer when you are done writing the file!
+
 ## Requirements
 
 In this lab you should accomplish the following:
