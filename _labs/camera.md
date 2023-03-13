@@ -351,7 +351,7 @@ In this lab you should accomplish the following:
     - Take a photo with the Pi Z2W's camera
     - Save the raw data received from the capture to a `.bmp` file. The files must be named `doorbell-<n>.bmp` where `<n>` is replaced by the current number of pictures taken.
     - Your code should save up to 5 `.bmp` images. If a 6th image is taken, `doorbell-1.bmp` should be overwritten, if a 7th is taken `doorbell-2.bmp` should be overwritten, etc.
-    - Update your fileviewer code to include the new bitmap files that you save.
+    - Update your fileviewer code to include the new bitmap files that you save. (**HINT:** You may need to update your previous array of strings that contain file names to be big enough to hold the _maximum_ amount of files that could be had in this lab.)
     - Show your most recent photo for 5 seconds before you return to the file viewer.
 
 ## Submission
