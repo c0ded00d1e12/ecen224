@@ -1,5 +1,5 @@
 ---
-title: Concurrent Client
+title: Threaded Client
 number: 10
 layout: under-construction
 ---
