@@ -1,5 +1,5 @@
 ---
-title: Server
+title: Concurrent Client
 number: 10
 layout: under-construction
 ---
