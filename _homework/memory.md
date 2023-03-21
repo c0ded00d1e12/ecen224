@@ -4,5 +4,5 @@ title: Memory
 icon: fa-duotone fa-memory
 number: 4
 problems:
-layout: under-construction
+file: assets/memory_hw.pdf
 ---
