@@ -71,6 +71,16 @@ When we want to write to a file in C, we need to use the function `fopen()` to c
 ### Sending Data
 Just like in the I/O lab, you will notice that much of what you will be doing in this lab is using write functions to the socket file descriptor. Instead of using `fwrite()` you will be using a function (see the link in **Explore More**) called `send()`. Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
 
+### Freeing Memory
+Just like in any other file, directory, or memory operation that allocates a pointer or memory off of the stack, you will need to free that memory. If this is not done, unexpected behavior may occur on your system. So remember the following:
+
+| Memory Allocation | Freeing Call |
+| ----------------- | ------------ |
+| `malloc` | `free` |
+| `fopen` | `fclose` |
+| `opendir` | `closedir` |
+| `socket` (don't worry about calling this function in this lab, this is done for you already in the provided `client_connect` function) | `close` |
+
 
 ## Requirements
 
