@@ -24,3 +24,4 @@ Click [here]({% link assets/attacklab.pdf %}) for a pdf file describing this lab
 
 ### Resources
 
+- [How to look at the stack in gdb](https://jvns.ca/blog/2021/05/17/how-to-look-at-the-stack-in-gdb/)
