@@ -55,6 +55,22 @@ ExecStart=command to start your program
 WantedBy=multi-user.target
 ```
 
+**The file path to your executable must be absolute.** This means if your ran your code by doing:
+
+```bash
+sudo ./my-program
+```
+
+You would be running your program using a relative path. However, if you ran your program by doing:
+
+```bash
+sudo /home/USERNAME/path/to/my-program
+```
+
+you would be using an absolute path. The path to your executable must be absolute in the `.service` file, so you must use the second command to run your program.
+
+**NOTE, you will also need to change any relative paths in your program to absolute paths.** So if you accessed your  `viewer` folder with a relative path, your program will not work when it is run as a daemon. You must change this to an absolute path.
+
 Once we have created out `.service` file, we can use the commands above to start and stop our program. However, what if I want to start my program when the computer boots? We need to **enable** our service. To do this, we can use the following command:
 
 ```bash
@@ -77,9 +93,14 @@ Now that we know how to create a daemon, we can start working on our doorbell. Y
 
     - Your doorbell should take a picture and save it to your viewer folder.
     - Send your saved image to the web site.
+
 4. Change the display to show the message to let the user know that doorbell was rung (i.e. "Ding dong!"). Make this message visible for 5 seconds and then change back to the initial welcome message. (This part will require threading)
 
-5. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, the sequence (Left-Right-Left-Right) should be entered.
+5. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, the sequence (Left-Right-Left-Right) should be entered. The functionality inside the file viewer should have the following:
+
+    - Up and down to select the files
+    - Center button to show the selected file for two seconds
+    - **NO STATUS BAR LOGIC IS NECESSARY**
 
 ## Submission
 
