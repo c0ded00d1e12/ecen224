@@ -256,6 +256,10 @@ Your task is to get `CTARGET` to execute the code for `touch3` rather than retur
 
 <!--TODO: Create and insert a diagram of Figure 2-->
 
+<figure class="image mx-auto" style="max-width: 750px">
+    <img src="{% link assets/attack-lab/rop.png %}" alt="stack-diagram">
+</figure>
+
 ## 5. Part II: Return-Oriented Programming
 Performing code-injection attacks on program `RTARGET` is much more difficult than it is for `CTARGET`, because it uses two techniques to thwart such attacks:
 - It uses randomization so that the stack positions differ from one run to another. This makes it impossible to determine where your injected code will be located.
