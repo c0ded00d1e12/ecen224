@@ -685,9 +685,8 @@ The lines at the bottom show the machine code generated from the assembly langua
 instruction `push $0xABCDEF` has hex-formatted byte code `68 ef cd ab 00`.
 
 From this file, you can get the byte sequence for the code:
-<!--TODO FIXME: This seems to be missing from our pdf -->
 ```
-
+68 ef cd ab 00 48 83 c0 11 89 c2
 ```
 This string can then be passed through `HEX2RAW` to generate an input string for the target programs.. Alternatively, you can edit example.d to omit extraneous values and to contain C-style comments for readability, yielding:
 ```
