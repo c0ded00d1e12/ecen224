@@ -304,14 +304,16 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 ---
 ### Figure 3-A. Encodings of `movq` instructions
 `movq` *S*, *D*
+
 <style>
     table#figTable { border: solid; }
     td { border-left: solid; }
 </style>
+
 <table id="figTable">
     <tr>
         <th rowspan=2>Source <em>S</em></th>
-        <th colspan=8 style=text-align:center> Destination <em>D</em>
+        <th colspan=8 style="text-align:center"> Destination <em>D</em></th>
     </tr>
     <tr>
         <th>%rax</th>
@@ -323,7 +325,6 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <th> %rsi</th>
         <th> %rdi</th>
     </tr>
-        </td>
     <tr>
         <th>%rax</th>
         <td><code> 48 89 c0</code></td>
@@ -420,7 +421,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 <table id="figTable">
     <tr>
         <th rowspan=2>Operation</th>
-        <th colspan=8 style=text-align:center> Register <em>R</em>
+        <th colspan=8 style="text-align:center"> Register <em>R</em></th>
     </tr>
     <tr>
         <td> %rax </td>
@@ -443,7 +444,6 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>5e</code></td>
         <td><code>5f</code></td>
     </tr>
-
 </table>
 
 ---
@@ -453,7 +453,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 <table id="figTable">
     <tr>
         <th rowspan=2>Source <em>S</em></th>
-        <th colspan=8 style=text-align:center> Destination <em>R</em>
+        <th colspan=8 style="text-align:center"> Destination <em>R</em></th>
     </tr>
     <tr>
         <th>%eax</th>
@@ -466,7 +466,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <th>%edi</th>
     </tr>
     <tr>
-        <th>%eax</h>
+        <th>%eax</th>
         <td><code>89 c0 </code></td>
         <td><code>89 c1 </code></td>
         <td><code>89 c2 </code></td>
@@ -477,7 +477,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 c7 </code></td>
     </tr>
     <tr>
-        <th>%ecx</h>
+        <th>%ecx</th>
         <td><code>89 c8 </code></td>
         <td><code>89 c9 </code></td>
         <td><code>89 ca </code></td>
@@ -488,7 +488,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 cf </code></td>
     </tr>
     <tr>
-    <th>%edx</h>
+    <th>%edx</th>
         <td><code>89 d0 </code></td>
         <td><code>89 d1 </code></td>
         <td><code>89 d2 </code></td>
@@ -499,7 +499,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 d7 </code></td>
     </tr>
     <tr>
-        <th>%ebx</h>
+        <th>%ebx</th>
         <td><code>89 d8 </code></td>
         <td><code>89 d9 </code></td>
         <td><code>89 da </code></td>
@@ -510,7 +510,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 df </code></td>
     </tr>
     <tr>
-        <th>%esp</h>
+        <th>%esp</th>
         <td><code>89 e0 </code></td>
         <td><code>89 e1 </code></td>
         <td><code>89 e2 </code></td>
@@ -521,7 +521,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 e7 </code></td>
     </tr>
     <tr>
-        <th>%ebp</h>
+        <th>%ebp</th>
         <td><code>89 e8 </code></td>
         <td><code>89 e9 </code></td>
         <td><code>89 ea </code></td>
@@ -532,7 +532,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 ef </code></td>
     </tr>
     <tr>
-        <th>%esi</h>
+        <th>%esi</th>
         <td><code>89 f0 </code></td>
         <td><code>89 f1 </code></td>
         <td><code>89 f2 </code></td>
@@ -543,7 +543,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
         <td><code>89 f7 </code></td>
     </tr>
     <tr>
-        <th>%edi</h>
+        <th>%edi</th>
         <td><code>89 f8 </code></td>
         <td><code>89 f9 </code></td>
         <td><code>89 fa </code></td>
@@ -560,7 +560,7 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 <table id="figTable">
     <tr>
         <th rowspan=2>Operation</th>
-        <th colspan=4 style=text-align:center> Register <em>R</em>
+        <th colspan=4 style="text-align:center"> Register <em>R</em></th>
     </tr>
     <tr>
         <th>%al</th>
