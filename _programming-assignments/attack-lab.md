@@ -20,7 +20,7 @@ Assuming your CAEDM username is foo and the Spice Lab computer you want to log i
 
 ### Instructions
 
-Click [here]({% link assets/attacklab.pdf %}) for a pdf file describing this lab. For the website to download the assignment and look at the score board, go to the `#programming-assignments` channel on Slack.
+See below for the remainder of the instructions describing this lab. For the website to download the assignment and look at the score board, go to the `#programming-assignments` channel on Slack.
 
 ### Resources
 
