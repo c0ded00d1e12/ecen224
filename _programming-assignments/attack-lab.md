@@ -147,56 +147,58 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 <style>
     tr#fig-1-Table { border-top: solid; }
 </style>
-<table>
-    <tr>
-        <th>Phase</th>
-        <th>Program</th>
-        <th>Level</th>
-        <th>Method</th>
-        <th>Function</th>
-        <th>Points</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>CTARGET</td>
-        <td>1</td>
-        <td>CI</td>
-        <td><code>touch1</code></td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>CTARGET</td>
-        <td>2</td>
-        <td>CI</td>
-        <td><code>touch2</code></td>
-        <td>25</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>CTARGET</td>
-        <td>3</td>
-        <td>CI</td>
-        <td><code>touch3</code></td>
-        <td>25</td>
-    </tr>
-    <tr id="fig-1-Table">
-        <td>4</td>
-        <td>RTARGET</td>
-        <td>2</td>
-        <td>ROP</td>
-        <td><code>touch2</code></td>
-        <td>35</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>RTARGET</td>
-        <td>3</td>
-        <td>ROP</td>
-        <td><code>touch3</code></td>
-        <td>5</td>
-    </tr>
-</table>
+<div class="table-responsive">
+    <table>
+        <tr>
+            <th>Phase</th>
+            <th>Program</th>
+            <th>Level</th>
+            <th>Method</th>
+            <th>Function</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>CTARGET</td>
+            <td>1</td>
+            <td>CI</td>
+            <td><code>touch1</code></td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>CTARGET</td>
+            <td>2</td>
+            <td>CI</td>
+            <td><code>touch2</code></td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>CTARGET</td>
+            <td>3</td>
+            <td>CI</td>
+            <td><code>touch3</code></td>
+            <td>25</td>
+        </tr>
+        <tr id="fig-1-Table">
+            <td>4</td>
+            <td>RTARGET</td>
+            <td>2</td>
+            <td>ROP</td>
+            <td><code>touch2</code></td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>RTARGET</td>
+            <td>3</td>
+            <td>ROP</td>
+            <td><code>touch3</code></td>
+            <td>5</td>
+        </tr>
+    </table>
+</div>
 
 CI: Code injection
  
@@ -364,111 +366,112 @@ Encodings of `movq` instructions.
     table#figTable { border: solid; }
     td { border-left: solid; }
 </style>
-
-<table id="figTable">
-    <tr>
-        <th rowspan=2>Source <em>S</em></th>
-        <th colspan=8 style="text-align:center"> Destination <em>D</em></th>
-    </tr>
-    <tr>
-        <th>%rax</th>
-        <th> %rcx</th>
-        <th> %rdx</th>
-        <th> %rbx</th>
-        <th> %rsp</th>
-        <th> %rbp</th>
-        <th> %rsi</th>
-        <th> %rdi</th>
-    </tr>
-    <tr>
-        <th>%rax</th>
-        <td><code> 48 89 c0</code></td>
-        <td><code> 48 89 c1</code></td>
-        <td><code> 48 89 c2</code></td>
-        <td><code> 48 89 c3</code></td>
-        <td><code> 48 89 c4</code></td>
-        <td><code> 48 89 c5</code></td>
-        <td><code> 48 89 c6</code></td>
-        <td><code> 48 89 c7</code></td>
-    </tr>
-    <tr>
-        <th>%rcx</th>
-        <td><code> 48 89 c8</code></td>
-        <td><code> 48 89 c9</code></td>
-        <td><code> 48 89 ca</code></td>
-        <td><code> 48 89 cb</code></td>
-        <td><code> 48 89 cc</code></td>
-        <td><code> 48 89 cd</code></td>
-        <td><code> 48 89 ce</code></td>
-        <td><code> 48 89 cf</code></td>
-    </tr>
-    <tr>
-        <th>%rdx</th>
-        <td><code> 48 89 d0</code></td>
-        <td><code> 48 89 d1</code></td>
-        <td><code> 48 89 d2</code></td>
-        <td><code> 48 89 d3</code></td>
-        <td><code> 48 89 d4</code></td>
-        <td><code> 48 89 d5</code></td>
-        <td><code> 48 89 d6</code></td>
-        <td><code> 48 89 d7</code></td>
-    </tr>
-    <tr>
-        <th>%rbx</th>
-        <td><code> 48 89 d8</code></td>
-        <td><code> 48 89 d9</code></td>
-        <td><code> 48 89 da</code></td>
-        <td><code> 48 89 db</code></td>
-        <td><code> 48 89 dc</code></td>
-        <td><code> 48 89 dd</code></td>
-        <td><code> 48 89 de</code></td>
-        <td><code> 48 89 df</code></td>
-    </tr>
-    <tr>
-        <th>%rsp</th>
-        <td><code> 48 89 e0</code></td>
-        <td><code> 48 89 e1</code></td>
-        <td><code> 48 89 e2</code></td>
-        <td><code> 48 89 e3</code></td>
-        <td><code> 48 89 e4</code></td>
-        <td><code> 48 89 e5</code></td>
-        <td><code> 48 89 e6</code></td>
-        <td><code> 48 89 e7</code></td>
-    </tr>
-    <tr>
-        <th>%rbp</th>
-        <td><code> 48 89 e8</code></td>
-        <td><code> 48 89 e9</code></td>
-        <td><code> 48 89 ea</code></td>
-        <td><code> 48 89 eb</code></td>
-        <td><code> 48 89 ec</code></td>
-        <td><code> 48 89 ed</code></td>
-        <td><code> 48 89 ee</code></td>
-        <td><code> 48 89 ef</code></td>
-    </tr>
-    <tr>
-        <th>%rsi</th>
-        <td><code> 48 89 f0</code></td>
-        <td><code> 48 89 f1</code></td>
-        <td><code> 48 89 f2</code></td>
-        <td><code> 48 89 f3</code></td>
-        <td><code> 48 89 f4</code></td>
-        <td><code> 48 89 f5</code></td>
-        <td><code> 48 89 f6</code></td>
-        <td><code> 48 89 f7</code></td>
-    </tr>
-    <tr>
-        <th>%rdi</th>
-        <td><code> 48 89 f8</code></td>
-        <td><code> 48 89 f9</code></td>
-        <td><code> 48 89 fa</code></td>
-        <td><code> 48 89 fb</code></td>
-        <td><code> 48 89 fc</code></td>
-        <td><code> 48 89 fd</code></td>
-        <td><code> 48 89 fe</code></td>
-        <td><code> 48 89 ff</code></td>
-    </tr>
-</table>
+<div class="table-responsive">
+    <table id="figTable">
+        <tr>
+            <th rowspan=2>Source <em>S</em></th>
+            <th colspan=8 style="text-align:center"> Destination <em>D</em></th>
+        </tr>
+        <tr>
+            <th>%rax</th>
+            <th> %rcx</th>
+            <th> %rdx</th>
+            <th> %rbx</th>
+            <th> %rsp</th>
+            <th> %rbp</th>
+            <th> %rsi</th>
+            <th> %rdi</th>
+        </tr>
+        <tr>
+            <th>%rax</th>
+            <td><code> 48 89 c0</code></td>
+            <td><code> 48 89 c1</code></td>
+            <td><code> 48 89 c2</code></td>
+            <td><code> 48 89 c3</code></td>
+            <td><code> 48 89 c4</code></td>
+            <td><code> 48 89 c5</code></td>
+            <td><code> 48 89 c6</code></td>
+            <td><code> 48 89 c7</code></td>
+        </tr>
+        <tr>
+            <th>%rcx</th>
+            <td><code> 48 89 c8</code></td>
+            <td><code> 48 89 c9</code></td>
+            <td><code> 48 89 ca</code></td>
+            <td><code> 48 89 cb</code></td>
+            <td><code> 48 89 cc</code></td>
+            <td><code> 48 89 cd</code></td>
+            <td><code> 48 89 ce</code></td>
+            <td><code> 48 89 cf</code></td>
+        </tr>
+        <tr>
+            <th>%rdx</th>
+            <td><code> 48 89 d0</code></td>
+            <td><code> 48 89 d1</code></td>
+            <td><code> 48 89 d2</code></td>
+            <td><code> 48 89 d3</code></td>
+            <td><code> 48 89 d4</code></td>
+            <td><code> 48 89 d5</code></td>
+            <td><code> 48 89 d6</code></td>
+            <td><code> 48 89 d7</code></td>
+        </tr>
+        <tr>
+            <th>%rbx</th>
+            <td><code> 48 89 d8</code></td>
+            <td><code> 48 89 d9</code></td>
+            <td><code> 48 89 da</code></td>
+            <td><code> 48 89 db</code></td>
+            <td><code> 48 89 dc</code></td>
+            <td><code> 48 89 dd</code></td>
+            <td><code> 48 89 de</code></td>
+            <td><code> 48 89 df</code></td>
+        </tr>
+        <tr>
+            <th>%rsp</th>
+            <td><code> 48 89 e0</code></td>
+            <td><code> 48 89 e1</code></td>
+            <td><code> 48 89 e2</code></td>
+            <td><code> 48 89 e3</code></td>
+            <td><code> 48 89 e4</code></td>
+            <td><code> 48 89 e5</code></td>
+            <td><code> 48 89 e6</code></td>
+            <td><code> 48 89 e7</code></td>
+        </tr>
+        <tr>
+            <th>%rbp</th>
+            <td><code> 48 89 e8</code></td>
+            <td><code> 48 89 e9</code></td>
+            <td><code> 48 89 ea</code></td>
+            <td><code> 48 89 eb</code></td>
+            <td><code> 48 89 ec</code></td>
+            <td><code> 48 89 ed</code></td>
+            <td><code> 48 89 ee</code></td>
+            <td><code> 48 89 ef</code></td>
+        </tr>
+        <tr>
+            <th>%rsi</th>
+            <td><code> 48 89 f0</code></td>
+            <td><code> 48 89 f1</code></td>
+            <td><code> 48 89 f2</code></td>
+            <td><code> 48 89 f3</code></td>
+            <td><code> 48 89 f4</code></td>
+            <td><code> 48 89 f5</code></td>
+            <td><code> 48 89 f6</code></td>
+            <td><code> 48 89 f7</code></td>
+        </tr>
+        <tr>
+            <th>%rdi</th>
+            <td><code> 48 89 f8</code></td>
+            <td><code> 48 89 f9</code></td>
+            <td><code> 48 89 fa</code></td>
+            <td><code> 48 89 fb</code></td>
+            <td><code> 48 89 fc</code></td>
+            <td><code> 48 89 fd</code></td>
+            <td><code> 48 89 fe</code></td>
+            <td><code> 48 89 ff</code></td>
+        </tr>
+    </table>
+</div>
 
 ----
 ### Figure 3-B.
@@ -508,155 +511,160 @@ Encodings of `movl` instructions
 
 `movl` *S*, *D*
 
-<table id="figTable">
-    <tr>
-        <th rowspan=2>Source <em>S</em></th>
-        <th colspan=8 style="text-align:center"> Destination <em>R</em></th>
-    </tr>
-    <tr>
-        <th>%eax</th>
-        <th>%ecx</th>
+<div class="table-responsive">
+    <table id="figTable">
+        <tr>
+            <th rowspan=2>Source <em>S</em></th>
+            <th colspan=8 style="text-align:center"> Destination <em>R</em></th>
+        </tr>
+        <tr>
+            <th>%eax</th>
+            <th>%ecx</th>
+            <th>%edx</th>
+            <th>%ebx</th>
+            <th>%esp</th>
+            <th>%ebp</th>
+            <th>%esi</th>
+            <th>%edi</th>
+        </tr>
+        <tr>
+            <th>%eax</th>
+            <td><code>89 c0 </code></td>
+            <td><code>89 c1 </code></td>
+            <td><code>89 c2 </code></td>
+            <td><code>89 c3 </code></td>
+            <td><code>89 c4 </code></td>
+            <td><code>89 c5 </code></td>
+            <td><code>89 c6 </code></td>
+            <td><code>89 c7 </code></td>
+        </tr>
+        <tr>
+            <th>%ecx</th>
+            <td><code>89 c8 </code></td>
+            <td><code>89 c9 </code></td>
+            <td><code>89 ca </code></td>
+            <td><code>89 cb </code></td>
+            <td><code>89 cc </code></td>
+            <td><code>89 cd </code></td>
+            <td><code>89 ce </code></td>
+            <td><code>89 cf </code></td>
+        </tr>
+        <tr>
         <th>%edx</th>
-        <th>%ebx</th>
-        <th>%esp</th>
-        <th>%ebp</th>
-        <th>%esi</th>
-        <th>%edi</th>
-    </tr>
-    <tr>
-        <th>%eax</th>
-        <td><code>89 c0 </code></td>
-        <td><code>89 c1 </code></td>
-        <td><code>89 c2 </code></td>
-        <td><code>89 c3 </code></td>
-        <td><code>89 c4 </code></td>
-        <td><code>89 c5 </code></td>
-        <td><code>89 c6 </code></td>
-        <td><code>89 c7 </code></td>
-    </tr>
-    <tr>
-        <th>%ecx</th>
-        <td><code>89 c8 </code></td>
-        <td><code>89 c9 </code></td>
-        <td><code>89 ca </code></td>
-        <td><code>89 cb </code></td>
-        <td><code>89 cc </code></td>
-        <td><code>89 cd </code></td>
-        <td><code>89 ce </code></td>
-        <td><code>89 cf </code></td>
-    </tr>
-    <tr>
-    <th>%edx</th>
-        <td><code>89 d0 </code></td>
-        <td><code>89 d1 </code></td>
-        <td><code>89 d2 </code></td>
-        <td><code>89 d3 </code></td>
-        <td><code>89 d4 </code></td>
-        <td><code>89 d5 </code></td>
-        <td><code>89 d6 </code></td>
-        <td><code>89 d7 </code></td>
-    </tr>
-    <tr>
-        <th>%ebx</th>
-        <td><code>89 d8 </code></td>
-        <td><code>89 d9 </code></td>
-        <td><code>89 da </code></td>
-        <td><code>89 db </code></td>
-        <td><code>89 dc </code></td>
-        <td><code>89 dd </code></td>
-        <td><code>89 de </code></td>
-        <td><code>89 df </code></td>
-    </tr>
-    <tr>
-        <th>%esp</th>
-        <td><code>89 e0 </code></td>
-        <td><code>89 e1 </code></td>
-        <td><code>89 e2 </code></td>
-        <td><code>89 e3 </code></td>
-        <td><code>89 e4 </code></td>
-        <td><code>89 e5 </code></td>
-        <td><code>89 e6 </code></td>
-        <td><code>89 e7 </code></td>
-    </tr>
-    <tr>
-        <th>%ebp</th>
-        <td><code>89 e8 </code></td>
-        <td><code>89 e9 </code></td>
-        <td><code>89 ea </code></td>
-        <td><code>89 eb </code></td>
-        <td><code>89 ec </code></td>
-        <td><code>89 ed </code></td>
-        <td><code>89 ee </code></td>
-        <td><code>89 ef </code></td>
-    </tr>
-    <tr>
-        <th>%esi</th>
-        <td><code>89 f0 </code></td>
-        <td><code>89 f1 </code></td>
-        <td><code>89 f2 </code></td>
-        <td><code>89 f3 </code></td>
-        <td><code>89 f4 </code></td>
-        <td><code>89 f5 </code></td>
-        <td><code>89 f6 </code></td>
-        <td><code>89 f7 </code></td>
-    </tr>
-    <tr>
-        <th>%edi</th>
-        <td><code>89 f8 </code></td>
-        <td><code>89 f9 </code></td>
-        <td><code>89 fa </code></td>
-        <td><code>89 fb </code></td>
-        <td><code>89 fc </code></td>
-        <td><code>89 fd </code></td>
-        <td><code>89 fe </code></td>
-        <td><code>89 ff </code></td>
-    </tr>
-</table>
+            <td><code>89 d0 </code></td>
+            <td><code>89 d1 </code></td>
+            <td><code>89 d2 </code></td>
+            <td><code>89 d3 </code></td>
+            <td><code>89 d4 </code></td>
+            <td><code>89 d5 </code></td>
+            <td><code>89 d6 </code></td>
+            <td><code>89 d7 </code></td>
+        </tr>
+        <tr>
+            <th>%ebx</th>
+            <td><code>89 d8 </code></td>
+            <td><code>89 d9 </code></td>
+            <td><code>89 da </code></td>
+            <td><code>89 db </code></td>
+            <td><code>89 dc </code></td>
+            <td><code>89 dd </code></td>
+            <td><code>89 de </code></td>
+            <td><code>89 df </code></td>
+        </tr>
+        <tr>
+            <th>%esp</th>
+            <td><code>89 e0 </code></td>
+            <td><code>89 e1 </code></td>
+            <td><code>89 e2 </code></td>
+            <td><code>89 e3 </code></td>
+            <td><code>89 e4 </code></td>
+            <td><code>89 e5 </code></td>
+            <td><code>89 e6 </code></td>
+            <td><code>89 e7 </code></td>
+        </tr>
+        <tr>
+            <th>%ebp</th>
+            <td><code>89 e8 </code></td>
+            <td><code>89 e9 </code></td>
+            <td><code>89 ea </code></td>
+            <td><code>89 eb </code></td>
+            <td><code>89 ec </code></td>
+            <td><code>89 ed </code></td>
+            <td><code>89 ee </code></td>
+            <td><code>89 ef </code></td>
+        </tr>
+        <tr>
+            <th>%esi</th>
+            <td><code>89 f0 </code></td>
+            <td><code>89 f1 </code></td>
+            <td><code>89 f2 </code></td>
+            <td><code>89 f3 </code></td>
+            <td><code>89 f4 </code></td>
+            <td><code>89 f5 </code></td>
+            <td><code>89 f6 </code></td>
+            <td><code>89 f7 </code></td>
+        </tr>
+        <tr>
+            <th>%edi</th>
+            <td><code>89 f8 </code></td>
+            <td><code>89 f9 </code></td>
+            <td><code>89 fa </code></td>
+            <td><code>89 fb </code></td>
+            <td><code>89 fc </code></td>
+            <td><code>89 fd </code></td>
+            <td><code>89 fe </code></td>
+            <td><code>89 ff </code></td>
+        </tr>
+    </table>
+</div>
 
 ---
 ### Figure 3-D.
 Encodings of 2-byte functional nop instructions
 
-<table id="figTable">
-    <tr>
-        <th rowspan=2>Operation</th>
-        <th colspan=4 style="text-align:center"> Register <em>R</em></th>
-    </tr>
-    <tr>
-        <th>%al</th>
-        <th>%cl</th>
-        <th>%dl</th>
-        <th>%bl</th>
-    </tr>    
-    <tr>
-        <th><code>andb </code><em>R</em>, <em>R</em></th>
-        <td><code> 20 c0</code></td>
-        <td><code> 20 c9</code></td>
-        <td><code> 20 d2</code></td>
-        <td><code> 20 db</code></td>
-    </tr>
-    <tr>
-        <th><code>orb </code><em>R</em>, <em>R</em></th>
-        <td><code> 08 c0</code></td>
-        <td><code> 08 c9</code></td>
-        <td><code> 08 d2</code></td>
-        <td><code> 08 db</code></td>
-    </tr>
-    <tr>
-        <th><code>cmpb </code><em>R</em>, <em>R</em></th>
-        <td><code> 38 c0</code></td>
-        <td><code> 38 c9</code></td>
-        <td><code> 38 d2</code></td>
-        <td><code> 38 db</code></td>
-    </tr>
-    <tr>
-        <th><code>testb </code><em>R</em>, <em>R</em></th>
-        <td><code> 84 c0</code></td>
-        <td><code> 84 c9</code></td>
-        <td><code> 84 d2</code></td>
-        <td><code> 84 db</code></td>
-    </tr>
-</table>
+<div class="table-responsive">
+    <table id="figTable">
+        <tr>
+            <th rowspan=2>Operation</th>
+            <th colspan=4 style="text-align:center"> Register <em>R</em></th>
+        </tr>
+        <tr>
+            <th>%al</th>
+            <th>%cl</th>
+            <th>%dl</th>
+            <th>%bl</th>
+        </tr>    
+        <tr>
+            <th><code>andb </code><em>R</em>, <em>R</em></th>
+            <td><code> 20 c0</code></td>
+            <td><code> 20 c9</code></td>
+            <td><code> 20 d2</code></td>
+            <td><code> 20 db</code></td>
+        </tr>
+        <tr>
+            <th><code>orb </code><em>R</em>, <em>R</em></th>
+            <td><code> 08 c0</code></td>
+            <td><code> 08 c9</code></td>
+            <td><code> 08 d2</code></td>
+            <td><code> 08 db</code></td>
+        </tr>
+        <tr>
+            <th><code>cmpb </code><em>R</em>, <em>R</em></th>
+            <td><code> 38 c0</code></td>
+            <td><code> 38 c9</code></td>
+            <td><code> 38 d2</code></td>
+            <td><code> 38 db</code></td>
+        </tr>
+        <tr>
+            <th><code>testb </code><em>R</em>, <em>R</em></th>
+            <td><code> 84 c0</code></td>
+            <td><code> 84 c9</code></td>
+            <td><code> 84 d2</code></td>
+            <td><code> 84 db</code></td>
+        </tr>
+    </table>
+</div>
+
 ---
 
 Figure 3: Byte encodings of instructions. All values are shown in hexadecimal.
