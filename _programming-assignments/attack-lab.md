@@ -33,7 +33,7 @@ This assignment involves generating a total of five attacks on two programs havi
 - Through this, you will get a better understanding of how to write programs that are more secure, as well as some of the features provided by compilers and operating systems to make programs less vulnerable.
 - You will gain a deeper understanding of the stack and parameter-passing mechanisms of x86-64 machine code.
 - You will gain a deeper understanding of how x86-64 instructions are encoded.
-- You will gain more experience with debugging tools such as GDB and OBJDUMP
+- You will gain more experience with debugging tools such as `GDB` and `OBJDUMP`
 
 <!-- https://getbootstrap.com/docs/5.3/components/alerts/ -->
 <div class="alert alert-warning" role="alert">
@@ -46,18 +46,18 @@ You will want to study Sections 3.10.3 and 3.10.4 of the CS:APP3e book as refere
 You may complete this lab working by yourself or with a partner. You will generate attacks for target programs that are custom generated for you. Clarifications and corrections will be posted on the Web pages for the lab.
 
 ### 2.1 Getting Files
-To obtain the unique file for your team, follow the instructions on the webpage for this lab. (You point your Web browser at a particular server and the server builds your files and returns them to your browser in a `tar` file called `target`*k*`.tar`, where *k* is the unique number of your target programs.)
+To obtain the unique file for your team, follow the instructions on the webpage for this lab. (You point your Web browser at a particular server and the server builds your files and returns them to your browser in a `tar` file called `targetK.tar`, where `K` is the unique number of your target programs.)
 
-Save the `target`*k*`.tar` file in a (protected) Linux directory in which you plan to do your work. Then give the command: `tar -xvf target`*k*`.tar`. This will extract a directory `target`*k* containing the files described below.
+Save the `targetK`.tar file in a (protected) Linux directory in which you plan to do your work. Then give the command: `tar -xvf targetK.tar`. This will extract a directory `targetK` containing the files described below.
 
 You should only download one set of files. If for some reason you download multiple targets, choose one target to work on and delete the rest.
 
 <div class="alert alert-danger" role="alert">
-    <b>Warning:</b> If you expand your `target`*k*`.tar` on a PC, by using a utility such as Winzip, or letting your browser do the extraction, you’ll risk resetting permission bits on the executable files.
+    <b>Warning:</b> If you expand your <code>targetK.tar</code> on a PC, by using a utility such as Winzip, or letting your browser do the extraction, you’ll risk resetting permission bits on the executable files.
 </div>
 
 
-The files in `target`*k* include:
+The files in `targetK` include:
 - `README.txt`: A file describing the contents of the directory
 - `ctarget`: An executable program vulnerable to *code-injection* attacks
 - `rtarget`: An executable program vulnerable to *return-oriented-programming* attacks
@@ -110,7 +110,7 @@ Ouch!: You caused a segmentation fault!
 Better luck next time
 ```
 
-(Note that the value of the cookie shown will differ from yours.) Program `RTARGET` will have the same behavior. As the error message indicates, overrunning the buffer typically causes the program state to be corrupted, leading to a memory access error. Your task is to be more clever with the strings you feed `CTARGET` and `RTARGET` so that they do more interesting things. These are called *exploit strings*.
+(Note that the value of the cookie shown will differ from yours.) Program `RTARGET` will have the same behavior. As the error message indicates, overrunning the buffer typically causes the program state to be corrupted, leading to a memory access error. Your task is to be more clever with the strings you feed `CTARGET` and `RTARGET` so that they do more interesting things. These are called *exploit* strings.
 
 Both `CTARGET` and `RTARGET` take several different command line arguments:
 - `-h`: Print list of possible command line arguments
@@ -121,7 +121,7 @@ Your exploit strings will typically contain byte values that do not correspond t
 
 **Important points:**
 - Your exploit string must not contain byte value `0x0a` at any intermediate position, since this is the ASCII code for newline (‘`\n`’). When `Gets` encounters this byte, it will assume you intended to terminate the string.
-- HEX2RAW expects two-digit hex values separated by one or more white spaces. So if you want to create a byte with a hex value of 0, you need to write it as `00`. To create the word `0xdeadbeef` you should pass “`ef be ad de`” to `HEX2RAW` (note the reversal required for little-endian byte ordering).
+- `HEX2RAW` expects two-digit hex values separated by one or more white spaces. So if you want to create a byte with a hex value of 0, you need to write it as `00`. To create the word `0xdeadbeef` you should pass “`ef be ad de`” to `HEX2RAW` (note the reversal required for little-endian byte ordering).
 
 When you have correctly solved one of the levels, your target program will automatically send a notification to the grading server. For example:
 ```
@@ -221,7 +221,7 @@ void test()
 ```
 
 When `getbuf` executes its return statement (line 5 of `getbuf`), the program ordinarily resumes execution within function `test` (at line 5 of this function). We want to change this behavior. Within the file `ctarget`, there is code for a function `touch1` having the following C representation:
-```
+```c
 void touch1()
 {
     vlevel = 1;       /* Part of validation protocol */
@@ -755,7 +755,7 @@ This string can then be passed through `HEX2RAW` to generate an input string for
 89 c2               /* mov %eax,%edx */
 ```
 
-This is also a valid input you can pass through HEX2RAW before sending to one of the target programs.
+This is also a valid input you can pass through `HEX2RAW` before sending to one of the target programs.
 
 ## References
 
