@@ -147,6 +147,7 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 <style>
     tr#fig-1-Table { border-top: solid; }
 </style>
+<!-- https://getbootstrap.com/docs/4.0/content/tables/#responsive-tables-->
 <div class="table-responsive">
     <table>
         <tr>
@@ -362,6 +363,7 @@ Encodings of `movq` instructions.
 
 `movq` *S*, *D*
 
+<!-- This CSS attempts to add stronger vertical borders between the table data and border around the entire table. -->
 <style>
     table#figTable { border: solid; }
     td { border-left: solid; }
