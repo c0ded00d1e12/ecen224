@@ -113,8 +113,7 @@ Both `CTARGET` and `RTARGET` take several different command line arguments:
 - `-q`: Don’t send results to the grading server
 - `-i FILE`: Supply input from a file, rather than from standard input
 
-<!--TODO: Add a link to "Appendix A" that jumps to that section heading -->
-Your exploit strings will typically contain byte values that do not correspond to the ASCII values for printing characters. The program `HEX2RAW` will enable you to generate these raw strings. See [Appendix A]() for more information on how to use `HEX2RAW`.
+Your exploit strings will typically contain byte values that do not correspond to the ASCII values for printing characters. The program `HEX2RAW` will enable you to generate these raw strings. See [Appendix A](#appendix-a-using-hex2raw) for more information on how to use `HEX2RAW`.
 
 **Important points:**
 - Your exploit string must not contain byte value `0x0a` at any intermediate position, since this is the ASCII code for newline (‘`\n`’). When `Gets` encounters this byte, it will assume you intended to terminate the string.
@@ -134,8 +133,8 @@ The server will test your exploit string to make sure it really works, and it wi
 You can view the scoreboard by pointing your Web browser at the link given on the class Web page for this class. Unlike the Bomb Lab, there is no penalty for making mistakes in this lab. Feel free to fire away at `CTARGET` and `RTARGET` with any strings you like.
 
 IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order to submit your solution, you will need to be running on one of the ECEn Department’s spice machines.
-<!--TODO: Insert link to figure 1 -->
-Figure [1]() summarizes the five phases of the lab. As can be seen, the first three involve code-injection (CI) attacks on CTARGET, while the last two involve return-oriented-programming (ROP) attacks on `RTARGET`.
+
+[Figure 1](#figure-1-summary-of-attack-lab-phases) summarizes the five phases of the lab. As can be seen, the first three involve code-injection (CI) attacks on CTARGET, while the last two involve return-oriented-programming (ROP) attacks on `RTARGET`.
 
 ---
 <!--This table had a horizontal line between phase 3 and 4 I couldn't include -->
@@ -209,13 +208,12 @@ void touch2(unsigned val)
 ```
 Your task is to get `CTARGET` to execute the code for `touch2` rather than returning to `test`. In this case, however, you must make it appear to `touch2` as if you have passed your cookie as its argument.
 
-<!--TODO: Fix Link to Appendix B -->
 **Some Advice:**
 - You will want to position a byte representation of the address of your injected code in such a way that `ret` instruction at the end of the code for `getbuf` will transfer control to it.
 - Recall that the first argument to a function is passed in register `%rdi`.
 - Your injected code should set the register to your cookie, and then use a `ret` instruction to transfer control to the first instruction in `touch2`.
 - Do not attempt to use `jmp` or `call` instructions in your exploit code. The encodings of destination addresses for these instructions are difficult to formulate. Use `ret` instructions for all transfers of control, even when you are not returning from a call.
-- See the discussion in [Appendix B]() on how to use tools to generate the byte-level representations of instruction sequences.
+- See the discussion in [Appendix B](#appendix-b-generating-byte-codes) on how to use tools to generate the byte-level representations of instruction sequences.
 
 ### 4.3 Level 3
 Phase 3 also involves a code injection attack, but passing a string as argument.
@@ -266,8 +264,7 @@ Performing code-injection attacks on program `RTARGET` is much more difficult th
 - It marks the section of memory holding the stack as nonexecutable, so even if you could set the program counter to the start of your injected code, the program would fail with a segmentation fault.
 
 <!--Footnote syntax: https://www.markdownguide.org/extended-syntax/#footnotes -->
-<!--TODO: Insert link to Figure 2 -->
-Fortunately, clever people have devised strategies for getting useful things done in a program by executing existing code, rather than injecting new code. The most general form of this is referred to as *return-oriented programming*[^1] [^2]. The strategy with ROP is to identify byte sequences within an existing program that consist of one or more instructions followed by the instruction `ret`. Such a segment is referred to as a `gadget`. Figure [2]() illustrates how the stack can be set up to execute a sequence of *n* gadgets. In this figure, the stack contains a sequence of gadget addresses. Each gadget consists of a series of instruction bytes, with the final one being `0xc3`, encoding the `ret` instruction. When the program executes a `ret` instruction
+Fortunately, clever people have devised strategies for getting useful things done in a program by executing existing code, rather than injecting new code. The most general form of this is referred to as *return-oriented programming*[^1] [^2]. The strategy with ROP is to identify byte sequences within an existing program that consist of one or more instructions followed by the instruction `ret`. Such a segment is referred to as a `gadget`. [Figure 2](#figure-2) illustrates how the stack can be set up to execute a sequence of *n* gadgets. In this figure, the stack contains a sequence of gadget addresses. Each gadget consists of a series of instruction bytes, with the final one being `0xc3`, encoding the `ret` instruction. When the program executes a `ret` instruction
 starting with this configuration, it will initiate a chain of gadget executions, with the `ret` instruction at the end of each gadget causing the program to jump to the beginning of the next.
 
 A gadget can make use of code corresponding to assembly-language statements generated by the compiler, especially ones at the ends of functions. In practice, there may be some useful gadgets of this form, but not enough to implement many important operations. For example, it is highly unlikely that a compiled function would have `popq %rdi` as its last instruction before `ret`. Fortunately, with a byte-oriented instruction set, such as x86-64, a gadget can often be found by extracting patterns from other parts of the instruction byte sequence.
@@ -285,8 +282,8 @@ The chances of this function being useful for attacking a system seem pretty sli
 400f15: c7 07 d4 48 89 c7 movl $0xc78948d4,(%rdi)
 400f1b: c3 retq
 ```
-<!--TODO: Insert link to Figure A -->
-The byte sequence `48 89 c7` encodes the instruction `movq %rax, %rdi`. (See [Figure A]() for the encodings of useful `movq` instructions.) This sequence is followed by byte value `c3`, which encodes the `ret` instruction. The function starts at address `0x400f15`, and the sequence starts on the fourth byte of the function. Thus, this code contains a gadget, having a starting address of `0x400f18`, that will copy the 64-bit value in register `%rax` to register `%rdi`.
+
+The byte sequence `48 89 c7` encodes the instruction `movq %rax, %rdi`. (See [Figure 3-A](#figure-3-a) for the encodings of useful `movq` instructions.) This sequence is followed by byte value `c3`, which encodes the `ret` instruction. The function starts at address `0x400f15`, and the sequence starts on the fourth byte of the function. Thus, this code contains a gadget, having a starting address of `0x400f18`, that will copy the 64-bit value in register `%rax` to register `%rdi`.
 
 Your code for `RTARGET` contains a number of functions similar to the `setval_210` function shown above in a region we refer to as the *gadget farm*. Your job will be to identify useful gadgets in the gadget farm and use these to perform attacks similar to those you did in Phases 2 and 3.
 
@@ -295,14 +292,16 @@ Your code for `RTARGET` contains a number of functions similar to the `setval_21
 
 ### 5.1 Level 2
 For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGET` using gadgets from your gadget farm. You can construct your solution using gadgets consisting of the following instruction types, and using only the first eight x86-64 registers (`%rax`–`%rdi`).
-<!--TODO: Insert links to figures -->
-- `movq` : The codes for these are shown in [Figure A]().
-- `popq` : The codes for these are shown in [Figure B]().
+
+- `movq` : The codes for these are shown in [Figure A](#figure-3-a).
+- `popq` : The codes for these are shown in [Figure B](#figure-3-b).
 - `ret` : This instruction is encoded by the single byte `0xc3`.
 - `nop` : This instruction (pronounced “no op,” which is short for “no operation”) is  encoded by the single byte `0x90`. Its only effect is to cause the program counter to be incremented by 1.
 
 ---
-### Figure 3-A. Encodings of `movq` instructions
+### Figure 3-A. 
+Encodings of `movq` instructions.
+
 `movq` *S*, *D*
 
 <style>
@@ -416,7 +415,8 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 </table>
 
 ----
-### Figure 3-B. Encodings of `popq` instructions
+### Figure 3-B.
+Encodings of `popq` instructions
 
 <table id="figTable">
     <tr>
@@ -447,7 +447,9 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 </table>
 
 ---
-### Figure 3-C. Encodings of `movl` instructions
+### Figure 3-C.
+Encodings of `movl` instructions
+
 `movl` *S*, *D*
 
 <table id="figTable">
@@ -556,7 +558,9 @@ For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGE
 </table>
 
 ---
-### Figure 3-D. Encodings of 2-byte functional nop instructions
+### Figure 3-D.
+Encodings of 2-byte functional nop instructions
+
 <table id="figTable">
     <tr>
         <th rowspan=2>Operation</th>
@@ -611,9 +615,9 @@ Before you take on the Phase 5, pause to consider what you have accomplished so 
 
 Phase 5 requires you to do an ROP attack on `RTARGET` to invoke function `touch3` with a pointer to a string representation of your cookie. That may not seem significantly more difficult than using an ROP attack to invoke `touch2`, except that we have made it so. Moreover, Phase 5 counts for only 5 points, which is not a true measure of the effort it will require. Think of it as more an extra credit problem for those who want to go beyond the normal expectations for the course.
 
-<!--TODO: Fix link to Figure 3-C -->
-To solve Phase 5, you can use gadgets in the region of the code in `rtarget` demarcated by functions `start_farm` and `end_farm`. In addition to the gadgets used in Phase 4, this expanded farm includes the encodings of different `movl` instructions, as shown in [Figure 3-C](). The byte sequences in this part of the
-farm also contain 2-byte instructions that serve as *functional nops*, i.e., they do not change any register or memory values. These include instructions, shown in [Figure 3-D](), such as `andb %al,%al`, that operate on the low-order bytes of some of the registers but do not change their values.
+
+To solve Phase 5, you can use gadgets in the region of the code in `rtarget` demarcated by functions `start_farm` and `end_farm`. In addition to the gadgets used in Phase 4, this expanded farm includes the encodings of different `movl` instructions, as shown in [Figure 3-C](#figure-3-c). The byte sequences in this part of the
+farm also contain 2-byte instructions that serve as *functional nops*, i.e., they do not change any register or memory values. These include instructions, shown in [Figure 3-D](#figure-3-d), such as `andb %al,%al`, that operate on the low-order bytes of some of the registers but do not change their values.
 
 **Some Advice**:
 - You’ll want to review the effect a `movl` instruction has on the upper 4 bytes of a register, as is described on page 183 of the text.
