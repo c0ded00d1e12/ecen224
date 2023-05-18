@@ -35,8 +35,10 @@ This assignment involves generating a total of five attacks on two programs havi
 - You will gain a deeper understanding of how x86-64 instructions are encoded.
 - You will gain more experience with debugging tools such as GDB and OBJDUMP
 
-<!-- Consider formatting the following as a blockquote or callout. Not sure what output options are provided by our website yet -->
-**Note:** In this lab, you will gain firsthand experience with methods used to exploit security weaknesses in operating systems and network servers. Our purpose is to help you learn about the runtime operation of programs and to understand the nature of these security weaknesses so that you can avoid them when you write system code. We do not condone the use of any form of attack to gain unauthorized access to any system resources.
+<!-- https://getbootstrap.com/docs/5.3/components/alerts/ -->
+<div class="alert alert-warning" role="alert">
+    <b>Note:</b> In this lab, you will gain firsthand experience with methods used to exploit security weaknesses in operating systems and network servers. Our purpose is to help you learn about the runtime operation of programs and to understand the nature of these security weaknesses so that you can avoid them when you write system code. We do not condone the use of any form of attack to gain unauthorized access to any system resources.
+</div>
 
 You will want to study Sections 3.10.3 and 3.10.4 of the CS:APP3e book as reference material for this lab.
 
@@ -50,8 +52,10 @@ Save the `target`*k*`.tar` file in a (protected) Linux directory in which you pl
 
 You should only download one set of files. If for some reason you download multiple targets, choose one target to work on and delete the rest.
 
-<!-- Consider formatting below as callout block -->
-**Warning:** If you expand your `target`*k*`.tar` on a PC, by using a utility such as Winzip, or letting your browser do the extraction, you’ll risk resetting permission bits on the executable files.
+<div class="alert alert-danger" role="alert">
+    <b>Warning:</b> If you expand your `target`*k*`.tar` on a PC, by using a utility such as Winzip, or letting your browser do the extraction, you’ll risk resetting permission bits on the executable files.
+</div>
+
 
 The files in `target`*k* include:
 - `README.txt`: A file describing the contents of the directory
@@ -290,8 +294,10 @@ The byte sequence `48 89 c7` encodes the instruction `movq %rax, %rdi`. (See [Fi
 
 Your code for `RTARGET` contains a number of functions similar to the `setval_210` function shown above in a region we refer to as the *gadget farm*. Your job will be to identify useful gadgets in the gadget farm and use these to perform attacks similar to those you did in Phases 2 and 3.
 
-<!--TODO Consider making the below a callout instead-->
-**Important**: The gadget farm is demarcated by functions `start_farm` and `end_farm` in your copy of `rtarget`. Do not attempt to construct gadgets from other portions of the program code.
+<div class="alert alert-info" role="alert">
+    <b>Important</b>: The gadget farm is demarcated by functions <code>start_farm</code> and <code>end_farm</code> in your copy of <code>rtarget</code>. Do not attempt to construct gadgets from other portions of the program code.
+</div>
+
 
 ### 5.1 Level 2
 For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGET` using gadgets from your gadget farm. You can construct your solution using gadgets consisting of the following instruction types, and using only the first eight x86-64 registers (`%rax`–`%rdi`).
