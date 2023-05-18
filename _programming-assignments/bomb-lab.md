@@ -42,10 +42,10 @@ The nefarious Dr. Evil has planted a slew of “binary bombs” on the ECEn Depa
 There are too many bombs for us to deal with, so we are giving each student a bomb to defuse. Your mission, which you have no choice but to accept, is to defuse your bomb before the due date. Good luck, and welcome to the bomb squad!
 
 ## Step 1: Get Your Bomb
-To obtain your bomb, follow the instructions on the web page for this lab. (You point your Web browser at a particular server, fill out a bomb request form, and the server will deliver a custom bomb to you in the form of a tar file named bombk.tar, where k is the unique number of your bomb.)
+To obtain your bomb, follow the instructions on the web page for this lab. (You point your Web browser at a particular server, fill out a bomb request form, and the server will deliver a custom bomb to you in the form of a `tar` file named `bombK.tar`, where `K` is the unique number of your bomb.)
 
-Save the bombk.tar file to a (protected) directory in which you plan to do your work. Then give the
-command: tar -xvf bombk.tar. This will create a directory called ./bombk with the following files:
+Save the `bombK.tar` file to a (protected) directory in which you plan to do your work. Then give the
+command: `tar -xvf bombK.tar`. This will create a directory called `./bombK` with the following files:
 - `README`: Identifies the bomb and its owners.
 - `bomb`: The executable binary bomb.
 - `bomb.c`: Source file with the bomb’s main routine and a friendly greeting from Dr. Evil.
@@ -57,7 +57,7 @@ Your job for this lab is to defuse your bomb.
 
 You must do the assignment on one of the Spice machines. In fact, there is a rumor that Dr. Evil really is evil, and the bomb will always blow up if run elsewhere. There are several other tamper-proofing devices built into the bomb as well, or so we hear.
 
-You can use many tools to help you defuse your bomb. Please look at the hints section for some tips and ideas. The best way is to use your favorite debugger to step through the disassembled binary.
+You can use many tools to help you defuse your bomb. Please look at the **hints** section for some tips and ideas. The best way is to use your favorite debugger to step through the disassembled binary.
 
 Each time your bomb explodes it notifies the bomblab server, and you lose 1/2 point (up to a max of 20 points) in the final score for the lab. So there are consequences to exploding the bomb. You must be careful!
 
