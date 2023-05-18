@@ -141,16 +141,62 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 [Figure 1](#figure-1-summary-of-attack-lab-phases) summarizes the five phases of the lab. As can be seen, the first three involve code-injection (CI) attacks on CTARGET, while the last two involve return-oriented-programming (ROP) attacks on `RTARGET`.
 
 ---
-<!--TODO This table had a horizontal line between phase 3 and 4 I couldn't include -->
+
 ### Figure 1: Summary of attack lab phases
 
-|Phase  | Program| Level| Method| Function| Points|
-|-------|--------|------|-------|---------|-------|
-|1      | CTARGET|     1|     CI| `touch1`|     10|
-|2      | CTARGET|     2|     CI| `touch2`|     25|
-|3      | CTARGET|     3|     CI| `touch3`|     25|
-|4      | RTARGET|     2|    ROP| `touch2`|     35|
-|5      | RTARGET|     3|    ROP| `touch3`|      5|
+<style>
+    tr#fig-1-Table { border-top: solid; }
+</style>
+<table>
+    <tr>
+        <th>Phase</th>
+        <th>Program</th>
+        <th>Level</th>
+        <th>Method</th>
+        <th>Function</th>
+        <th>Points</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>CTARGET</td>
+        <td>1</td>
+        <td>CI</td>
+        <td><code>touch1</code></td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>CTARGET</td>
+        <td>2</td>
+        <td>CI</td>
+        <td><code>touch2</code></td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>CTARGET</td>
+        <td>3</td>
+        <td>CI</td>
+        <td><code>touch3</code></td>
+        <td>25</td>
+    </tr>
+    <tr id="fig-1-Table">
+        <td>4</td>
+        <td>RTARGET</td>
+        <td>2</td>
+        <td>ROP</td>
+        <td><code>touch2</code></td>
+        <td>35</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>RTARGET</td>
+        <td>3</td>
+        <td>ROP</td>
+        <td><code>touch3</code></td>
+        <td>5</td>
+    </tr>
+</table>
 
 CI: Code injection
  
