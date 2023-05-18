@@ -137,7 +137,7 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 [Figure 1](#figure-1-summary-of-attack-lab-phases) summarizes the five phases of the lab. As can be seen, the first three involve code-injection (CI) attacks on CTARGET, while the last two involve return-oriented-programming (ROP) attacks on `RTARGET`.
 
 ---
-<!--This table had a horizontal line between phase 3 and 4 I couldn't include -->
+<!--TODO This table had a horizontal line between phase 3 and 4 I couldn't include -->
 ### Figure 1: Summary of attack lab phases
 
 |Phase  | Program| Level| Method| Function| Points|
@@ -290,7 +290,7 @@ The byte sequence `48 89 c7` encodes the instruction `movq %rax, %rdi`. (See [Fi
 
 Your code for `RTARGET` contains a number of functions similar to the `setval_210` function shown above in a region we refer to as the *gadget farm*. Your job will be to identify useful gadgets in the gadget farm and use these to perform attacks similar to those you did in Phases 2 and 3.
 
-<!-- Consider making the below a callout instead-->
+<!--TODO Consider making the below a callout instead-->
 **Important**: The gadget farm is demarcated by functions `start_farm` and `end_farm` in your copy of `rtarget`. Do not attempt to construct gadgets from other portions of the program code.
 
 ### 5.1 Level 2
