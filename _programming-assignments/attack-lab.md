@@ -269,7 +269,8 @@ Performing code-injection attacks on program `RTARGET` is much more difficult th
 Fortunately, clever people have devised strategies for getting useful things done in a program by executing existing code, rather than injecting new code. The most general form of this is referred to as *return-oriented programming*[^1] [^2]. The strategy with ROP is to identify byte sequences within an existing program that consist of one or more instructions followed by the instruction `ret`. Such a segment is referred to as a `gadget`. [Figure 2](#figure-2) illustrates how the stack can be set up to execute a sequence of *n* gadgets. In this figure, the stack contains a sequence of gadget addresses. Each gadget consists of a series of instruction bytes, with the final one being `0xc3`, encoding the `ret` instruction. When the program executes a `ret` instruction
 starting with this configuration, it will initiate a chain of gadget executions, with the `ret` instruction at the end of each gadget causing the program to jump to the beginning of the next.
 
-<!--TODO: Add some kind of label indicating this is figure 2 -->
+
+### Figure 2
 <figure class="image mx-auto" style="max-width: 1000px" id="figure-2">
     <img src="{% link assets/attack-lab/rop.png %}" alt="stack-diagram">
 </figure>
