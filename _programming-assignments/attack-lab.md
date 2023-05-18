@@ -349,8 +349,8 @@ Your code for `RTARGET` contains a number of functions similar to the `setval_21
 ### 5.1 Level 2
 For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGET` using gadgets from your gadget farm. You can construct your solution using gadgets consisting of the following instruction types, and using only the first eight x86-64 registers (`%rax`–`%rdi`).
 
-- `movq` : The codes for these are shown in [Figure A](#figure-3-a).
-- `popq` : The codes for these are shown in [Figure B](#figure-3-b).
+- `movq` : The codes for these are shown in [Figure 3-A](#figure-3-a).
+- `popq` : The codes for these are shown in [Figure 3-B](#figure-3-b).
 - `ret` : This instruction is encoded by the single byte `0xc3`.
 - `nop` : This instruction (pronounced “no op,” which is short for “no operation”) is  encoded by the single byte `0x90`. Its only effect is to cause the program counter to be incremented by 1.
 
