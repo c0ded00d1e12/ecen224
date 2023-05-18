@@ -19,6 +19,7 @@ class_number: ECEn 224
 email: lundrigan@byu.edu
 description:
 baseurl: "/ecen224" # the subpath of your site, e.g. /blog
+host: localhost
 url: "https://byu-cpe.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: pretty
 
