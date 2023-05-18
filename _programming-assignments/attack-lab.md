@@ -139,6 +139,7 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 ---
 <!--This table had a horizontal line between phase 3 and 4 I couldn't include -->
 ### Figure 1: Summary of attack lab phases
+
 |Phase  | Program| Level| Method| Function| Points|
 |-------|--------|------|-------|---------|-------|
 |1      | CTARGET|     1|     CI| `touch1`|     10|
@@ -150,6 +151,7 @@ IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order
 CI: Code injection
  
 ROP: Return-oriented programming
+
 ---
 
 ## 4. Part I: Code Injection Attacks
