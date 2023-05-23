@@ -10,8 +10,8 @@
             {% for item in site.pages %}
             <!-- Look for specific front-matter tag -->
             {% if item.link %}
-            <a href="{{ item.link }}" class="list-group-item list-group-item-action sidebar-item" {% if
-                item.new_window %}target="_blank" {% endif %}>
+            <a href="{{ item.link }}" class="list-group-item list-group-item-action sidebar-item" {% if item.new_window
+                %}target="_blank" {% endif %}>
                 {% if item.icon %}
                 <i class="{{ item.icon }}"></i>
                 {% endif %}
@@ -33,7 +33,7 @@
             {% for item in site.labs %}
             <a href="{% link {{ item.path }} %}" class="list-group-item list-group-item-action sidebar-item">
                 <span class="badge badge-pill badge-dark-grey">{{ item.number }}</span>
-                {{ item.title }}
+                {% if item.short_title %}{{ item.short_title }}{% else %}{{ item.title }}{% endif %}
             </a>
             {% endfor %}
         </div>
@@ -45,7 +45,7 @@
                 {% if item.icon %}
                 <i class="{{ item.icon }}"></i>
                 {% endif %}
-                {{ item.title }}
+                {% if item.short_title %}{{ item.short_title }}{% else %}{{ item.title }}{% endif %}
             </a>
             {% endfor %}
         </div>
