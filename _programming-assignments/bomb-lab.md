@@ -1,11 +1,12 @@
 ---
-title: Bomb Lab
+title: "Bomb Lab: Mastering x86-64 assembly and a Debugger"
+short_title: Bomb Lab
 icon: fa-duotone fa-bomb
 number: 1
 layout: lab
 ---
 
-### Getting Started
+## Getting Started
 
 You must complete this lab on one of the Spice Lab Linux computers. The Spice Lab is located in **CB 425**. You can either go physically into the lab and use one of the Linux computers, or you can SSH into one. You can not SSH into them directly. You must first SSH into `ssh.et.byu.edu` with your CAEDM username and password. From there, you can SSH into the a Spice Lab computer, `spice-##.ee.byu.edu`, where ## can be a number 14 to 48. Again, use your CAEDM username and password to log into those machines. For example, run the following commands
 
@@ -18,23 +19,10 @@ ssh foo@spice-20.ee.byu.edu
 Assuming your CAEDM username is foo and the Spice Lab computer you want to log into is 20. It doesn't matter which computer you log into. Your home directory is mounted to your J Drive so all folders will be synced between computers. From this SSH session, you will need to solve your bomb.
 
 
-### Instructions
+### Download Instructions
 
-See below for the remainder of the instructions describing this lab. For the website to download a bomb and look at the score board, go to the `#programming-assignments` channel on Slack.
+I will post the website to download the assignment and view the scoreboard on Slack.
 
-### Resources
-
-- [GDB Quick Reference]({% link assets/GDB Quick Reference.pdf %})
-
-- [x86-64 Reference Sheet](https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf)
-
-- [Jump Instructions](https://stackoverflow.com/questions/9617877/assembly-jg-jnle-jl-jnge-after-cmp)
-
-- [Article on reading assembly](https://www.timdbg.com/posts/fakers-guide-to-assembly/)
-
-- [Compiler Explorer](https://godbolt.org). Compare C code with its corresponding assembly code.
-
-# Bomb Lab: Mastering x86-64 assembly and a Debugger
 
 ## Introduction
 The nefarious Dr. Evil has planted a slew of “binary bombs” on the ECEn Department’s Spice machines. A binary bomb is a program that consists of a sequence of phases. Each phase expects you to type a particular string on `stdin`. If you type the correct string, then the phase is *defused* and the bomb proceeds to the next phase. Otherwise, the bomb *explodes* by printing "`BOOM!!!`" and then terminating. The bomb is defused when every phase has been defused.
@@ -121,3 +109,15 @@ There are many tools which are designed to help you figure out both how programs
     This utility will display the printable strings in your bomb.
 
 Looking for a particular tool? How about documentation? Don’t forget, the commands `apropos`, `man`, and `info` are your friends. In particular, `man ascii` might come in useful. `info gas` will give you more than you ever wanted to know about the GNU Assembler. Also, the web may also be a treasure trove of information. If you get stumped, please consult the TAs or your instructor.
+
+## Resources
+
+- [GDB Quick Reference]({% link assets/GDB Quick Reference.pdf %})
+
+- [x86-64 Reference Sheet](https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf)
+
+- [Jump Instructions](https://stackoverflow.com/questions/9617877/assembly-jg-jnle-jl-jnge-after-cmp)
+
+- [Article on reading assembly](https://www.timdbg.com/posts/fakers-guide-to-assembly/)
+
+- [Compiler Explorer](https://godbolt.org). Compare C code with its corresponding assembly code.
