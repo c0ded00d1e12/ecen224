@@ -30,7 +30,12 @@ layout: default
 
             {% endfor %}
         </ol>
-
+        {% else if page.file %}
+        <div class="hw-icon">
+            <a href="{% link {{ page.file }} %}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-duotone fa-file-pdf fa-8x"></i>
+            </a>
+        </div>
         {% else %}
 
         {{ content }}
