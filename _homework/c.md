@@ -255,7 +255,7 @@ layout: homework
     ```
 
 {:start="23"}
-23. (1 point) If you decare an array like this: i`nt values[10]={3};`, what is the value of `values[5]`?
+23. (1 point) If you decare an array like this: `int values[10]={3};`, what is the value of `values[5]`?
 
 {:start="24"}
 24. (1 point) If you have an array `uint32_t vals[10]`, what is the value of `sizeof(vals)`?

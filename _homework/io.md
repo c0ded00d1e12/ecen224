@@ -7,15 +7,22 @@ problems:
 ---
 
 1. (3 points) Give an example of a human “protocol” used in the real world. Answer the following questions about the protocol.
-    - (a) What is the purpose of the protocol?
-    - (b) What are the rules of the protocol?
-    - (c) What are the consequences of violating the protocol?
+    
+    (a) What is the purpose of the protocol?
+    
+    (b) What are the rules of the protocol?
+    
+    (c) What are the consequences of violating the protocol?
 
 2. (4 points) Convert the following hex addresses into dotted-decimal addresses:
-    - (a) `0x0DF9CD0D`
-    - (b) `0x8EFA45EE`
-    - (c) `0x80BB10B8`
-    - (d) `0x0A207376`
+    
+    (a) `0x0DF9CD0D`
+    
+    (b) `0x8EFA45EE`
+    
+    (c) `0x80BB10B8`
+    
+    (d) `0x0A207376`
 
 3. (1 point) What is the IP address for `lundrigan.byu.edu`? Hint: you can figure out the answer by using a command line tool.
 
