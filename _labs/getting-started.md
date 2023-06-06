@@ -122,6 +122,72 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
     You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
 
+<!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
+### Assemble the remaining kit
+Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
+  ```
+  sudo shutdown -h now
+  ```
+  The command `sudo` indicates to your Raspberry Pi that you want to perform the following command with admin-level priveleges. In this case, we are running the `shutdown` command, directing it to enter the `-h` halt state, and to do so immediately (`now`). You will need to provide your password when prompted. Be aware that unlike traditional password prompts, this one won't show any characters as you type your password. After running this command, wait for the lights to stop blinking on your Pi before unplugging the PoE adapter.
+
+We will proceed to assemble the remaining components of your doorbell.
+
+1. Unpackage and prepare your display, standoffs, screws, nuts, and washers for assembly.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_1 %}" alt="Step 1 parts">
+    </figure>
+2. Put the screws through the holes of the Raspberry Pi Zero, on the side with the USB ports, so that the threads of the screw are on the same side of the PCB as the USBs.
+3. Put the plastic washers on the screws, one washer per screw.
+4. Thread the brass standoffs onto the screws
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_4_assembly %}" alt="Step 4 assembly state">
+    </figure>
+5. Take the display PCB and line up the black plastic socket (on the back side of the PCB) with the metal pins sticking out of the Raspberry Pi. Gently press the display into the socket, making sure all pins seated into their corresponding holes without getting bent. Two of the holes on the display should have slid over the brass standoffs installed earlier.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_6_1 %}" alt="Step 6 assembly state">
+    </figure>
+6. Screw the nuts onto the standoffs to secure the display to the Raspberry Pi.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_6_2 %}" alt="Step 6 assembly state">
+    </figure>
+7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS**
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
+    </figure>
+8. Familiarize yourself with the connector on your camera PCB. Note the orientation of the metal pins inside the conector and the plastic shroud along the edges. This shroud "locks" the connector, preventing the cable from being removed. Unlock it by gently pulling on the edges of the shroud until it slides out
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_8_camera_closeup %}" alt="Camera connector closeup">
+    </figure>
+9. Insert the wider end of the cable into the camera module, making sure the copper contacts on the ribbon are oriented correctly. *Note - in this image, the connector is in the "unlocked" state. Make sure to lock the connector once you have installed the ribbon.*
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_9_ribbon %}" alt="Step 9 - ribbon cable inserted but not locked">
+    </figure>
+10. Repeat the same step with the narrow end of the cable on the Raspberry Pi. *Note - in this image, the connector is in the "locked" state*
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_10_ribbon %}" alt="Step 10 - ribbon cable inserted, locked.">
+    </figure>
+11. Gently bend the end of the ribbon cable attached to the Raspberry Pi, right near the socket. This is necessary in order to get the Pi to fit into the provided case.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_11_bent %}" alt="Bent ribbon cable">
+    </figure>
+12. Mount the camera board to the lid of the case using the 4 screws.
+13. Position the Raspberry Pi near next to the camera board, and run the slack in the ribbon cable into the gap between the Pi and the Display board.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_13_mounted_camera %}" alt="Mounted camera and ribbon cable routing">
+    </figure>
+14. Insert the Raspberry Pi into the case. Make sure the empty holes on the Raspberry Pi line up with the pegs in the case, the camera ribbon is not being pinched, and the holes in the lid line up with the button and LCD screen
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_14_case_positioning %}" alt="Positioning of components in the case">
+    </figure>
+15. Snap the lid onto the bottom of the case
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_15_completed %}" alt="Completed assembly">
+    </figure>
+
+Details about the display and camera hardware will be presented in future labs.
+
+Turn your Pi Z2W on by plugging in your PoE adapter and re-connect to the Pi over SSH like we did earlier. 
+
 ### Increasing Swap File Size
 With a remote connection to the Pi Z2W, we can now finish our development environment setup. First let's give the Pi Z2W some more available RAM by increasing the size of its [swap file](https://itsfoss.com/create-swap-file-linux/). Doing this will give the Pi Z2W more system resources if it ever uses up all of its onboard RAM. 
 
@@ -152,7 +218,7 @@ With a remote connection to the Pi Z2W, we can now finish our development enviro
     ```
 
 4. You will now notice that instead of being in command execution mode, your terminal has opened up a text editor. You can navigate through the file using the arrow keys. Find the line that says
-```
+    ```
     CONF_SWAPSIZE=100
     ```
     and change the `100` to `1024`. 
