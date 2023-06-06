@@ -146,11 +146,11 @@ We will proceed to assemble the remaining components of your doorbell.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_6_1 %}" alt="Step 6 assembly state">
     </figure>
-6. Screw the nuts onto the standoffs to secure the display to the Raspberry Pi.
+6. Screw the nuts onto the standoffs to secure the display to the Raspberry Pi. Peel off the packaging protecting the surface of the display.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_6_2 %}" alt="Step 6 assembly state">
     </figure>
-7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS**
+7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS**. Be aware that these ribbon cables are fragile.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
     </figure>
