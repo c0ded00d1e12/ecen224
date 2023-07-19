@@ -136,7 +136,8 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       ```bash
       ./install.sh
       ```
-    You will see print statements in the terminal logging the installation process. 
+    You will see print statements in the terminal logging the installation process.
+     **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
   
 
 ### Connect with VSCode
