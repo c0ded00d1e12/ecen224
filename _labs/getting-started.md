@@ -126,11 +126,11 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
   First, run this command:
   ```bash
-  wget github.com/byu-cpe/ecen224/blob/main/_labs/install.sh
+  wget https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/_labs/install.sh
   ```
   This will download the script to your Pi. Next, run:
   ```bash
-  chmod +x install.sh
+  chmod 777 install.sh
   ```
   This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
   ```bash
