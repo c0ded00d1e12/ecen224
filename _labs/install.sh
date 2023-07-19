@@ -1,10 +1,11 @@
 #!/bin/bash
 echo "------------installing dependencies-----------------"
 sudo apt update
+sudo apt upgrade
 sudo apt install git zsh gdb libcamera-dev libjpeg-dev libtiff5-dev cmake libboost-program-options-dev libdrm-dev libexif-dev tmux vim -y
 echo "------------done installing dependencies-----------"
 echo "------------installing Oh My Zsh!--------------"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 echo "------------setting up swapfile-----------"
 sudo dphys-swapfile swapoff
 sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
