@@ -124,19 +124,19 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
 5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
-  First, run this command:
-  ```bash
-  wget https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/_labs/install.sh
-  ```
-  This will download the script to your Pi. Next, run:
-  ```bash
-  chmod 777 install.sh
-  ```
-  This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
-  ```bash
-  ./install.sh
-  ```
-  You will see print statements in the terminal logging the installation process. 
+    First, run this command:
+      ```bash
+      wget https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/_labs/install.sh
+      ```
+   This will download the script to your Pi. Next, run:
+      ```bash
+      chmod 777 install.sh
+      ```
+    This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
+      ```bash
+      ./install.sh
+      ```
+    You will see print statements in the terminal logging the installation process. 
   
 
 ### Connect with VSCode
