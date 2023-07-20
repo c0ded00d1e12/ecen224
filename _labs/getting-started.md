@@ -137,6 +137,11 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       ./install.sh
       ```
     You will see print statements in the terminal logging the installation process.
+    Upon completion of the install script, your terminal should have colorful text and look slightly different (This comes from a framework called "Oh my Zsh").
+    To complete your Pi Setup Process, reboot your Pi with this command:
+      ```bash
+      sudo reboot
+      ```
      **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
   
 
