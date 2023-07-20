@@ -15,7 +15,7 @@ echo "------------------Installing Oh My Zsh!------------------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 # Pretty sure Zsh will steal the terminal at this point, so nothing below will run
 echo "-----------Write IP Addr to Screen on Boot---------------"
-wget "https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/assets/scripts/install.sh"
+wget "https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/assets/scripts/ip_addr.bin"
 chmod +x ip_addr.bin
 sudo mv ip_addr.bin /opt/
 cat << EOF
