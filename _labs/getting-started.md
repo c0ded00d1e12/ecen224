@@ -126,7 +126,7 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
     First, run this command:
       ```bash
-      wget https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/_labs/install.sh
+      wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
       ```
    This will download the script to your Pi. Next, run:
       ```bash
