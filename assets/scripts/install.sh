@@ -4,13 +4,12 @@ sudo apt update
 sudo apt upgrade
 sudo apt install -y git zsh gdb libcamera-dev libjpeg-dev libtiff5-dev cmake libboost-program-options-dev libdrm-dev libexif-dev tmux vim 
 echo "--------------Done Installing Dependencies---------------"
-echo "---------------AutoDisplay IP Addr on Boot---------------"
-sudo sed -i '$ a\Hello World! My IP Address is \\4' /etc/issue
 echo "-------------------Setting up Swapfile-------------------"
 sudo dphys-swapfile swapoff
 sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
 sudo dphys-swapfile setup
 sudo dphys-swapfile swapon
+echo "--------------------Finished Swapfile--------------------"
 echo "------------------Installing Oh My Zsh!------------------"
 sh -c -y "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended)"
 # Pretty sure Zsh will steal the terminal at this point, so nothing below will run
