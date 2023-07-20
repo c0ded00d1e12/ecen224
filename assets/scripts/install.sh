@@ -2,7 +2,7 @@
 echo "-----------------Installing Dependencies-----------------"
 sudo apt update
 sudo apt upgrade
-sudo apt install -y git zsh gdb libcamera-dev libjpeg-dev libtiff5-dev cmake libboost-program-options-dev libdrm-dev libexif-dev tmux vim 
+sudo apt install yes| git zsh gdb libcamera-dev libjpeg-dev libtiff5-dev cmake libboost-program-options-dev libdrm-dev libexif-dev tmux vim 
 echo "--------------Done Installing Dependencies---------------"
 echo "-------------------Setting up Swapfile-------------------"
 sudo dphys-swapfile swapoff
@@ -11,8 +11,7 @@ sudo dphys-swapfile setup
 sudo dphys-swapfile swapon
 echo "--------------------Finished Swapfile--------------------"
 echo "------------------Installing Oh My Zsh!------------------"
-sh -c -y "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended)"
-# Pretty sure Zsh will steal the terminal at this point, so nothing below will run
+sh -c yes| "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 echo "-----------Write IP Addr to Screen on Boot---------------"
 wget "https://raw.githubusercontent.com/Chaser2143/ecen224/fall_2023/assets/scripts/ip_addr.bin"
 chmod +x ip_addr.bin
