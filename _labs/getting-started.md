@@ -154,6 +154,10 @@ We will proceed to assemble the remaining components of your doorbell.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
     </figure>
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/camera/pi-camera.png %}" alt="Units of the course.">
+      <figcaption style="text-align: center;">The Raspberry Pi Zero 2 W with the camera unit and connection cable. In this lab we will be using the larger cable and wrap it around the back of the Pi Z2W.</figcaption>
+    </figure>
 8. Familiarize yourself with the connector on your camera PCB. Note the orientation of the metal pins inside the conector and the plastic shroud along the edges. This shroud "locks" the connector, preventing the cable from being removed. Unlock it by gently pulling on the edges of the shroud until it slides out
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_8_camera_closeup %}" alt="Camera connector closeup">
@@ -170,12 +174,255 @@ We will proceed to assemble the remaining components of your doorbell.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_11_bent %}" alt="Bent ribbon cable">
     </figure>
-12. Mount the camera board to the lid of the case using the 4 screws.
+12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit. Every final system comes with its proper enclosure. Make sure you pick colors that are fun for you!
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../../assets/three.module.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+        import * as THREE from 'three';
+
+        import { OrbitControls } from '../../assets/OrbitControls.js';
+        import { ThreeMFLoader } from '../../assets/3MFLoader.js';
+
+        let camera, scene, renderer, object, loader, controls;
+
+        var container = document.getElementById('camera-lid');
+
+        init();
+
+        function init() {
+
+            renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( 750, 750 );
+            renderer.setClearColor( 0x000000, 0 ); // the default
+            container.appendChild( renderer.domElement );
+            renderer.domElement.style.cursor = "grab";
+
+
+            scene = new THREE.Scene();
+
+            scene.add( new THREE.AmbientLight( 0xffffff, 0.2 ) );
+
+            camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 500 );
+
+            // Z is up for objects intended to be 3D printed.
+
+            camera.up.set( 0, 0, 1 );
+            camera.position.set( - 100, - 250, 100 );
+            scene.add( camera );
+
+            controls = new OrbitControls( camera, renderer.domElement );
+            controls.addEventListener( 'change', render );
+            controls.minDistance = 100;
+            controls.maxDistance = 1000;
+            controls.enablePan = false;
+            controls.update();
+
+            const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+            camera.add( pointLight );
+
+            const manager = new THREE.LoadingManager();
+
+            manager.onLoad = function () {
+
+                const aabb = new THREE.Box3().setFromObject( object );
+                const center = aabb.getCenter( new THREE.Vector3() );
+
+                object.position.x += ( object.position.x - center.x );
+                object.position.y += ( object.position.y - center.y );
+                object.position.z += ( object.position.z - center.z );
+
+                controls.reset();
+
+                scene.add( object );
+                render();
+
+            };
+
+            loader = new ThreeMFLoader( manager );
+            loadAsset( '../../assets/camera/smart-doorbell-case.3mf' );
+
+            // window.addEventListener( 'resize', onWindowResize );
+
+        }
+
+        function loadAsset( asset ) {
+
+            loader.load( asset, function ( group ) {
+
+                if ( object ) {
+
+                    object.traverse( function ( child ) {
+
+                        if ( child.material ) child.material.dispose();
+                        if ( child.material && child.material.map ) child.material.map.dispose();
+                        if ( child.geometry ) child.geometry.dispose();
+
+                    } );
+
+                    scene.remove( object );
+
+                }
+
+                object = group;
+
+            } );
+
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            render();
+
+        }
+
+        function render() {
+
+            renderer.render( scene, camera );
+
+        }
+
+    </script>
+
+    <script type="module">
+
+        import * as THREE from 'three';
+
+        import { OrbitControls } from '../../assets/OrbitControls.js';
+        import { ThreeMFLoader } from '../../assets/3MFLoader.js';
+
+        let camera, scene, renderer, object, loader, controls;
+
+        var container = document.getElementById('camera-body');
+
+        init();
+
+        function init() {
+
+            renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( 500, 300 );
+            renderer.setClearColor( 0x000000, 0 ); // the default
+            container.appendChild( renderer.domElement );
+            renderer.domElement.style.cursor = "grab";
+
+            scene = new THREE.Scene();
+
+            scene.add( new THREE.AmbientLight( 0xffffff, 0.2 ) );
+
+            camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 1, 500 );
+
+            // Z is up for objects intended to be 3D printed.
+
+            camera.up.set( 0, 0, 1 );
+            camera.position.set( - 100, - 250, 100 );
+            scene.add( camera );
+
+            controls = new OrbitControls( camera, renderer.domElement );
+            controls.addEventListener( 'change', render );
+            controls.minDistance = 50;
+            controls.maxDistance = 400;
+            controls.enablePan = false;
+            controls.update();
+
+            const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+            camera.add( pointLight );
+
+            const manager = new THREE.LoadingManager();
+
+            manager.onLoad = function () {
+
+                const aabb = new THREE.Box3().setFromObject( object );
+                const center = aabb.getCenter( new THREE.Vector3() );
+
+                object.position.x += ( object.position.x - center.x );
+                object.position.y += ( object.position.y - center.y );
+                object.position.z += ( object.position.z - center.z );
+
+                controls.reset();
+
+                scene.add( object );
+                render();
+
+            };
+
+            loader = new ThreeMFLoader( manager );
+            loadAsset( '../../assets/cam-case-sss.3mf' );
+
+            // window.addEventListener( 'resize', onWindowResize );
+
+        }
+
+        function loadAsset( asset ) {
+
+            loader.load( asset, function ( group ) {
+
+                if ( object ) {
+
+                    object.traverse( function ( child ) {
+
+                        if ( child.material ) child.material.dispose();
+                        if ( child.material && child.material.map ) child.material.map.dispose();
+                        if ( child.geometry ) child.geometry.dispose();
+
+                    } );
+
+                    scene.remove( object );
+
+                }
+
+                object = group;
+
+            } );
+
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            render();
+
+        }
+
+        function render() {
+
+            renderer.render( scene, camera );
+
+        }
+
+    </script>
+
+    <span>
+    <figure class="image mx-auto" style="max-width: 750px">
+        <div id="camera-lid"></div>
+      <figcaption style="text-align: center;">Doorbell case 3D printed file. You will need to attach the camera module to the standoffs on the lid. Note that the button in this file is not included in the case you will receive in this lab.</figcaption>
+    </figure>
+    As visible in the 3D model above, there are several components that comprise this enclosure. The top of the case is the long, rectangular part with holes for the camera, LCD screen, and button respectively. You'll notice that around the camera holes are four standoffs. These standoffs correspond to the holes in the camera module mentioned in the section before. Remove the packaging film covering the lense of your camera, then mount the camera board to the lid of the case using the 4 screws.
 13. Position the Raspberry Pi near next to the camera board, and run the slack in the ribbon cable into the gap between the Pi and the Display board.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_13_mounted_camera %}" alt="Mounted camera and ribbon cable routing">
     </figure>
-14. Insert the Raspberry Pi into the case. Make sure the empty holes on the Raspberry Pi line up with the pegs in the case, the camera ribbon is not being pinched, and the holes in the lid line up with the button and LCD screen
+14. Insert the Raspberry Pi into the case. Make sure the remaining 2 empty holes on the Raspberry Pi line up with the pegs in the case, the camera ribbon is not being pinched, and the holes in the lid line up with the button and LCD screen
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_14_case_positioning %}" alt="Positioning of components in the case">
     </figure>
