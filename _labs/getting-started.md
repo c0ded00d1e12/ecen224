@@ -121,7 +121,7 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
     </figure>
 
     You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
-
+    
 5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
     First, run this command:
@@ -144,6 +144,377 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       ```
      **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
   
+<!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
+### Assemble the remaining kit
+Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
+  ```
+  sudo shutdown -h now
+  ```
+  The command `sudo` indicates to your Raspberry Pi that you want to perform the following command with admin-level priveleges. In this case, we are running the `shutdown` command, directing it to enter the `-h` halt state, and to do so immediately (`now`). You will need to provide your password when prompted. Be aware that unlike traditional password prompts, this one won't show any characters as you type your password. After running this command, wait for the lights to stop blinking on your Pi before unplugging the PoE adapter.
+
+We will proceed to assemble the remaining components of your doorbell.
+
+1. Unpackage and prepare your display, standoffs, screws, nuts, and washers for assembly.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_1 %}" alt="Step 1 parts">
+    </figure>
+2. Put the screws through the holes of the Raspberry Pi Zero, on the side with the USB ports, so that the threads of the screw are on the same side of the PCB as the USBs.
+3. Put the plastic washers on the screws, one washer per screw.
+4. Thread the brass standoffs onto the screws
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_4_assembly %}" alt="Step 4 assembly state">
+    </figure>
+5. Take the display PCB and line up the black plastic socket (on the back side of the PCB) with the metal pins sticking out of the Raspberry Pi. Gently press the display into the socket, making sure all pins seated into their corresponding holes without getting bent. Two of the holes on the display should have slid over the brass standoffs installed earlier.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_6_1 %}" alt="Step 6 assembly state">
+    </figure>
+6. Screw the nuts onto the standoffs to secure the display to the Raspberry Pi. Peel off the packaging protecting the surface of the display.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_6_2 %}" alt="Step 6 assembly state">
+    </figure>
+7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS**. Be aware that these ribbon cables are fragile.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
+    </figure>
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/camera/pi-camera.png %}" alt="Units of the course.">
+      <figcaption style="text-align: center;">The Raspberry Pi Zero 2 W with the camera unit and connection cable. In this lab we will be using the larger cable and wrap it around the back of the Pi Z2W.</figcaption>
+    </figure>
+8. Familiarize yourself with the connector on your camera PCB. Note the orientation of the metal pins inside the conector and the plastic shroud along the edges. This shroud "locks" the connector, preventing the cable from being removed. Unlock it by gently pulling on the edges of the shroud until it slides out
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_8_camera_closeup %}" alt="Camera connector closeup">
+    </figure>
+9. Insert the wider end of the cable into the camera module, making sure the copper contacts on the ribbon are oriented correctly. *Note - in this image, the connector is in the "unlocked" state. Make sure to lock the connector once you have installed the ribbon.*
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_9_ribbon %}" alt="Step 9 - ribbon cable inserted but not locked">
+    </figure>
+10. Repeat the same step with the narrow end of the cable on the Raspberry Pi. *Note - in this image, the connector is in the "locked" state*
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_10_ribbon %}" alt="Step 10 - ribbon cable inserted, locked.">
+    </figure>
+11. Gently bend the end of the ribbon cable attached to the Raspberry Pi, right near the socket. This is necessary in order to get the Pi to fit into the provided case.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_11_bent %}" alt="Bent ribbon cable">
+    </figure>
+12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit. Every final system comes with its proper enclosure. Make sure you pick colors that are fun for you!
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../../assets/three.module.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+        import * as THREE from 'three';
+
+        import { OrbitControls } from '../../assets/OrbitControls.js';
+        import { ThreeMFLoader } from '../../assets/3MFLoader.js';
+
+        let camera, scene, renderer, object, loader, controls;
+
+        var container = document.getElementById('camera-lid');
+
+        init();
+
+        function init() {
+
+            renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( 750, 750 );
+            renderer.setClearColor( 0x000000, 0 ); // the default
+            container.appendChild( renderer.domElement );
+            renderer.domElement.style.cursor = "grab";
+
+
+            scene = new THREE.Scene();
+
+            scene.add( new THREE.AmbientLight( 0xffffff, 0.2 ) );
+
+            camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 500 );
+
+            // Z is up for objects intended to be 3D printed.
+
+            camera.up.set( 0, 0, 1 );
+            camera.position.set( - 100, - 250, 100 );
+            scene.add( camera );
+
+            controls = new OrbitControls( camera, renderer.domElement );
+            controls.addEventListener( 'change', render );
+            controls.minDistance = 100;
+            controls.maxDistance = 1000;
+            controls.enablePan = false;
+            controls.update();
+
+            const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+            camera.add( pointLight );
+
+            const manager = new THREE.LoadingManager();
+
+            manager.onLoad = function () {
+
+                const aabb = new THREE.Box3().setFromObject( object );
+                const center = aabb.getCenter( new THREE.Vector3() );
+
+                object.position.x += ( object.position.x - center.x );
+                object.position.y += ( object.position.y - center.y );
+                object.position.z += ( object.position.z - center.z );
+
+                controls.reset();
+
+                scene.add( object );
+                render();
+
+            };
+
+            loader = new ThreeMFLoader( manager );
+            loadAsset( '../../assets/camera/smart-doorbell-case.3mf' );
+
+            // window.addEventListener( 'resize', onWindowResize );
+
+        }
+
+        function loadAsset( asset ) {
+
+            loader.load( asset, function ( group ) {
+
+                if ( object ) {
+
+                    object.traverse( function ( child ) {
+
+                        if ( child.material ) child.material.dispose();
+                        if ( child.material && child.material.map ) child.material.map.dispose();
+                        if ( child.geometry ) child.geometry.dispose();
+
+                    } );
+
+                    scene.remove( object );
+
+                }
+
+                object = group;
+
+            } );
+
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            render();
+
+        }
+
+        function render() {
+
+            renderer.render( scene, camera );
+
+        }
+
+    </script>
+
+    <script type="module">
+
+        import * as THREE from 'three';
+
+        import { OrbitControls } from '../../assets/OrbitControls.js';
+        import { ThreeMFLoader } from '../../assets/3MFLoader.js';
+
+        let camera, scene, renderer, object, loader, controls;
+
+        var container = document.getElementById('camera-body');
+
+        init();
+
+        function init() {
+
+            renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( 500, 300 );
+            renderer.setClearColor( 0x000000, 0 ); // the default
+            container.appendChild( renderer.domElement );
+            renderer.domElement.style.cursor = "grab";
+
+            scene = new THREE.Scene();
+
+            scene.add( new THREE.AmbientLight( 0xffffff, 0.2 ) );
+
+            camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 1, 500 );
+
+            // Z is up for objects intended to be 3D printed.
+
+            camera.up.set( 0, 0, 1 );
+            camera.position.set( - 100, - 250, 100 );
+            scene.add( camera );
+
+            controls = new OrbitControls( camera, renderer.domElement );
+            controls.addEventListener( 'change', render );
+            controls.minDistance = 50;
+            controls.maxDistance = 400;
+            controls.enablePan = false;
+            controls.update();
+
+            const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+            camera.add( pointLight );
+
+            const manager = new THREE.LoadingManager();
+
+            manager.onLoad = function () {
+
+                const aabb = new THREE.Box3().setFromObject( object );
+                const center = aabb.getCenter( new THREE.Vector3() );
+
+                object.position.x += ( object.position.x - center.x );
+                object.position.y += ( object.position.y - center.y );
+                object.position.z += ( object.position.z - center.z );
+
+                controls.reset();
+
+                scene.add( object );
+                render();
+
+            };
+
+            loader = new ThreeMFLoader( manager );
+            loadAsset( '../../assets/cam-case-sss.3mf' );
+
+            // window.addEventListener( 'resize', onWindowResize );
+
+        }
+
+        function loadAsset( asset ) {
+
+            loader.load( asset, function ( group ) {
+
+                if ( object ) {
+
+                    object.traverse( function ( child ) {
+
+                        if ( child.material ) child.material.dispose();
+                        if ( child.material && child.material.map ) child.material.map.dispose();
+                        if ( child.geometry ) child.geometry.dispose();
+
+                    } );
+
+                    scene.remove( object );
+
+                }
+
+                object = group;
+
+            } );
+
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            render();
+
+        }
+
+        function render() {
+
+            renderer.render( scene, camera );
+
+        }
+
+    </script>
+
+    <span>
+    <figure class="image mx-auto" style="max-width: 750px">
+        <div id="camera-lid"></div>
+      <figcaption style="text-align: center;">Doorbell case 3D printed file. You will need to attach the camera module to the standoffs on the lid. Note that the button in this file is not included in the case you will receive in this lab.</figcaption>
+    </figure>
+    As visible in the 3D model above, there are several components that comprise this enclosure. The top of the case is the long, rectangular part with holes for the camera, LCD screen, and button respectively. You'll notice that around the camera holes are four standoffs. These standoffs correspond to the holes in the camera module mentioned in the section before. Remove the packaging film covering the lense of your camera, then mount the camera board to the lid of the case using the 4 screws.
+13. Position the Raspberry Pi near next to the camera board, and run the slack in the ribbon cable into the gap between the Pi and the Display board.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_13_mounted_camera %}" alt="Mounted camera and ribbon cable routing">
+    </figure>
+14. Insert the Raspberry Pi into the case. Make sure the remaining 2 empty holes on the Raspberry Pi line up with the pegs in the case, the camera ribbon is not being pinched, and the holes in the lid line up with the button and LCD screen
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_14_case_positioning %}" alt="Positioning of components in the case">
+    </figure>
+15. Snap the lid onto the bottom of the case
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_15_completed %}" alt="Completed assembly">
+    </figure>
+
+Details about the display and camera hardware will be presented in future labs.
+
+Turn your Pi Z2W on by plugging in your PoE adapter and re-connect to the Pi over SSH like we did earlier. 
+
+### Increasing Swap File Size
+With a remote connection to the Pi Z2W, we can now finish our development environment setup. First let's give the Pi Z2W some more available RAM by increasing the size of its [swap file](https://itsfoss.com/create-swap-file-linux/). Doing this will give the Pi Z2W more system resources if it ever uses up all of its onboard RAM. 
+
+1. We can check to see how much RAM the Pi Z2W has available by typing in
+    ```bash
+    htop
+    ```
+    A window like the following should take control of the terminal
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/htop.png %}" alt="htop">
+    </figure>
+
+    Note that there are several meters at the top of the screen with `Mem` and `Swp` being the bottom two. `Mem` indicates how much RAM is being used up on the Pi Z2W. Notice that at the right of the meter there is a ratio out of `419M`. This means that the Pi Z2W has ~500MB (or half a gigabyte) of RAM. The `Swp` field indicates how much storage space is set aside to act as an emergency backup incase all the the RAM is used. This swap memory is significantly slower than the onboard RAM and should not be thought of as interchangable with RAM. However looking at the figure we notice that we only have 100MB dedicated to this file. For our purposes we want 1024MB (or 1GB). 
+
+    To exit this mode, type in `q`.
+
+2. We'll start by disabling the current swap configuration with
+    ```bash
+    sudo dphys-swapfile swapoff
+    ```
+
+    You may notice that when you start typing your password to execute this command that the cursor does not move and that no characters appear. This is the terminal's way of protecting you from any people peeping over your shoulder and trying to steal your password. Rest assured that even though nothing is moving or showing, you are still entering in your password.
+
+3. Next we edit the configuration file of the OS that controls swap behavior with
+    ```bash
+    sudo nano /etc/dphys-swapfile
+    ```
+
+4. You will now notice that instead of being in command execution mode, your terminal has opened up a text editor. You can navigate through the file using the arrow keys. Find the line that says
+    ```
+    CONF_SWAPSIZE=100
+    ```
+    and change the `100` to `1024`. 
+
+5. To save the changes and exit, press `Ctrl+X`. A prompt will ask if you want to save the changes to the file; press `Y` to accept the changes and then hit `Enter`. We now apply the changes made to the swap configuration file by
+    ```bash
+    sudo dphys-swapfile setup
+    ```
+    and enable the swapfile with
+    ```bash
+    sudo dphys-swapfile swapon
+    ```
+
+6. For these changes to take effect, you will need to reboot your Pi Z2W. This is done with
+    ```bash
+    sudo reboot
+    ```
+
+7. You will notice that your `ssh` program will close and that your Pi Z2W reboots. **Wait for a minute or two and then log back into the Pi Z2W with `ssh`**. If you find that you are having issues loggin back into the Pi Z2W, **unplug the ethernet cable from the PoE adapter, wait 1 minute, then plug it back in and try again**.
+
+8. Check the system memory configuration again with `htop`. You should notice a change in the `Swp` field as reflected below:
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/htop2.png %}" alt="htop2">
+    </figure>
+
+    Press `q` to exit.
 
 ### Connect with VSCode
 The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
