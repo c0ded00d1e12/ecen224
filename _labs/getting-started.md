@@ -121,7 +121,29 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
     </figure>
 
     You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
+    
+5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
+    First, run this command:
+      ```bash
+      wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
+      ```
+   This will download the script to your Pi. Next, run:
+      ```bash
+      chmod 777 install.sh
+      ```
+    This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
+      ```bash
+      ./install.sh
+      ```
+    You will see print statements in the terminal logging the installation process.
+    Upon completion of the install script, your terminal should have colorful text and look slightly different (This comes from a framework called "Oh my Zsh").
+    To complete your Pi Setup Process, reboot your Pi with this command:
+      ```bash
+      sudo reboot
+      ```
+     **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
+  
 <!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
 ### Assemble the remaining kit
 Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
