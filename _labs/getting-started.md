@@ -122,64 +122,28 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
     You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
 
-### Increasing Swap File Size
-With a remote connection to the Pi Z2W, we can now finish our development environment setup. First let's give the Pi Z2W some more available RAM by increasing the size of its [swap file](https://itsfoss.com/create-swap-file-linux/). Doing this will give the Pi Z2W more system resources if it ever uses up all of its onboard RAM. 
+5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
-1. We can check to see how much RAM the Pi Z2W has available by typing in
-    ```bash
-    htop
-    ```
-    A window like the following should take control of the terminal
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/htop.png %}" alt="htop">
-    </figure>
-
-    Note that there are several meters at the top of the screen with `Mem` and `Swp` being the bottom two. `Mem` indicates how much RAM is being used up on the Pi Z2W. Notice that at the right of the meter there is a ratio out of `419M`. This means that the Pi Z2W has ~500MB (or half a gigabyte) of RAM. The `Swp` field indicates how much storage space is set aside to act as an emergency backup incase all the the RAM is used. This swap memory is significantly slower than the onboard RAM and should not be thought of as interchangable with RAM. However looking at the figure we notice that we only have 100MB dedicated to this file. For our purposes we want 1024MB (or 1GB). 
-
-    To exit this mode, type in `q`.
-
-2. We'll start by disabling the current swap configuration with
-    ```bash
-    sudo dphys-swapfile swapoff
-    ```
-
-    You may notice that when you start typing your password to execute this command that the cursor does not move and that no characters appear. This is the terminal's way of protecting you from any people peeping over your shoulder and trying to steal your password. Rest assured that even though nothing is moving or showing, you are still entering in your password.
-
-3. Next we edit the configuration file of the OS that controls swap behavior with
-    ```bash
-    sudo nano /etc/dphys-swapfile
-    ```
-
-4. You will now notice that instead of being in command execution mode, your terminal has opened up a text editor. You can navigate through the file using the arrow keys. Find the line that says
-```
-    CONF_SWAPSIZE=100
-    ```
-    and change the `100` to `1024`. 
-
-5. To save the changes and exit, press `Ctrl+X`. A prompt will ask if you want to save the changes to the file; press `Y` to accept the changes and then hit `Enter`. We now apply the changes made to the swap configuration file by
-    ```bash
-    sudo dphys-swapfile setup
-    ```
-    and enable the swapfile with
-    ```bash
-    sudo dphys-swapfile swapon
-    ```
-
-6. For these changes to take effect, you will need to reboot your Pi Z2W. This is done with
-    ```bash
-    sudo reboot
-    ```
-
-7. You will notice that your `ssh` program will close and that your Pi Z2W reboots. **Wait for a minute or two and then log back into the Pi Z2W with `ssh`**. If you find that you are having issues loggin back into the Pi Z2W, **unplug the ethernet cable from the PoE adapter, wait 1 minute, then plug it back in and try again**.
-
-8. Check the system memory configuration again with `htop`. You should notice a change in the `Swp` field as reflected below:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/htop2.png %}" alt="htop2">
-    </figure>
-
-    Press `q` to exit.
+    First, run this command:
+      ```bash
+      wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
+      ```
+   This will download the script to your Pi. Next, run:
+      ```bash
+      chmod 777 install.sh
+      ```
+    This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
+      ```bash
+      ./install.sh
+      ```
+    You will see print statements in the terminal logging the installation process.
+    Upon completion of the install script, your terminal should have colorful text and look slightly different (This comes from a framework called "Oh my Zsh").
+    To complete your Pi Setup Process, reboot your Pi with this command:
+      ```bash
+      sudo reboot
+      ```
+     **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
+  
 
 ### Connect with VSCode
 The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
