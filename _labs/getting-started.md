@@ -11,7 +11,7 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
 
 - Become familiar with the tools used for this lab
 - Understand how to setup a single board computer
-- Be able to gain access remotely to the Pi Z2W
+- Be able to gain access remotely to the Raspberry Pi Zero 2 W
 
 ## Overview
 
@@ -25,6 +25,7 @@ In this class we will be using the [Raspberry Pi Zero 2 W](https://www.raspberry
 - Flash and configure the Pi Z2W
 - Gain remote access to the Pi Z2W 
 - Development environment setup
+- Put all of the components together for future labs
 
 ### Setting up the SD Card 
 In order to make use of the Pi Z2W, we will need to put an operating system onto its SD card. An [**operating system**](https://en.wikipedia.org/wiki/Operating_system) (OS), simply put, is a collection of programs which allows a user to interact with a device's hardware. For users of PCs, this collection of programs is called [Microsoft Windows](https://www.microsoft.com/en-us/windows?r=1), for Mac users [macOS](https://www.apple.com/za/macos/what-is/), and for Linux users there exists a wide variety of [distros](https://itsfoss.com/what-is-linux-distribution/#:~:text=Your%20distributions%20also%20takes%20the,as%20Linux%2Dbased%20operating%20systems.) to choose from. 
@@ -45,13 +46,13 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
 
 4. Change the following values in the menu according to the table below:
 
-    | Setting | Value | Description |
-    | ------------------------- | ---------- | ---------- |
-    | Set hostname: | `doorbell-<your_netid>` | This will be the name of your Pi Z2W. This will make it easier to find on the network. |
-    | Enable SSH:   | Check **Enable SSH** and select **Use password authentication** | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password. |
-    | Set username and password: | Any username and password you desire (make sure it is secure). | We change these values from the default so that you can protect your projects. You are responsible for remembering this username and password! **Any loss of these credentials may require you to re-setup your Pi Z2W.** |
-    | Set locate settings: | Timezone: **America/Denver**<br/>Keyboard Layout: **us** | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout. | 
-    | Configure Wireless LAN* | SSID: **name of WiFi network at home**<br/>Password:**password of network** | In case you want to work with the Pi Z2W outside of the Digital Lab. |
+    | Setting                    | Value                                                                       | Description                                                                                                                                                                                                               |
+    | -------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Set hostname:              | `doorbell-<your_netid>`                                                     | This will be the name of your Pi Z2W. This will make it easier to find on the network. Replace `<your_netid>` with your actual BYU NetID.                                                                                 |
+    | Enable SSH:                | Check **Enable SSH** and select **Use password authentication**             | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password.                                                                                              |
+    | Set username and password: | Any username and password you desire (make sure it is secure).              | We change these values from the default so that you can protect your projects. You are responsible for remembering this username and password! **Any loss of these credentials may require you to re-setup your Pi Z2W.** |
+    | Set locate settings:       | Timezone: **America/Denver**<br/>Keyboard Layout: **us**                    | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout.                                                                                                                            |
+    | Configure Wireless LAN*    | SSID: **name of WiFi network at home**<br/>Password:**password of network** | In case you want to work with the Pi Z2W outside of the Digital Lab.                                                                                                                                                      |
 
     <p style="text-align: right; font-size: 10pt;">*optional configurations</p>
 
@@ -100,11 +101,11 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
     If you receive messages like:
     ```
     PING doorbell-kitras.local (192.168.86.48) 56(84) bytes of data.
-    64 bytes from doorbell-kitras.lan (192.168.86.48): icmp_seq=1 ttl=64 time=95.7 ms
-    64 bytes from doorbell-kitras.lan (192.168.86.48): icmp_seq=2 ttl=64 time=5.47 ms
-    64 bytes from doorbell-kitras.lan (192.168.86.48): icmp_seq=3 ttl=64 time=25.0 ms
-    64 bytes from doorbell-kitras.lan (192.168.86.48): icmp_seq=4 ttl=64 time=21.6 ms
-    64 bytes from doorbell-kitras.lan (192.168.86.48): icmp_seq=5 ttl=64 time=6.53 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=1 ttl=64 time=95.7 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=2 ttl=64 time=5.47 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=3 ttl=64 time=25.0 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=4 ttl=64 time=21.6 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=5 ttl=64 time=6.53 ms
     ```
     press `Ctrl+C` to stop the command. This means your lab machine can see the Pi Z2W and you are able to login with `ssh`.
 
@@ -144,6 +145,110 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       ```
      **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
   
+### Connect with VSCode
+The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
+
+1. Open VSCode through the **Activities** menu on your lab machine. Look at the bottom status bar of the window. There should be an icon at the bottom left side of the screen:
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/vscode-icon.png %}" alt="vscode-icon">
+    </figure>
+
+2. If this icon is not there, that means the **Remote - SSH** extension is not installed. To install it, click on the extensions ![extensions]({% link assets/getting-started/vscode-extensions.png %}){:width="4%"} icon on the leftmost toolbar. This will open up the **Extensions Manager** where you can search for any type of tool you wish to add to your VSCode editor. 
+
+3. Type in `Remote - SSH` into the searchbar and click the **Install** button on the entry that says **Microsoft**  underneath. 
+
+4. Once the extension has successfully installed, you can now click on the green icon in the bottom left corner as seen in the figure above.
+
+5. Click on this icon then select **Connect to Host > Add New SSH Host**. In this input box we will put the `ssh` command we used before to connect to the Pi Z2W through the terminal: `ssh <your_username>@doorbell-<your_netid>.local`. 
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/vs-ssh.png %}" alt="vs-ssh">
+    </figure>
+
+6. Then save this entry to your local `ssh` configuration file on our lab machine:
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/ssh-conf.png %}" alt="ssh-conf">
+    </figure>
+
+7. Click on the Remote SSH icon in the bottom left corner again and this time select the new `ssh` entry you just made by clicking **Connect to Host > doorbell-\<your\_netid\>.local**. 
+
+8. A new window will pop up and prompt you to enter in your Pi Z2W password. Enter in your password. You can now browse through files and code on your Pi Z2W from VSCode on your lab machine. 
+
+9. In the left toolbar on the window, click on files ![extensions]({% link assets/getting-started/files.png %}){:width="4%"} icon. 
+
+10. Click on the **Open Folder** button and then click **OK** on the pop-up. This should put you into your home folder on Raspberry Pi OS.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/open-folder.png %}" alt="open-folder">
+    </figure>
+
+    Now you can use the left pane of VS Code to view and edit files inside the home directory on the Pi Z2W.
+
+### Create SSH key for GitHub
+All of the labs require you to write code and upload it to a version control service called GitHub. A GitHub account is required for this class. If you do not have an account you can create one [here](http://github.com/join) otherwise you are allowed to use your personal account for this class. 
+
+In order to allow our Pi Z2W to speak with GitHub, we will need to create an **SSH key** that will allow GitHub to know that the changes to the code online came from a trusted source (i.e. your Pi Z2W) and not from some impostor's device (i.e. your arch-nemesis's Pi Z2W).
+
+1. To generate an SSH key, use the terminal that is connected to your Pi Z2W and type in:
+
+    ```bash
+    ssh-keygen -t ed25519 -C "<your_email_address"
+    ```
+
+    The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter`) unless you desire to protect your key with a password. This will just require you to enter in a password any time you want to use the SSH key.
+
+2. Once this is done you can find the contents of your new SSH keys by typing in
+    ```bash
+    cat ~/.ssh/id_ed25519.pub
+    ```
+    **NOTE:** Make sure that you `cat` the values of `id_ed25519.pub` and **NOT** `id_ed25519`. The contents in the `.pub` are meant to be shared with the `pub`lic and the contents of the other file are not meant to be shared with anyone else.
+
+3. Copy the output of this file by selecting it and pressing `Ctrl-Shift-C`. Then navigate in a web browser to your GitHub [keys console](https://github.com/settings/keys) (you must be signed into GitHub for this step to work).
+
+4. At the top of the page will be a big green button that says **New SSH key**. Click on this and then you should be taken to page like the one below:
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/github-ssh-key.png %}" alt="github-ssh-key">
+    </figure>
+
+5. Paste the contents that we copied into the **Key** box and feel free to add whatever value you desire into the **Title**. Make sure the dropdown menu for **Key type** is set to `Authentication Key`. 
+
+6. Finally, click **Add SSH key** and now your Pi Z2W should be able to talk to your GitHub account.
+
+### Setup GitHub Repository
+Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our Pi Z2W. This will be the terminal program that we use to communicate with GitHub to version control and submit our assignments. 
+
+1. If the terminal window on VSCode is not already open, press `` Ctrl+` `` and then enter in the command:
+
+    ```bash
+    sudo apt install git
+    ```
+
+    Once `git` has installed, we use this to download the first the repository (or code-base) for this lab. Since this lab requires no code to be written, the repository will be pretty uneventful. But remember these steps as future labs will use these steps to be set up.
+
+2. Click on the **GitHub Classroom Link** located at the top of the `#lab-1` channel in Slack. You will be taken to a page that asks you to accept the assignment. Accept it and then you will be transferred to a page with a link of your repository for this assignment. Click on that link and you should be brought to the default view of the repository.
+
+3. Click on the green button that says **Code**. Make sure you are on the **SSH** tab as shown below and copy the text in the box beneath.
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/ssh-repo.png %}" alt="ssh-repo">
+    </figure>
+
+4. Back on the Pi Z2W's terminal type in
+    ```bash
+    git clone <GitHub Repo SSH URL>
+    ```
+
+    This downloads a copy of the lab files from to your Pi Z2W. Since this lab is focused on setting up the Pi Z2W, there are no special files that you will need to interact with other than the `README.md` for your lab submission. 
+
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/dl-repo.png %}" alt="dl-repo">
+    </figure>
+
+In future labs, any starter code or special resources for completing that lab will be included alongside that lab's `README.md`.
+
+
 <!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
 ### Assemble the remaining kit
 Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
@@ -196,7 +301,7 @@ We will proceed to assemble the remaining components of your doorbell.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_11_bent %}" alt="Bent ribbon cable">
     </figure>
-12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit. Every final system comes with its proper enclosure. Make sure you pick colors that are fun for you!
+12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit.
     <!-- Import maps polyfill -->
     <!-- Remove this when import maps will be widely supported -->
     <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
@@ -456,168 +561,6 @@ We will proceed to assemble the remaining components of your doorbell.
 Details about the display and camera hardware will be presented in future labs.
 
 Turn your Pi Z2W on by plugging in your PoE adapter and re-connect to the Pi over SSH like we did earlier. 
-
-### Increasing Swap File Size
-With a remote connection to the Pi Z2W, we can now finish our development environment setup. First let's give the Pi Z2W some more available RAM by increasing the size of its [swap file](https://itsfoss.com/create-swap-file-linux/). Doing this will give the Pi Z2W more system resources if it ever uses up all of its onboard RAM. 
-
-1. We can check to see how much RAM the Pi Z2W has available by typing in
-    ```bash
-    htop
-    ```
-    A window like the following should take control of the terminal
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/htop.png %}" alt="htop">
-    </figure>
-
-    Note that there are several meters at the top of the screen with `Mem` and `Swp` being the bottom two. `Mem` indicates how much RAM is being used up on the Pi Z2W. Notice that at the right of the meter there is a ratio out of `419M`. This means that the Pi Z2W has ~500MB (or half a gigabyte) of RAM. The `Swp` field indicates how much storage space is set aside to act as an emergency backup incase all the the RAM is used. This swap memory is significantly slower than the onboard RAM and should not be thought of as interchangable with RAM. However looking at the figure we notice that we only have 100MB dedicated to this file. For our purposes we want 1024MB (or 1GB). 
-
-    To exit this mode, type in `q`.
-
-2. We'll start by disabling the current swap configuration with
-    ```bash
-    sudo dphys-swapfile swapoff
-    ```
-
-    You may notice that when you start typing your password to execute this command that the cursor does not move and that no characters appear. This is the terminal's way of protecting you from any people peeping over your shoulder and trying to steal your password. Rest assured that even though nothing is moving or showing, you are still entering in your password.
-
-3. Next we edit the configuration file of the OS that controls swap behavior with
-    ```bash
-    sudo nano /etc/dphys-swapfile
-    ```
-
-4. You will now notice that instead of being in command execution mode, your terminal has opened up a text editor. You can navigate through the file using the arrow keys. Find the line that says
-    ```
-    CONF_SWAPSIZE=100
-    ```
-    and change the `100` to `1024`. 
-
-5. To save the changes and exit, press `Ctrl+X`. A prompt will ask if you want to save the changes to the file; press `Y` to accept the changes and then hit `Enter`. We now apply the changes made to the swap configuration file by
-    ```bash
-    sudo dphys-swapfile setup
-    ```
-    and enable the swapfile with
-    ```bash
-    sudo dphys-swapfile swapon
-    ```
-
-6. For these changes to take effect, you will need to reboot your Pi Z2W. This is done with
-    ```bash
-    sudo reboot
-    ```
-
-7. You will notice that your `ssh` program will close and that your Pi Z2W reboots. **Wait for a minute or two and then log back into the Pi Z2W with `ssh`**. If you find that you are having issues loggin back into the Pi Z2W, **unplug the ethernet cable from the PoE adapter, wait 1 minute, then plug it back in and try again**.
-
-8. Check the system memory configuration again with `htop`. You should notice a change in the `Swp` field as reflected below:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/htop2.png %}" alt="htop2">
-    </figure>
-
-    Press `q` to exit.
-
-### Connect with VSCode
-The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
-
-1. Open VSCode through the **Activities** menu on your lab machine. Look at the bottom status bar of the window. There should be an icon at the bottom left side of the screen:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/vscode-icon.png %}" alt="vscode-icon">
-    </figure>
-
-2. If this icon is not there, that means the **Remote - SSH** extension is not installed. To install it, click on the extensions ![extensions]({% link assets/getting-started/vscode-extensions.png %}){:width="4%"} icon on the leftmost toolbar. This will open up the **Extensions Manager** where you can search for any type of tool you wish to add to your VSCode editor. 
-
-3. Type in `Remote - SSH` into the searchbar and click the **Install** button on the entry that says **Microsoft**  underneath. 
-
-4. Once the extension has successfully installed, you can now click on the green icon in the bottom left corner as seen in the figure above.
-
-5. Click on this icon then select **Connect to Host > Add New SSH Host**. In this input box we will put the `ssh` command we used before to connect to the Pi Z2W through the terminal: `ssh <your_username>@doorbell-<your_netid>.local`. 
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/vs-ssh.png %}" alt="vs-ssh">
-    </figure>
-
-6. Then save this entry to your local `ssh` configuration file on our lab machine:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/ssh-conf.png %}" alt="ssh-conf">
-    </figure>
-
-7. Click on the Remote SSH icon in the bottom left corner again and this time select the new `ssh` entry you just made by clicking **Connect to Host > doorbell-\<your\_netid\>.local**. 
-
-8. A new window will pop up and prompt you to enter in your Pi Z2W password. Enter in your password. You can now browse through files and code on your Pi Z2W from VSCode on your lab machine. 
-
-9. In the left toolbar on the window, click on files ![extensions]({% link assets/getting-started/files.png %}){:width="4%"} icon. 
-
-10. Click on the **Open Folder** button and then click **OK** on the pop-up. This should put you into your home folder on Raspberry Pi OS.
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/open-folder.png %}" alt="open-folder">
-    </figure>
-
-    Now you can use the left pane of VS Code to view and edit files inside the home directory on the Pi Z2W.
-
-### Create SSH key for GitHub
-All of the labs require you to write code and upload it to a version control service called GitHub. A GitHub account is required for this class. If you do not have an account you can create one [here](http://github.com/join) otherwise you are allowed to use your personal account for this class. 
-
-In order to allow our Pi Z2W to speak with GitHub, we will need to create an **SSH key** that will allow GitHub to know that the changes to the code online came from a trusted source (i.e. your Pi Z2W) and not from some impostor's device (i.e. your arch-nemesis's Pi Z2W).
-
-1. To generate an SSH key, use the terminal that is connected to your Pi Z2W and type in:
-
-    ```bash
-    ssh-keygen -t ed25519 -C "<your_email_address"
-    ```
-
-    The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter`) unless you desire to protect your key with a password. This will just require you to enter in a password any time you want to use the SSH key.
-
-2. Once this is done you can find the contents of your new SSH keys by typing in
-    ```bash
-    cat ~/.ssh/id_ed25519.pub
-    ```
-    **NOTE:** Make sure that you `cat` the values of `id_ed25519.pub` and **NOT** `id_ed25519`. The contents in the `.pub` are meant to be shared with the `pub`lic and the contents of the other file are not meant to be shared with anyone else.
-
-3. Copy the output of this file by selecting it and pressing `Ctrl-Shift-C`. Then navigate in a web browser to your GitHub [keys console](https://github.com/settings/keys) (you must be signed into GitHub for this step to work).
-
-4. At the top of the page will be a big green button that says **New SSH key**. Click on this and then you should be taken to page like the one below:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/github-ssh-key.png %}" alt="github-ssh-key">
-    </figure>
-
-5. Paste the contents that we copied into the **Key** box and feel free to add whatever value you desire into the **Title**. Make sure the dropdown menu for **Key type** is set to `Authentication Key`. 
-
-6. Finally, click **Add SSH key** and now your Pi Z2W should be able to talk to your GitHub account.
-
-### Setup GitHub Repository
-Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our Pi Z2W. This will be the terminal program that we use to communicate with GitHub to version control and submit our assignments. 
-
-1. If the terminal window on VSCode is not already open, press `` Ctrl+` `` and then enter in the command:
-
-    ```bash
-    sudo apt install git
-    ```
-
-    Once `git` has installed, we use this to download the first the repository (or code-base) for this lab. Since this lab requires no code to be written, the repository will be pretty uneventful. But remember these steps as future labs will use these steps to be set up.
-
-2. Click on the **GitHub Classroom Link** located at the top of the `#lab-1` channel in Slack. You will be taken to a page that asks you to accept the assignment. Accept it and then you will be transferred to a page with a link of your repository for this assignment. Click on that link and you should be brought to the default view of the repository.
-
-3. Click on the green button that says **Code**. Make sure you are on the **SSH** tab as shown below and copy the text in the box beneath.
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/ssh-repo.png %}" alt="ssh-repo">
-    </figure>
-
-4. Back on the Pi Z2W's terminal type in
-    ```bash
-    git clone <GitHub Repo SSH URL>
-    ```
-
-    This downloads a copy of the lab files from to your Pi Z2W. Since this lab is focused on setting up the Pi Z2W, there are no special files that you will need to interact with other than the `README.md` for your lab submission. 
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/dl-repo.png %}" alt="dl-repo">
-    </figure>
-
-In future labs, any starter code or special resources for completing that lab will be included alongside that lab's `README.md`.
 
 
 ## Lab Submission
