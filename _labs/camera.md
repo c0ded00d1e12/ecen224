@@ -18,23 +18,27 @@ Use the GitHub Classroom link posted in the Slack channel for the lab to accept 
 
 In the past labs, much time has been spent making sure the files of the camera are easily accessible and represented on the LCD screen of your Pi Z2W kits. In this lab you will be expected to integrate a camera module to your design and take pictures. 
 
-### Connecting the Camera
+In the [Getting Started Lab]({% link _labs/getting-started.md %}), you should have already physically installed your camera, using the **longer** of the two ribbon cables in the correct orientation.
 
-<figure class="image mx-auto" style="max-width: 750px">
+<!-- The following block contains content that has been copied to getting-started.md, but I'm leaving as a temporary reference.-->
+<!-- <figure class="image mx-auto" style="max-width: 750px">
   <img src="{% link assets/camera/pi-camera.png %}" alt="Units of the course.">
   <figcaption style="text-align: center;">The Raspberry Pi Zero 2 W with the camera unit and connection cable. In this lab we will be using the larger cable and wrap it around the back of the Pi Z2W.</figcaption>
-</figure>
+</figure> -->
 
+<!-- 
 In this lab you have received a camera kit. This kit comes with the camera module and two ribbons of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS.** Follow the following bullet points to connect the camera to your Pi Z2W unit.
 
 - Connect the ribbon to both the Pi Z2W and the camera module as indicated in the figure above.
 - Make sure that the orientation is correct (i.e. the exposed pins of the ribbon should be on the side of the PCB, not facing up).
 - Be gentle with the ribbons and their corresponding connectors. These components are fragile and a damaged ribbon could cause your system not to work!
+-->
 
-### Doorbell Case
+<!-- ### Doorbell Case -->
 
 <!-- Import maps polyfill -->
 <!-- Remove this when import maps will be widely supported -->
+<!-- 
 <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 
 <script type="importmap">
@@ -276,6 +280,8 @@ In this lab you have received a camera kit. This kit comes with the camera modul
   <figcaption style="text-align: center;">Doorbell case 3D printed file. You will need to attach the camera module to the standoffs on the lid. Note that the button in this file is not included in the case you will receive in this lab.</figcaption>
 </figure>
 
+-->
+<!-- 
 In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit. Every final system comes with its proper enclosure. Make sure you pick colors that are fun for you!
 
 #### Case Lid
@@ -298,7 +304,7 @@ To put the entire case together:
 4. Place Pi Z2W onto the pegs of the bottom part of the case. Make sure that the usb ports are visible through the port window (the rectangular hole on the bottom).
 5. Line up the lid of the case with the bottom components, ensuring that the camera ribbon is not being pinched and that the holes in the lid line up with the button and the LCD screen.
 6. Snap the lid onto the bottom of the case. 
-
+-->
 
 ### Libcamera Libraries
 

@@ -1,5 +1,5 @@
 ---
-title: Data
+title: C Programming
 number: 3
 layout: lab
 ---
@@ -175,13 +175,13 @@ Now that we have dissected our first C program, it is time to dive a little deep
 
 In order to successfully create a meaningful program in any language, you need to know how to correctly store and portray information. Unlike some modern languages, C is a **strongly-typed** language. This means that every time we declare a new variable, we need to specify what **type** it is. The some of the native data types (i.e. no `#include`ing libraries are necessary) in C are the following:
 
-| type | Description |
-| ---- | ----------- |
-| `char` | Stores a single letter|
-| `int` | Stores an integer|
-| `long` | Stores a larger integer|
-| `float` | One way to store a real number with a floating decimal point (i.e. you can put it anywhere in the number)|
-| `double` | Larger version of a float.|
+| type     | Description                                                                                               |
+| -------- | --------------------------------------------------------------------------------------------------------- |
+| `char`   | Stores a single letter                                                                                    |
+| `int`    | Stores an integer                                                                                         |
+| `long`   | Stores a larger integer                                                                                   |
+| `float`  | One way to store a real number with a floating decimal point (i.e. you can put it anywhere in the number) |
+| `double` | Larger version of a float.                                                                                |
 
 It would be impractical to go over every data type that exists in C and explain its function in a lab setting. It will be your responsibility to understand what these data types (and other) mean and how they can be used as they come up. Google is your friend.
 
@@ -235,19 +235,19 @@ printf("First num:\t%d\nSecond num:\t%d\nThird num:\t%d\n", num1, num2, num3);
 
 The following table is a useful cheatsheet and will give you an idea of the different types of placeholders that can exist in the `printf()` statement:
 
-| Symbol | Description |
-| ------ | ----------- |
-| `%c` | character |
-| `%d` | decimal (integer) number (base 10) |
-| `%e` | exponential floating-point number |
-| `%f` | floating-point number |
-| `%i` | integer (base 10) |
-| `%o` | octal number (base 8) |
-| `%s` | a string of characters |
-| `%u` | unsigned decimal (integer) number |
-| `%x` | number in hexadecimal (base 16) |
-| `%%` | print a percent sign |
-| `\%` | print a percent sign |
+| Symbol | Description                        |
+| ------ | ---------------------------------- |
+| `%c`   | character                          |
+| `%d`   | decimal (integer) number (base 10) |
+| `%e`   | exponential floating-point number  |
+| `%f`   | floating-point number              |
+| `%i`   | integer (base 10)                  |
+| `%o`   | octal number (base 8)              |
+| `%s`   | a string of characters             |
+| `%u`   | unsigned decimal (integer) number  |
+| `%x`   | number in hexadecimal (base 16)    |
+| `%%`   | print a percent sign               |
+| `\%`   | print a percent sign               |
 
 ## Lab Submission
 - Answer the questions and complete the challenges found in the `README.md`. 
