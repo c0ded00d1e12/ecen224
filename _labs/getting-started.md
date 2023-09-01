@@ -51,8 +51,8 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
     | Set hostname:              | `doorbell-<your_netid>`                                                     | This will be the name of your Pi Z2W. This will make it easier to find on the network. Replace `<your_netid>` with your actual BYU NetID.                                                                                 |
     | Enable SSH:                | Check **Enable SSH** and select **Use password authentication**             | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password.                                                                                              |
     | Set username and password: | Any username and password you desire (make sure it is secure).              | We change these values from the default so that you can protect your projects. You are responsible for remembering this username and password! **Any loss of these credentials may require you to re-setup your Pi Z2W.** |
-    | Set locate settings:       | Timezone: **America/Denver**<br/>Keyboard Layout: **us**                    | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout.                                                                                                                            |
     | Configure Wireless LAN*    | SSID: **name of WiFi network at home**<br/>Password:**password of network** | In case you want to work with the Pi Z2W outside of the Digital Lab.                                                                                                                                                      |
+    | Set locale settings:       | Timezone: **America/Denver**<br/>Keyboard Layout: **us**                    | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout.                                                                                                                            |
 
     <p style="text-align: right; font-size: 10pt;">*optional configurations</p>
 
@@ -131,7 +131,7 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       ```
    This will download the script to your Pi. Next, run:
       ```bash
-      chmod 777 install.sh
+      chmod +x install.sh
       ```
     This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
       ```bash
