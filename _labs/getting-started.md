@@ -126,24 +126,25 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
     First, run this command:
-      ```bash
-      wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
-      ```
+```bash
+wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
+```
+
    This will download the script to your Pi. Next, run:
-      ```bash
-      chmod +x install.sh
-      ```
+```bash
+chmod +x install.sh
+```
     This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
-      ```bash
-      ./install.sh
-      ```
+```bash
+./install.sh
+```
     You will see print statements in the terminal logging the installation process.
     Upon completion of the install script, your terminal should have colorful text and look slightly different (This comes from a framework called "Oh my Zsh").
-    To complete your Pi Setup Process, reboot your Pi with this command:
-      ```bash
-      sudo reboot
-      ```
-     **Note: If any prompts come up asking if you would like to continue, type 'y' and hit enter. The script should continue as normal.**
+
+    For the last step, it will ask for your password to apply all of the changes. Once you have entered your password and the script has finished, reboot your Pi with this command:
+```bash
+sudo reboot
+```
   
 ### Connect with VSCode
 The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
