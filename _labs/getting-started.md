@@ -113,6 +113,8 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
     ```bash
     ssh <your_username>@doorbell-<your_netid>.local
     ```
+    You will be asked to enter the password you chose earlier.  When you type your password in Linux you won't see anything show up in the Terminal window, but it is still being entered.  Just type your password and press `Enter` when you are done.
+
 3. A prompt will appear asking if you want to add the Pi Z2W to a list of trusted remote computers. Type in `yes` to add the Pi Z2W to the trusted list. 
 
 4. After entering in your login credentials, you should receive a prompt like the following to show that you are inside of the Pi Z2W:
@@ -129,12 +131,15 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 ```bash
 wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
 ```
+    *(For a long command like this, it's easiest to copy and paste it into the terminal.  Use `Ctrl+Shift+V` to paste into the terminal.)*
 
-   This will download the script to your Pi. Next, run:
+   This will download the script to your Pi. 
+   
+   Next, run:
 ```bash
 chmod +x install.sh
 ```
-    This command will change permissions on the script, allowing you to execute the .sh file. Lastly, run the script with:
+    This command will change permissions on the script, allowing you to execute (run) the .sh file. Lastly, run the script with:
 ```bash
 ./install.sh
 ```
@@ -278,7 +283,7 @@ We will proceed to assemble the remaining components of your doorbell.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_6_2 %}" alt="Step 6 assembly state">
     </figure>
-7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE LONGER OF THESE TWO RIBBONS**. Be aware that these ribbon cables are fragile.
+7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE BROWN RIBBON CABLE, NOT THE WHITE CABLE**. Be aware that these ribbon cables are fragile.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
     </figure>
