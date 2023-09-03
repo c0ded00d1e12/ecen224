@@ -44,8 +44,8 @@ This course is made up of six major components that all work together to help ma
 | ----------------------- | ---------- |
 | Labs                    | 40         |
 | Programming Assignments | 15         |
-| Homeworks               | 10         |
-| Exams                   | 35         |
+| Homeworks               | 15         |
+| Exams                   | 30         |
 
 There are fourteen labs (one for each week), so each lab is worth 2.86% of your grade. There are eight homeworks, so each homework is worth 1.88% of your grade. There are two programming assignments, so each assignment is worth 7.5% of your grade.
 
