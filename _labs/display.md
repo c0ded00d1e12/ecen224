@@ -73,8 +73,11 @@ In order to interface with the GPIO of the Pi Z2W, we need to install a library 
     sudo make install
     ```
 
-#### Using in a Project
+#### Compiling into a Project
 Now that the `bcm2835` library is installed, we can use it in any C program that we like! This comes especially in handy for our new LCD and button HAT. However, since this is an installed library and not a default one, we have to let `gcc` that we are trying to include it in the compilation process. This is done by adding the `-lbcm2835` flag to our normal `gcc` compilation command. The `-l` lets `gcc` know we are including a custom system library, while the `bcm2835` part is just the name of the library itself.
+
+#### Executing
+Accessing the HAT hardware requires special permissions.  After compiling your project, you will need to run it with `sudo` (eg `sudo ./main`) otherwise you will likely see a `segmentation fault`.
 
 ### Drawing to the Screen
 In this lab you will be responsible for writing a `main.c` file that will draw shapes and images to the LCD screen. The library responsible for this is found in the `display` library files. There are many functions that can accomplish various techniques such as drawing shapes or writing text. Become familiar with the `display.h` and read their corresponding comments.
