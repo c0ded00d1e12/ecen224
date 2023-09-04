@@ -51,8 +51,7 @@ While iterating through a directory, you will need to have an object that corres
 - `readdir()` example:
 
     ```c
-    DIR *dp;                // Directory pointer
-    bool is_file = True;    // Flag that denotes whether we have seen all the files in a folder
+    bool is_file = true;    // Flag that denotes whether we have seen all the files in a folder
     struct dirent * dir;    // Current folder object
     while(is_file)
     {
