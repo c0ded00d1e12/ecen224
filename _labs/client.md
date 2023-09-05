@@ -51,13 +51,13 @@ typedef struct Config {
 } Config;
 ```
 
-| Data Member | Description |
-| ----------- | ----------- |
-| `port` | The location of photo uploader program is running |
-| `host` | This is the hostname of the server we are trying to connect to |
-| `payload` | This is the data we want to send to the server. In this lab, that will be the image data. |
-| `hw_id` | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > 
-this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
+| Data Member                                                                                            | Description                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `port`                                                                                                 | The location of photo uploader program is running                                                                                 |
+| `host`                                                                                                 | This is the hostname of the server we are trying to connect to                                                                    |
+| `payload`                                                                                              | This is the data we want to send to the server. In this lab, that will be the image data.                                         |
+| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > |
+| this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
 
 The location you will be connecting to to upload your photos in this lab will be:
 - Host: netlab.et.byu.edu
@@ -74,12 +74,12 @@ Just like in the I/O lab, you will notice that much of what you will be doing in
 ### Freeing Memory
 Just like in any other file, directory, or memory operation that allocates a pointer or memory off of the stack, you will need to free that memory. If this is not done, unexpected behavior may occur on your system. So remember the following:
 
-| Memory Allocation | Freeing Call |
-| ----------------- | ------------ |
-| `malloc` | `free` |
-| `fopen` | `fclose` |
-| `opendir` | `closedir` |
-| `socket` (don't worry about calling this function in this lab, this is done for you already in the provided `client_connect` function) | `close` |
+| Memory Allocation                                                                                                                      | Freeing Call |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `malloc`                                                                                                                               | `free`       |
+| `fopen`                                                                                                                                | `fclose`     |
+| `opendir`                                                                                                                              | `closedir`   |
+| `socket` (don't worry about calling this function in this lab, this is done for you already in the provided `client_connect` function) | `close`      |
 
 
 ## Requirements

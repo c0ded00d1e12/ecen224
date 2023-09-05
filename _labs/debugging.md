@@ -131,14 +131,14 @@ To view the assembly instructions of the file, type in `layout asm`.
 
 Some helpful GDB commands to get you going:
 
-| Command | Description |
-| ------ | ----------- |
-| `break` or `b` | Sets a breakpoint on a specific line |
-| `print varname` or `p`| Prints out the value of the variable `varname` |
-| `step` or `s` | Step through your code. |
-| `stepi` | Step through the code instruction by instruction. |
-| `continue` | Run to the next breakpoint |
-| `run` | Run your loaded gdb code |
+| Command                | Description                                       |
+| ---------------------- | ------------------------------------------------- |
+| `break` or `b`         | Sets a breakpoint on a specific line              |
+| `print varname` or `p` | Prints out the value of the variable `varname`    |
+| `step` or `s`          | Step through your code.                           |
+| `stepi`                | Step through the code instruction by instruction. |
+| `continue`             | Run to the next breakpoint                        |
+| `run`                  | Run your loaded gdb code                          |
 
 These are just a few of the commands, some helpful resources have been provided in the links at the bottom of the lab.
 
