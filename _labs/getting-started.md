@@ -69,9 +69,9 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
 
 8. Once the writing process finishes, remove the SD card from your laptop and insert it into the SD card slot of the Pi Z2W. 
 
-9. Plug in the PoE adapter (the white brick) into the **first** micro USB port (the only one not circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. It is not necessary to have power and PoE plugged in at the same time. 
+9. Plug in the Power over Ethernet (PoE) adapter (the white brick) into the **first** micro USB port (the only one *not* circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. Power over Ethernet is a technology that provides both Internet and power at the same time. Only some Ethernet ports have it, but all of the ports in the Digital Lab do. It is not necessary to have power and the PoE adapter plugged in at the same time. 
 
-    The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
+The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
 
 <!-- This depends on whether or not the CSRs give us HDMI cables in future semesters -->
 
