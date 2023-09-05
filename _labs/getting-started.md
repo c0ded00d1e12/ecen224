@@ -573,6 +573,7 @@ Turn your Pi Z2W on by plugging in your PoE adapter and re-connect to the Pi ove
 
 
 ## Explore More!
+- [Model for doorbell case](https://www.printables.com/model/360823-smart-doorbell-case-for-raspberry-pi-zero-2-w)
 - [Learn more about the terminal](https://kitras.io/linux/shells/)
 - [Customize the terminal](https://www.geeksforgeeks.org/how-to-customize-linux-terminal-using-powerline10k/)
 - [Ditch passwords for keys](https://dev.to/risafj/ssh-key-authentication-for-absolute-beginners-in-plain-english-2m3f)
