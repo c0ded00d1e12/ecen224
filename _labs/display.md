@@ -5,7 +5,7 @@ layout: lab
 ---
 
 ## GitHub Classroom
-Use the GitHub Classroom link posted in the Slack channel for the lab to accept the assignment.
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
 
 ## Objectives
 
