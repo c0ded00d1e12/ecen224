@@ -33,5 +33,5 @@ EOF
 sudo mv ip_addr.service /etc/systemd/system/
 sudo systemctl enable ip_addr.service
 
-echo "----------- Changing ---------------"
+echo "----------- Changing Shell ---------------"
 chsh -s /usr/bin/zsh

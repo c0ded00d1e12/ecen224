@@ -5,7 +5,7 @@ layout: lab
 ---
 
 ## GitHub Classroom
-Use the GitHub Classroom link posted in the Slack channel for the lab to accept the assignment.
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
 
 ## Objectives
 
@@ -81,7 +81,7 @@ In this lab we will become familiar with a distinct version of Linux called [Ras
 doorbell-<your_netid> login: _
 ``` -->
 
-### Connect to Pi Z2W Remotely
+### Connect to Pi Z2W
 Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the lab network, we are able to connect to the it remotely using `ssh`. A remote connection means that you are able to log into a computer (like the Pi Z2W) _from_ a different computer (like the lab machines). 
 
 <!-- Disconnect the HDMI cable and plug it back into the lab machine.  -->
@@ -143,16 +143,13 @@ chmod +x install.sh
 ```bash
 ./install.sh
 ```
-    You will see print statements in the terminal logging the installation process.
-    Upon completion of the install script, your terminal should have colorful text and look slightly different (This comes from a framework called "Oh my Zsh").
-
-    For the last step, it will ask for your password to apply all of the changes. Once you have entered your password and the script has finished, reboot your Pi with this command:
+    You will see print statements in the terminal logging the installation process. For the last step, it will ask for your password to apply all of the changes. This is the password you set on your Pi Z2W. Once you have entered your password and the script has finished, reboot your Pi with this command:
 ```bash
 sudo reboot
 ```
   
-### Connect with VSCode
-The last we'll do in this lab to setup the Pi Z2W is to ensure that we can connect to it using the **Remote - SSH** extension in VSCode. 
+### Connect with Visual Studio Code
+Next, we will connect to your Pi Z2W using VSCode using the **Remote - SSH** extension. 
 
 1. Open VSCode through the **Activities** menu on your lab machine. Look at the bottom status bar of the window. There should be an icon at the bottom left side of the screen:
 
@@ -162,7 +159,7 @@ The last we'll do in this lab to setup the Pi Z2W is to ensure that we can conne
 
 2. If this icon is not there, that means the **Remote - SSH** extension is not installed. To install it, click on the extensions ![extensions]({% link assets/getting-started/vscode-extensions.png %}){:width="4%"} icon on the leftmost toolbar. This will open up the **Extensions Manager** where you can search for any type of tool you wish to add to your VSCode editor. 
 
-3. Type in `Remote - SSH` into the searchbar and click the **Install** button on the entry that says **Microsoft**  underneath. 
+3. Type in `Remote - SSH` into the search bar and click the **Install** button on the entry that says **Microsoft**  underneath. 
 
 4. Once the extension has successfully installed, you can now click on the green icon in the bottom left corner as seen in the figure above.
 
@@ -180,7 +177,7 @@ The last we'll do in this lab to setup the Pi Z2W is to ensure that we can conne
 
 7. Click on the Remote SSH icon in the bottom left corner again and this time select the new `ssh` entry you just made by clicking **Connect to Host > doorbell-\<your\_netid\>.local**. 
 
-8. A new window will pop up and prompt you to enter in your Pi Z2W password. Enter in your password. You can now browse through files and code on your Pi Z2W from VSCode on your lab machine. 
+8. A new window will pop up and prompt you to enter in your Pi Z2W password. Enter in your password. If this is the first time you have connected to this device, it might take a few minutes to install all the necessary dependencies. After it connects, you can browse through files and code on your Pi Z2W from VSCode on your lab machine.
 
 9. In the left toolbar on the window, click on files ![extensions]({% link assets/getting-started/files.png %}){:width="4%"} icon. 
 
