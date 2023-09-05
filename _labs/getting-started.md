@@ -230,7 +230,7 @@ Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our P
 
     Once `git` has installed, we use this to download the first the repository (or code-base) for this lab. Since this lab requires no code to be written, the repository will be pretty uneventful. But remember these steps as future labs will use these steps to be set up.
 
-2. Click on the **GitHub Classroom Link** located at the top of the `#lab-1` channel in Slack. You will be taken to a page that asks you to accept the assignment. Accept it and then you will be transferred to a page with a link of your repository for this assignment. Click on that link and you should be brought to the default view of the repository.
+2. Click on the **GitHub Classroom Link** located on Learning Suite for the "Getting Started Lab" assignment. You will be taken to a page that asks you to accept the assignment. Accept it and then you will be transferred to a page with a link of your repository for this assignment. Click on that link and you should be brought to the default view of the repository.
 
 3. Click on the green button that says **Code**. Make sure you are on the **SSH** tab as shown below and copy the text in the box beneath.
 
