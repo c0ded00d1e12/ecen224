@@ -196,7 +196,7 @@ In order to allow our Pi Z2W to speak with GitHub, we will need to create an **S
 1. To generate an SSH key, use the terminal that is connected to your Pi Z2W and type in:
 
     ```bash
-    ssh-keygen -t ed25519 -C "<your_email_address"
+    ssh-keygen -t ed25519 -C "your_email_address"
     ```
 
     The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter`) unless you desire to protect your key with a password. This will just require you to enter in a password any time you want to use the SSH key.
