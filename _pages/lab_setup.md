@@ -5,6 +5,14 @@ title: Lab Setup
 icon: fa-duotone fa-wrench
 ---
 
+### Git Configuration
+Every time you use a new machine for the first time, you will need to need to let the `git` program know who is making changes to any repository that you have cloned to your computer. To set the default email address and name associated 
+
+```bash
+git config --global user.name "Your name here"
+git config --global user.email your_email@email.com
+```
+
 ### GitHub Class Assignments
 
 Every lab will have a corresponding GitHub **respository**, or code base. This will normally be a collection of files that you will need to complete the lab, including the `README.md` where you will answer lab questions. To access the GitHub Classroom link for a lab click on the corresponding lab assignment on Learning Suite.
@@ -20,14 +28,6 @@ To obtain this link click on the green `<> Code` button and make sure the **SSH*
 Copy the repository link in the textbox below and then on the machine where you wish to clone the repository type in
 ```bash
 git clone your_github_repository
-```
-
-### Git Configuration
-Every time you use a new machine for the first time, you will need to need to let the `git` program know who is making changes to any repository that you have cloned to your computer. To set the default email address and name associated 
-
-```bash
-git config --global user.name "Your name here"
-git config --global user.email your_email@email.com
 ```
 
 ### Committing and Pushing Files
@@ -69,4 +69,4 @@ If, after you create this tag, you want to change it (i.e., re-submit your code)
 git tag --force final
 git push --force origin final
 ```
-If you don’t use the correct tag name (`final`), the lab will not be count as submitted.
+If you don’t use the correct tag name (`final`), the lab will not be counted as submitted.
