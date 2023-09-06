@@ -169,7 +169,7 @@ Next, we will connect to your Pi Z2W using VSCode using the **Remote - SSH** ext
       <img src="{% link assets/getting-started/vs-ssh.png %}" alt="vs-ssh">
     </figure>
 
-6. Then save this entry to your local `ssh` configuration file on our lab machine:
+6. Then save this entry to your local `ssh` configuration file on our lab machine (either /home/... or /fsi/...):
 
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/ssh-conf.png %}" alt="ssh-conf">
@@ -193,13 +193,13 @@ All of the labs require you to write code and upload it to a version control ser
 
 In order to allow our Pi Z2W to speak with GitHub, we will need to create an **SSH key** that will allow GitHub to know that the changes to the code online came from a trusted source (i.e. your Pi Z2W) and not from some impostor's device (i.e. your arch-nemesis's Pi Z2W).
 
-1. To generate an SSH key, use the terminal that is connected to your Pi Z2W and type in:
+1. To generate an SSH key, use the VSCode terminal (by clicking Terminal > New Terminal) - this creates a new instance of a terminal that is connected to your Pi Z2W. Type in the following:
 
     ```bash
     ssh-keygen -t ed25519 -C "your_email_address"
     ```
 
-    The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter`) unless you desire to protect your key with a password. This will just require you to enter in a password any time you want to use the SSH key.
+    The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter` until it finishes) unless you desire to protect your key with a password (not recommended for this class; it would require you to enter in a password any time you want to use the SSH key).
 
 2. Once this is done you can find the contents of your new SSH keys by typing in
     ```bash
@@ -251,15 +251,14 @@ Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our P
 
 In future labs, any starter code or special resources for completing that lab will be included alongside that lab's `README.md`.
 
-
-<!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
-### Assemble the remaining kit
 Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
   ```
   sudo shutdown -h now
   ```
   The command `sudo` indicates to your Raspberry Pi that you want to perform the following command with admin-level priveleges. In this case, we are running the `shutdown` command, directing it to enter the `-h` halt state, and to do so immediately (`now`). You will need to provide your password when prompted. Be aware that unlike traditional password prompts, this one won't show any characters as you type your password. After running this command, wait for the lights to stop blinking on your Pi before unplugging the PoE adapter.
 
+<!-- Doing this step at this point because we don't want to make someone do all the assembly work just to realize they flashed their SD wrong and have to take it back apart -->
+### Assemble the remaining kit
 We will proceed to assemble the remaining components of your doorbell.
 
 1. Unpackage and prepare your display, standoffs, screws, nuts, and washers for assembly.
