@@ -30,7 +30,6 @@ plugins:
   - jekyll-target-blank
   - jekyll-sitemap
 
-
 # Turn on the button to allow students to submit PRs to change a page
 suggest_edits:
   enable: true
@@ -76,6 +75,7 @@ collections:
       - lab_setup.md
       - craftsmanship.md
       - ta_hours.md
+      - help_queue.md
       - schedule.md
 
 defaults:
