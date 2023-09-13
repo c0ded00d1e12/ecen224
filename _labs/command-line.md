@@ -75,6 +75,7 @@ You can also see your variable among all the others by typing:
 ```bash
 env
 ```
+You can read some more about environment variables [here](https://www.cherryservers.com/blog/how-to-set-list-and-manage-linux-environment-variables).
 
 ### Get Familiar with a Command Line Text Editor
 Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, and `vim`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. (Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work.)
@@ -87,13 +88,19 @@ To round out your shell learning experience, you are **required** to complete th
 
 In order to complete this lab, you will need to use Google. If you don't know how to do something, Google will help you find the answer. You will likely want to search things like:
 
+To round out your shell learning experience, you are **required** to complete the shell challenge. In the lab repo, uncompress the `challenge.tar.xz` package; you will want to Google on how to do this. Notice that the file has two layers - the .tar and the .xz. In order to view the contents of the folder you must remove both (this can be done in one command). Inside the resulting directory, complete the various levels of the challenge to finish the lab. 
+
+In order to complete this lab, you will need to use Google. If you don’t know how to do something, Google will help you find the answer. You will likely want to search things like:
+
 - How to uncompress a tar.xz file
+
 - How to make a script executable in Linux
 
 **To ensure this is graded successfully, make sure you commit the decompressed files!**
 
 ## Lab Submission
-- Answer the questions in the `README.md`.
+
+- Answer the questions in the `README.md`. (This is one OUTSIDE of the challenge folder)
 
 - Pass off to a TA by showing the correct output of your `tree` command.
 
