@@ -11,7 +11,13 @@ layout: lab
 - Use a text editor to create and edit text files.
 
 ## Getting Started
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, `ssh` into your Raspberry Pi and clone the repository into your Raspberry Pi's home directory. This lab must be done on your Raspberry Pi.
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, `ssh` into your Raspberry Pi and clone the repository into your Raspberry Pi's home directory. This lab must be done on your Raspberry Pi. As a reminder, to `ssh` into your Rapsberry Pi, plug it in, and run this command on the terminal of your lab computer:
+
+```bash
+ssh [your-user-name]@doorbell-[your-netid].local
+```
+
+Fill in your username and NetID with your information. To clone the repository, follow the instructions on the [Lab Setup]({% link _pages/lab_setup.md %}) page.
 
 ## Overview
 
