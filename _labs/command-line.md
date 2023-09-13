@@ -226,6 +226,7 @@ You can also see your variable among all the others by typing:
 ```bash
 env
 ```
+You can read some more about environment variables [here](https://www.cherryservers.com/blog/how-to-set-list-and-manage-linux-environment-variables).
 
 ### Get Familiar with a Text Editor
 Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, and `vim`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. (Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work.)
@@ -254,12 +255,12 @@ Save any changes you have made to `.zshrc`. Test that your preferences are worki
 
 ### Shell Challenge
 
-To round out your shell learning experience, you are **required** to complete the shell challenge. In the lab repo, uncompress the `challenge.tar.xz` package. (You may want to Google on how to do this.) Complete the challenge at each level to beat this challenge. 
+To round out your shell learning experience, you are **required** to complete the shell challenge. In the lab repo, uncompress the `challenge.tar.xz` package; you may want to Google on how to do this. Notice that the file has two layers - the .tar and the .xz. In order to view the contents of the folder you must remove both (this can be done in one command). Inside the resulting directory, complete the various levels of the challenge to finish the lab. 
 
 **To ensure this is graded successfully, make sure you commit the decompressed files!**
 
 ## Lab Submission
-- Answer the questions in the `README.md`. 
+- Answer the questions in the `README.md`. (This is one OUTSIDE of the challenge folder)
 
 - To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** and **Tagging Submissions** section.
 
