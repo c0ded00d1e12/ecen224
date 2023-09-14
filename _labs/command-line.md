@@ -39,9 +39,11 @@ Once you have selected a prior command with the up and down arrow keys, you may 
 
 #### Command Completion
 Another helpful shortcut is called tab completion. If the tab key is pressed while a partial command or file name is typed, the shell will complete the rest of the text based on what has already been typed. Open a terminal window to your home directory (you can do this by typing `Ctrl`+`Alt`+`T` and then `ssh`ing into your Raspberry Pi) and type the following and then hit `Tab`.
+
 ```bash
 ls /d
 ```
+
 After hitting `Tab` you should see that “/d” was extended to “/dev/”. Now type `Enter` to execute the command. When navigating deep directory hierarchies, tab completion can assist in typing what could otherwise be very long path names. For example, tab can be pressed multiple times to keep extending the path name after typing a few characters, enough to make the name unique.
 
 Command names can also be tab completed. In a terminal window, type the following and then hit `Tab`.
