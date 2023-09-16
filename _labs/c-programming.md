@@ -17,7 +17,7 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 
 For the rest of the labs this semester, we will be focusing on building a strong foundation of programming using the C programming language. C is a old, yet very important language that is still actively used in development today. The creators of C, [Dennis Ritchie](https://computerhistory.org/profile/dennis-ritchie/) and [Ken Thompson](https://computerhistory.org/profile/ken-thompson/) are also the creators of the Unix operating system, the predecessor to the Linux system we are using in this class. A good understanding of how C and Unix work will provide good insight into how most computers work in general.
 
-The philosophy of this lab is that the best way to learn something is to jump in and do it. **Most of this page will be reference for all the problems and programming challenges in the lab README.md. We suggest you bring up VS Code (with the repository for this lab) and the webpage side-by-side.**
+The philosophy of this lab is that the best way to learn something is to jump in and do it. Most of this page will be reference for all the problems and programming challenges in the lab README.md.
 
 ### A simple C Program
 
@@ -219,7 +219,7 @@ Another treasure trove of information on data types exists in the `stdint.h` lib
 
 For example, if you need to store a data **t**ype as an **int**eger that is **u**nsigned (can never been negative) and is only **8** bits long, you would `#include <stdint.h>` and use the `uint8_t` type. 
 
-To understand more about the types of data types that exist in `stdint.h`, you can use the `man stdint.h`.
+To understand more about the types of data types that exist in `stdint.h`, you can check out the [documentation for this file](https://man7.org/linux/man-pages/man0/stdint.h.0p.html).
 
 ### printf
 As you have seen in our simple C program, we can use the `printf()` function to send text out to the terminal from our program.
