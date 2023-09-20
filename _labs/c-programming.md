@@ -11,7 +11,7 @@ layout: lab
 - Compilation of a program by using `gcc`
 
 ## Getting Started
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi (look at previous labs if you need help remembering how to do it) and clone the repository in your home directory.
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode.**
 
 ## Overview
 
