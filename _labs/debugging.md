@@ -1,17 +1,18 @@
 ---
 title: Debugging
-number: 5
+number: 4
 layout: lab
 ---
-
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
 
 ## Objectives
 
 - Become familiar with the different styles of debugging
 - Become familiar with GDB through VSCode and the terminal
 - Gain exposure of analyzing the assembly of a compiled C program
+
+## Getting Started
+
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi.**
 
 ## Overview
 
@@ -22,7 +23,7 @@ Intentional and incremental programming are two important mindsets to have while
 
 Incremental programming, on the other hand, involves **dividing the solution you are trying to create into small, manageable chunks** that can be developed and tested individually. This allows for a more flexible, iterative approach to software development. This means that changes can be made easily and quickly, without having to completely overhaul the entire solution when something crashes. 
 
-As you may have seen from the last lab, handling large amounts of data in C is no small task. It requires attention to detail and a good understanding of the the code you are writing and what it does. As the projects in this and other programming-centric classes become more complex and involved, it is important to remember that **the best line of defense against buggy code is a good offense: intentional and incremental programming.**
+Handling large amounts of data in C is no small task (as you will see in the next lab). It requires attention to detail and a good understanding of the code you are writing and what it does. As the projects in this and other programming-centric classes become more complex and involved, it is important to remember that **the best line of defense against buggy code is a good offense: intentional and incremental programming.**
 
 ### Trace debugging
 Trace debugging is a technique used to identify the root cause of a problem in a program by logging the values of variables and other information at specific points in time. This trace data can provide insight into how your program is actually behaving.
@@ -58,7 +59,7 @@ The simple solution to this is to use a debugger! A debugger is a program that c
 sudo apt install gdb
 ```
 
-According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This the default program we will be using to debug the code in this class. This program has several modes of operation, including a terminal and graphical interface. 
+According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This the default program we will be using to debug the code in this class. This program has several modes of operation, including a terminal and graphical interface. You will be using GDB for the [Bomb programming assignment]({% link _programming-assignments/bomb-lab.md %}), so it is worth spending some time now to get familiar with it.
 
 #### VSCode C/C++
 More modern tools like VSCode have built-in extensions to interface with GDB and provide a more modern experience. To enable this on your Pi Z2W, follow the following steps in a **Remote - SSH** session that is connected to your Pi Z2W:
@@ -94,9 +95,9 @@ More modern tools like VSCode have built-in extensions to interface with GDB and
 9. If your debugger was configured properly, you should not see any errors and a new debugger view should show.
 
 
-**For this section of the lab, copy some old code from either the _Image_ or _Data_ lab into the `gdb-debug` folder. Follow the corresponding questions on the README.md for this lab as you learn the following techniques of graphical debugging.**
+**For this section of the lab, copy some old code from either the _C Programming_ lab into the `gdb-debug` folder. Follow the corresponding questions on the README.md for this lab as you learn the following techniques of graphical debugging.**
 
-Before you can start debuggin your code in VSCode, you need to make sure that it is running. Click on the play button with a little bug on it in the upper right corner. You should see a menu pop up in the middle top of your screen. These are the controls that will help you run through your program.
+Before you can start debugging your code in VSCode, you need to make sure that it is running. Click on the play button with a little bug on it in the upper right corner. You should see a menu pop up in the middle top of your screen. These are the controls that will help you run through your program.
 
 #### Breakpoints
 A breakpoint is a point in the code where the debugger stops the execution of the program. Breakpoints can be set in VSCode by clicking next to the line number of the code that you want your debugger to pause on.
@@ -121,7 +122,7 @@ Analyzing assembly in VSCode tends to be a little trickier and require you to us
 gdb unknown
 ```
 
-Once you are inside of the commandline version of `gdb`, you will see another shell that looks something like the following:
+Once you are inside of the command line version of `gdb`, you will see another shell that looks something like the following:
 
 ```
 (gdb)> _
@@ -148,7 +149,7 @@ These are just a few of the commands, some helpful resources have been provided 
 
 - Complete all the activities and answer the questions in the `README.md`. 
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** and **Tagging Submissions** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** section.
 
 
 ## Explore More!

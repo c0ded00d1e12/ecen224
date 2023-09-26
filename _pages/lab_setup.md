@@ -52,7 +52,7 @@ Finally, to push these changes to the repository online
 ```bash
 git push origin main
 ```
-
+<!-- 
 ### Tagging Submissions
 
 To submit your lab, you must create a **tag** named `final` on your git repository. The following command will tag your most recent commit and push that tag to GitHub:
@@ -69,4 +69,4 @@ If, after you create this tag, you want to change it (i.e., re-submit your code)
 git tag --force final
 git push --force origin final
 ```
-If you don’t use the correct tag name (`final`), the lab will not be counted as submitted.
+If you don’t use the correct tag name (`final`), the lab will not be counted as submitted. -->

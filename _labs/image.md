@@ -1,11 +1,8 @@
 ---
 title: Image
-number: 4
+number: 5
 layout: lab
 ---
-
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
 
 ## Objectives
 
@@ -13,6 +10,10 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 - Learn how to use `enum` values
 - Learn the structure of a multi-file C program (.h and .c files)
 - Get more practice with compilation of a program by using `gcc`
+
+## Getting Started
+
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi.**
 
 ## Overview
 
@@ -44,7 +45,7 @@ typedef struct
 } Bitmap;
 ```
 
-Much like a `class`, a `struct` is a collection of different variable values all associated with the same process. In the `Bitmap struct` we see many properties associated with the file, including:
+Much like a `class`, a `struct` is a collection of different variable values all associated together. In the `Bitmap struct` we see many properties associated with the file, including:
 
 - `pxl_data`: This is a one dimensional list of `uint8_t` values that represent pixel values in the image.
 - `pxl_data_cpy`: This is a copy of the list of `uint8_t` values that represent pixel values in the image. This will be helpful with some of the algorithms later on in the lab.
@@ -54,7 +55,7 @@ Much like a `class`, a `struct` is a collection of different variable values all
 
 
 ### Bitmasking
-Bitmasking is is a method that allows us to manipulate (set to 1 or 0) certain bits of data. This is done general by making use of bitwise ORs, ANDs, and XORs.
+Bitmasking is is a method that allows us to manipulate certain bits of data (e.g., set a bit to 1 or 0). This is done general by making use of bitwise ORs, ANDs, and XORs.
 
 For example if we wanted to select nothing but the last two bits of the byte (in binary) `11101011` we would use AND with a 0 on all the values we don't want and a 1 on all the values we do want in our selection:
 
@@ -64,7 +65,7 @@ AND  00000011   <--- This value is known as the 'mask'
 -------------
      00000011   <--- The masked value
 ```
-although this is most obvious when representing the numbers as binary, the masking principles work for any representation of numbers.
+Although this is most obvious when representing the numbers as binary, the masking principles work for any representation of numbers.
 
 If we wanted to recreate the following operation in C with hexademical numbers, it would be the following:
 
