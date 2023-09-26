@@ -48,7 +48,11 @@ printf("Modified Str:\t%s\n", original_str);    // <--- Trace debug print statem
 
 And that's really all there is to this method! You'll be surprised to see how effective the simple logging of variable values as you go can ensure a smoother development experience. By using trace debugging, you can quickly identify and fix bugs, improve the performance of your program, and improve the overall reliability of your software.
 
-**In the lab files for this repository, go to the `trace-debug` folder. There you will find a library, an implementation, and a main file. Buggy functions have been included in the `math.c` file. Your job is to debug them using the trace debugging method and ensure that all of them work properly.**
+**In the lab files for this repository, go to the `trace-debug` folder. There you will find a library called math (`math.h`), an implementation (`math.c`), and a main file (`main.c`). Buggy functions have been included in the `math.c` file. Your job is to debug them using the trace debugging method and ensure that all of them work properly. To compile the program, you can pass both C files to gcc:**
+
+```
+gcc main.c math.c
+```
 
 ### Using a Debugger
 While trace debugging may seem like the most practical way to address small bugs or issues in your code, sometimes it is not enough. Have you every printed out the contents of a double or even triple-nested `for` loop to try and find out where your logic went wrong? If not: congratulations! Like all others who have, we can assure it is no fun, especially when the terminal window fills up with unnecessary print statements that makes the bug more difficult to find.
@@ -59,45 +63,21 @@ The simple solution to this is to use a debugger! A debugger is a program that c
 sudo apt install gdb
 ```
 
-According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This the default program we will be using to debug the code in this class. This program has several modes of operation, including a terminal and graphical interface. You will be using GDB for the [Bomb programming assignment]({% link _programming-assignments/bomb-lab.md %}), so it is worth spending some time now to get familiar with it.
+According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This the default program we will be using to debug the code in this class. This program has several modes of operation, including
+ a terminal and graphical interface. You will be using GDB for the [Bomb programming assignment]({% link _programming-assignments/bomb-lab.md %}), so it is worth spending some time now to get familiar with it.
 
 #### VSCode C/C++
-More modern tools like VSCode have built-in extensions to interface with GDB and provide a more modern experience. To enable this on your Pi Z2W, follow the following steps in a **Remote - SSH** session that is connected to your Pi Z2W:
+More modern tools like VSCode have built-in extensions to interface with GDB and provide a more modern experience. To use this, VSCode requires the "C/C++" extension. You should have installed this in the last lab, but if you haven't, using the following steps. These steps should be run from the VSCode session that is connected to your Raspberry Pi:
 
 1. Click on the Extensions button on the left-side menu.
 
 2. In the search bar, type "C/C++" and select the "C/C++" extension by Microsoft.
 
-3. Click the Install button to install the C/C++ extension.
+3. Click the Install button to install the C/C++ extension. If you see a Disable button, that means you have already installed the extension.
 
-4. Make sure your Workspace root is at where all of your files live (i.e this lab's repo)
+Once you have ensured the extension is installed, copy your old code from the _C Programming_ lab into the `gdb-debug` folder of this lab and go to your `main.c` file. Next, click on the play button with bug in the upper right corner. If your debugger was configured properly, you should not see any errors and a new debugger view should show.  You should see a menu pop up in the middle top of your screen. These are the controls that will help you run through your program.
 
-5. Open up the `main.c` file from one of your labs
-
-6. Go to the `.vscode` folder and open file named `tasks.json`
-
-7. Find the section of code that looks like the following
-
-    ```json
-                "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-    ```
-
-    and replace `${file}` with `*.c` and save the file.
-
-8. Go to your `main.c` tab and click on the play button with bug in the upper right corner
-
-9. If your debugger was configured properly, you should not see any errors and a new debugger view should show.
-
-
-**For this section of the lab, copy some old code from either the _C Programming_ lab into the `gdb-debug` folder. Follow the corresponding questions on the README.md for this lab as you learn the following techniques of graphical debugging.**
-
-Before you can start debugging your code in VSCode, you need to make sure that it is running. Click on the play button with a little bug on it in the upper right corner. You should see a menu pop up in the middle top of your screen. These are the controls that will help you run through your program.
+**Follow the corresponding questions on the README.md for this lab as you learn the following techniques of graphical debugging.**
 
 #### Breakpoints
 A breakpoint is a point in the code where the debugger stops the execution of the program. Breakpoints can be set in VSCode by clicking next to the line number of the code that you want your debugger to pause on.
@@ -112,7 +92,7 @@ If you come across a function that you want to examine, put a breakpoint on wher
 
 ### Analyzing Assembly
 
-**This exercise will be done on the `unknown` binary in your lab repo.
+**This exercise will be done on the `unknown` binary in your lab repo.**
 
 Not only can you build your project to analyze the source code, you can also use it to analyze the machine instructions that are getting passed to the processor. This is useful, especially in digital forensics and penetration testing. Not every executable you want to analyze was compiled with the `-g` option to let a debugger look at the source code.
 
@@ -147,9 +127,11 @@ These are just a few of the commands, some helpful resources have been provided 
 
 ## Submission
 
-- Complete all the activities and answer the questions in the `README.md`. 
+- Complete all the activities and answer the questions in the `README.md`.
 
 - To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** section.
+
+- To pass off to a TA, show your README.md on GitHub.
 
 
 ## Explore More!
