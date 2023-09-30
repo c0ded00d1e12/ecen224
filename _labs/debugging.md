@@ -129,7 +129,7 @@ These are just a few of the commands, some helpful resources have been provided 
 To debug this program, you might run something like this in GDB:
 
 ```
-layout ams
+layout asm
 layout reg
 break main
 run
