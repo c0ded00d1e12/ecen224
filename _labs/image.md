@@ -25,9 +25,10 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 In this lab we will be exploring the utility of data manipulation in a practical application by editing an image in C. **This lab will be programming heavy** and a little more involved than previous labs. **Make sure you allow yourself enough time to complete this lab.**
 
 ### Bitmap Struct
+
 Unlike other programming languages that you may be familiar with, the C programming language is not an object oriented programming language. This means that there are no `class` objects that allow you to associate groups of data together.
 
-To accomplish this, C uses a the `struct` object, which is actually a predecessor to the `class` object we see in most programs. Below is the `struct` included in the `image.h` library in the code for this lab:
+To accomplish this, C uses a `struct` data structure, which is actually a predecessor to the `class` object we see in most programs. Below is the `struct` included in the `image.h` library in the code for this lab:
 
 ```c
 typedef struct
@@ -53,9 +54,21 @@ Much like a `class`, a `struct` is a collection of different variable values all
 - `img_height`: Number of rows of pixels in the image.
 - `pxl_data_size`: Size (in bytes) of `pxl_data`.
 
+To access members of the `struct`, you use the dot operator or the arrow operator, depending on if the `struct` is a pointer or not. For example:
+
+```c
+Bitmap image;
+printf("width: %u, height: %u\n", image.image_width, image.image_height);
+
+Bitmap* image;
+printf("width: %u, height: %u\n", image->image_width, image->image_height);
+```
+
+In this example, to access the width and height of a `struct`, we used the dot symbol. However, if we have pointer to a `struct`, we must dereference the pointer first before accessing the member. This can be done using `(*image).image_width`, but this is such a common operation to do that C added special syntax for it, the arrow operator, `->`.
+
 
 ### Bitmasking
-Bitmasking is is a method that allows us to manipulate certain bits of data (e.g., set a bit to 1 or 0). This is done general by making use of bitwise ORs, ANDs, and XORs.
+Bitmasking is a method that allows us to manipulate certain bits of data (e.g., set a bit to 1 or 0). This is done general by making use of bitwise ORs, ANDs, and XORs.
 
 For example if we wanted to select nothing but the last two bits of the byte (in binary) `11101011` we would use AND with a 0 on all the values we don't want and a 1 on all the values we do want in our selection:
 
@@ -78,30 +91,36 @@ number = number & mask; // number = 0x03
 ```
 
 ### Pixel Values in BMP file
-The data you will be manipulating in this lab are the color channels of a pixel in a bitmap (or BMP) file. Each pixel is represented by three groups of colors: `BLUE`, `GREEN`, and `RED`:
 
-<figure class="image mx-auto" style="max-width: 750px">
-  <img src="{% link assets/image/pixels.png %}" alt="Units of the course.">
-  <figcaption style="text-align: center;">This is how color values are stored in the BMP. In image processing, a row of these pixels is also called a stride.</figcaption>
+Images are made out of many different colored points, called pixels, all put together in a two dimensional grid. Pixels are just one color and typically really small. To demonstrate the idea, I have broken the picture into a grid. While they are not the actual pixels of the image (they are much too small), hopefully it gets the idea across.
+
+<figure class="image mx-auto" style="max-width: 350px">
+  <img src="{% link assets/image/image_2d.png %}" alt="Units of the course.">
+  <figcaption style="text-align: center;">Images are visualized as a two dimensional grid of pixels.</figcaption>
 </figure>
 
-Different values of a color channels will provide different hues and shades of colors. If that isn't making too much sense, there is a wonderful visualation of how different color channels create different pixel colors [here](https://www.w3schools.com/colors/colors_picker.asp).
+A computer doesn't necessarily store the image data in a two dimensional grid. It often stores it as a long list (called an array), where each row is concatenated with the previous row.
 
-Each color channel is exactly 8 bits long (or one byte). Look at the `pxl_data` field in the `Bitmap` struct shown above. What type does it use? (Feel free to ignore the star).
+<figure class="image mx-auto" style="max-width: 800px">
+  <img src="{% link assets/image/image_1d.png %}" alt="Units of the course.">
+  <figcaption style="text-align: center;">Images are stored as a one dimensional list.</figcaption>
+</figure>
 
-While creating the algorithms below, keep in mind that the values are stored as color channels and **NOT pixels**.
+Within each pixel, the computer actually stores **three values for each pixel**: a red color, a blue color, and a green color. Different values of each color channels will provide different hues and shades of a pixel. If that isn't making too much sense, there is a wonderful visualization of how different color channels create different pixel colors [here](https://www.w3schools.com/colors/colors_picker.asp). Each color of a pixel is exactly 8 bits long (or one byte). Specifically in the BMP file, the values begin from the bottom left and fill up the row right to left and fill up the screen bottom to top.
 
-Specifically in the BMP file, the values begin from the bottom left and fill up the row right to left and fill up the screen bottom to top.
+<figure class="image mx-auto" style="max-width: 750px">
+  <img src="{% link assets/image/pixels.png %}">
+  <figcaption style="text-align: center;">Each pixel value is actually made up of 3 `uint8_t` values, representing blue, green, and red.</figcaption>
+</figure>
 
-#### Important warning about BMP rows:
-In BMPs, the rows **MUST** be multiples of 4 bytes. This means if the image has a width that is not a multiple of 4, the BMP file employs padding to fufill that requirement.
+Look at the `pxl_data` field in the `Bitmap` struct shown above. What type does it use? (Feel free to ignore the star). While creating the algorithms below, keep in mind that the values are stored as colors and **NOT pixels**. For example, if you want to access the blue color for two pixels
 
-While you are not responsible of adding this padding, you will need to take into account that you loop over each row applying the following algorithms. The easiest way to do this is to round up your loop limit to the nearest factor of 4.
+**Note:** In BMPs, the rows must be multiples of 4 bytes. This means if the image has a width that is not a multiple of 4, the BMP file employs padding to fufill that requirement. We have ensured that the picture you are working with is a multiple of 4 and you do not need to worry about dealing with padding for this lab.
 
 ## Requirements
 In the code provided in this lab, you will be expected to edit the original image listed at the top of this page to provide some fun visual effects!
 
-Much of the code has been given for you, but you are expected to follow the comments in the files and fill in logic for both the `remove_color_channel()` function and the `or_blur()` function.
+Much of the code has been given for you, but you are expected to follow the comments in the files and fill in logic for both the `remove_color_channel()` function and the `or_filter()` function.
 
 ### Remove Color Channel
 In this function, you are expected to create logic that will allow a user to specify a color channel and have that color removed completely from the image. As you can see in the figures below, each image has either the red, green, or blue values set to 0.
@@ -123,17 +142,19 @@ In this function, you are expected to create logic that will allow a user to spe
 
 These images are the answer to your function! If you have done it correctly, your output should look exactly like whats above.
 
-### OR Blur
+### OR Filter
 
-This function will be the culmination of your data manipulation knowledge that you have learned up until now. In this function you will take each color channel value and bitwise OR it with the value directly above and below it.
+This function will be the culmination of your data manipulation knowledge that you have learned up until now. In this function you will take each color value of a pixel and bitwise OR it with the pixel color value directly above and below it. Remember, while visually the pixels are above and below each other, they are actually stored in a long array. As part of this lab, you must figure out how to access the vertically adjacent pixels in the one dimensional array.
 
 Make sure to use the `pxl_data_cpy` list as your values that you are changing inside of your `pxl_data` list. If you use the `pxl_data` as your reference data, you will have compounding effects that will cause the image to be indistinguishable. This is not correct.
 
 ## Submission
 
-- Answer the questions in the `README.md`. 
+- Answer the questions in the `README.md`.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** and **Tagging Submissions** section.
+- To pass off to a TA, you must show your "or filtered" image (or_filter.bmp) and explain what is causing the image's visual behavior.
+
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** section.
 
 ## Explore More!
 
