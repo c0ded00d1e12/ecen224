@@ -108,7 +108,7 @@ A computer doesn't necessarily store the image data in a two dimensional grid. I
 
 Within each pixel, the computer actually stores **three values for each pixel**: a red color, a blue color, and a green color. Different values of each color channels will provide different hues and shades of a pixel. If that isn't making too much sense, there is a wonderful visualization of how different color channels create different pixel colors [here](https://www.w3schools.com/colors/colors_picker.asp). Each color of a pixel is exactly 8 bits long (or one byte). Specifically in the BMP file, the values begin from the bottom left and fill up the row right to left and fill up the screen bottom to top.
 
-<figure class="image mx-auto" style="max-width: 750px">
+<figure class="image mx-auto" style="max-width: 600px">
   <img src="{% link assets/image/pixels.png %}">
   <figcaption style="text-align: center;">Each pixel value is actually made up of 3 `uint8_t` values, representing blue, green, and red.</figcaption>
 </figure>
@@ -144,7 +144,14 @@ These images are the answer to your function! If you have done it correctly, you
 
 ### OR Filter
 
-This function will be the culmination of your data manipulation knowledge that you have learned up until now. In this function you will take each color value of a pixel and bitwise OR it with the pixel color value directly above and below it. Remember, while visually the pixels are above and below each other, they are actually stored in a long array. As part of this lab, you must figure out how to access the vertically adjacent pixels in the one dimensional array.
+This function will be the culmination of your data manipulation knowledge that you have learned up until now. In this function you will take each color value of a pixel and bitwise OR it with the pixel color value directly above and below it. For example, if you are working on pixel x, you would OR the blue color with the blue color of the pixel above (top) and the pixel below (bottom). You would repeat this for the green and red colors. You would then move to the next pixel in your image.
+
+<figure class="image mx-auto" style="max-width: 700px">
+  <img src="{% link assets/image/or_filter.png %}">
+  <figcaption style="text-align: center;">OR filter or's the color channels of the pixel above and below a specific pixel.</figcaption>
+</figure>
+
+ Remember, while visually the pixels are above and below each other, they are actually stored in a long array. As part of this lab, you must figure out how to access the vertically adjacent pixels in the one dimensional array. You will also have to deal with two special cases: when you are on the top row and the bottom row. In those two conditions, you won't be able to or filter like normal because you are missing an expected row.
 
 Make sure to use the `pxl_data_cpy` list as your values that you are changing inside of your `pxl_data` list. If you use the `pxl_data` as your reference data, you will have compounding effects that will cause the image to be indistinguishable. This is not correct.
 
