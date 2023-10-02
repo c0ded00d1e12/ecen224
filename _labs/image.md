@@ -113,9 +113,15 @@ Within each pixel, the computer actually stores **three values for each pixel**:
   <figcaption style="text-align: center;">Each pixel value is actually made up of 3 `uint8_t` values, representing blue, green, and red.</figcaption>
 </figure>
 
-Look at the `pxl_data` field in the `Bitmap` struct shown above. What type does it use? (Feel free to ignore the star). While creating the algorithms below, keep in mind that the values are stored as colors and **NOT pixels**. For example, if you want to access the blue color for two pixels
+Look at the `pxl_data` field in the `Bitmap` struct shown above. What type does it use? (Feel free to ignore the star). While creating the algorithms below, keep in mind that the values are stored as colors and **NOT pixels**. This means that pxl_data will be 3 times longer than the image size (as determined by multiplying the width and height of the image). For example, if you want to access the blue color for two adjacent pixels, you will have to jump by three integer values:
 
-**Note:** In BMPs, the rows must be multiples of 4 bytes. This means if the image has a width that is not a multiple of 4, the BMP file employs padding to fufill that requirement. We have ensured that the picture you are working with is a multiple of 4 and you do not need to worry about dealing with padding for this lab.
+```c
+uint8_t x = 5; // Randomly selected pixel number
+uint8_t blue_color = pxl_data[x * 3]; // Move by 3 because each pixel consists of BGR
+uint8_t next_blue_color = pxl_data[(x + 1) * 3]; // Get the next blue color
+```
+
+**Note:** In BMPs, the rows must be multiples of 4 bytes. This means if the image has a width that is not a multiple of 4, the BMP file employs padding to fulfill that requirement. We have ensured that the picture you are working with is a multiple of 4 and you do not need to worry about dealing with padding for this lab.
 
 ## Requirements
 In the code provided in this lab, you will be expected to edit the original image listed at the top of this page to provide some fun visual effects!
