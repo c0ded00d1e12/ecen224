@@ -106,7 +106,7 @@ A computer doesn't necessarily store the image data in a two dimensional grid. I
   <figcaption style="text-align: center;">Images are stored as a one dimensional list.</figcaption>
 </figure>
 
-Within each pixel, the computer actually stores **three values for each pixel**: a red color, a blue color, and a green color. Different values of each color channels will provide different hues and shades of a pixel. If that isn't making too much sense, there is a wonderful visualization of how different color channels create different pixel colors [here](https://www.w3schools.com/colors/colors_picker.asp). Each color of a pixel is exactly 8 bits long (or one byte). Specifically in the BMP file, the values begin from the bottom left and fill up the row right to left and fill up the screen bottom to top.
+Within each pixel, the computer actually stores **three values for each pixel**: a red color, a blue color, and a green color. Different values of each color channels will provide different hues and shades of a pixel. If that isn't making too much sense, there is a wonderful visualization of how different color channels create different pixel colors [here](https://www.w3schools.com/colors/colors_picker.asp). Each color of a pixel is exactly 8 bits long (or one byte). In BMP files, the pixels are typically stored bottom-up, starting in the bottom left corner, moving left to right. This is helpful to know when you debug your program.
 
 <figure class="image mx-auto" style="max-width: 600px">
   <img src="{% link assets/image/pixels.png %}">
