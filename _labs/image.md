@@ -178,7 +178,7 @@ Make sure to use the `pxl_data_cpy` list as your values that you are changing in
 
 - To pass off to a TA, you must show your "or filtered" image (or_filter.bmp) and explain what is causing the image's visual behavior.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 ## Explore More!
 

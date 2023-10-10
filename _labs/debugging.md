@@ -143,7 +143,7 @@ This sets up your GDB session and puts a breakpoint at the beginning of main. It
 
 - Complete all the activities and answer the questions in the `README.md`.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 - To pass off to a TA, show your README.md on GitHub.
 
