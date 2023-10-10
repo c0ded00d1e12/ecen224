@@ -105,7 +105,7 @@ display_draw_rectangle(0, 5, 128, 15, BYU_ORANGE, true, 1);
 where `BYU_ORANGE` is `#define`d in `colors.h`.
 
 #### Fonts
-Part of the `display` library allows you to draw strings on the screen. One of the parameters for drawing the string to the screen is selecting a font. These fonts are all located in the `fonts` folder and are accessible through the `fonts.h` library. To use the fonts in the `display_draw_string()` function, you will need to pass the address of the font you desire:
+Part of the `display` library allows you to draw strings on the screen. One of the parameters for drawing the string to the screen is selecting a font. These fonts are all located in the `fonts` folder and are accessible through the `fonts.h` library. Each font represents different font sizes. To use the fonts in the `display_draw_string()` function, you will need to pass the address of the font you desire:
 
 ```c
 display_draw_string(10, 10, "Hello, World!", &Font8, WHITE, BLACK);
