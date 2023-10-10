@@ -84,7 +84,7 @@ Accessing the HAT hardware requires special permissions.  After compiling your p
 
 ### Drawing to the Screen
 
-In this lab you will be responsible for writing a `main.c` file that will draw shapes and images to the LCD screen. The library responsible for this is found in the `display` library files. There are many functions that can accomplish various techniques such as drawing shapes or writing text. Become familiar with the `display.h` and read their corresponding comments.
+In this lab you will be responsible for writing a `main.c` file that will draw shapes and images to the LCD screen. The library responsible for this is found in the `lib/display.h` library file. There are many functions that can accomplish various techniques such as drawing shapes or writing text. Become familiar with the `display.h` and read their corresponding comments.
 
 #### Orientation and Dimensions
 When drawing on the screen, it is important to have a good mental model of what the coordinate system of the screen is like. For this particular LCD module, we have set up the axes like so:
@@ -96,7 +96,7 @@ When drawing on the screen, it is important to have a good mental model of what 
 The height and width of the screen are `#define`d in the `display.h` file as `DISPLAY_WIDTH` and `DISPLAY_HEIGHT`. These values can be useful if you are trying to define coordinates for shapes relative to those points.
 
 #### Colors
-Most of the `display` functions take in a color parameter to give color to the shapes you are drawing or the text that you are writing. These colors are `#define`d in the `colors.h` file.
+Most of the `display` functions take in a color parameter to give color to the shapes you are drawing or the text that you are writing. These colors are `#define`d in the `lib/colors.h` file.
 
 Example:
 ```c
