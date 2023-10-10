@@ -9,6 +9,7 @@ layout: lab
 - Become familiar with the LCD and button shield for the Pi Z2W.
 - Learn to use a "vendor" library to control different hardware accessories. 
 - Associate graphical events with specific inputs.
+- Get experience using a Makefile
 
 ## Getting Started
 
