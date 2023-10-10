@@ -4,14 +4,15 @@ number: 6
 layout: lab
 ---
 
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
-
 ## Objectives
 
 - Become familiar with the LCD and button shield for the Pi Z2W.
 - Learn to use a "vendor" library to control different hardware accessories. 
 - Associate graphical events with specific inputs.
+
+## Getting Started
+
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi. Make sure the lab is your root directory of your VSCode editor.**
 
 ## Overview
 
@@ -29,7 +30,7 @@ In this lab we will use the Waveshare 1.44" HAT which connects to all of the GPI
 ### BCM2835 Library
 
 #### Installation
-In order to interface with the GPIO of the Pi Z2W, we need to install a library that will allow us to do so. 
+In order to interface with the GPIO of the Pi Z2W, we need to install a library.
 
 1. First make sure that you are in your home directory on the Pi Z2W:
 
@@ -74,12 +75,15 @@ In order to interface with the GPIO of the Pi Z2W, we need to install a library 
     ```
 
 #### Compiling into a Project
-Now that the `bcm2835` library is installed, we can use it in any C program that we like! This comes especially in handy for our new LCD and button HAT. However, since this is an installed library and not a default one, we have to let `gcc` that we are trying to include it in the compilation process. This is done by adding the `-lbcm2835` flag to our normal `gcc` compilation command. The `-l` lets `gcc` know we are including a custom system library, while the `bcm2835` part is just the name of the library itself.
+
+Now that the `bcm2835` library is installed, we can use it in any C program that we like! This comes especially in handy for our new LCD and button HAT. However, since this is an installed library and not a default one, we have to let `gcc` know that we are trying to include it in the compilation process. This is done by adding the `-lbcm2835` flag to our normal `gcc` compilation command. The `-l` lets `gcc` know we are including a custom system library, while the `bcm2835` part is just the name of the library itself.
 
 #### Executing
-Accessing the HAT hardware requires special permissions.  After compiling your project, you will need to run it with `sudo` (eg `sudo ./main`) otherwise you will likely see a `segmentation fault`.
+
+Accessing the HAT hardware requires special permissions.  After compiling your project, you will need to run it with `sudo` (e.g., `sudo ./main`) otherwise you will likely see a `segmentation fault`.
 
 ### Drawing to the Screen
+
 In this lab you will be responsible for writing a `main.c` file that will draw shapes and images to the LCD screen. The library responsible for this is found in the `display` library files. There are many functions that can accomplish various techniques such as drawing shapes or writing text. Become familiar with the `display.h` and read their corresponding comments.
 
 #### Orientation and Dimensions
@@ -118,18 +122,7 @@ Before the LCD can be used, you will need to call the `display_init()` function 
 
 ### Interacting with Buttons
 
-The "vendor" library provided for interfacing with the  buttons assumes that the LCD and buttons HAT will be used in the landscape position, however, for this lab, we want to use the device in the portrait postion with the d-pad on the bottom. This means that the way the buttons are named in code does not align with our use case!
-
-This happens many times when utilizing a piece of code for your own purposes. Rather than losing time by redefining everything in the library so that it matches our usecase, it is best use the names given and understand how they are given.
-
-This means that in this lab when you need to rock the d-pad button to the down position, you will be listening to the left button. The other associations are shown as follows:
-- Down (left in code)
-- Right (down in code)
-- Up (right in code)
-- Left (up in code)
-- Center (center in code)
-
-To read the state of the d-pad or action buttons, you will be using the functions found defined in the `buttons.h` library interface. When a button is actively being pressed, the function to read it will return a `0`, else if it unpressed, it will return a `1`.
+To read the state of the d-pad you will be using the functions found defined in the `buttons.h` library interface. When a button is actively being pressed, the function to read it will return a `0`, else if it unpressed, it will return a `1`.
 
 Example:
 ```c
@@ -152,59 +145,42 @@ Before the buttons can be used, you will need to call the `buttons_init()` funct
 You will see in your `main.c` function that your code will loop infinitely. This means that anything inside the `while(true)` loop will repeat over and over until the program is terminated by the user through the shell. Running a `while(true)` loop without any sort of control can cause system resources to be eaten up and cause your program to be run inefficiently. For this, we have provided the `delay_ms()` inside the `device.h` library. This will allow you to essentially create a wait time in the execution of your loop. This is handy if you want to draw something to the screen and have it only appear for a certain amount of time before the logic in your program goes on.
 
 ## Requirements
-In this lab, you will be given the main with these constructs inside
 
 You must demonstrate your understanding of the `display` and `buttons` libraries and how to use them by accomplishing the following:
 
-- If no button is pressed nothing should change on your display.
-- When the up button is pressed: 
-    - Clear the screen to white
+1. If no button is pressed nothing should change on your display.
+
+2. When the up button is pressed: 
+    - Clear the screen to white.
     - Draw filled in green rectangle that covers the first 20 rows of pixels at the top of the screen.
     - Draw filled in red rectangle that covers the last 20 rows of pixels at the bottom of the screen.
     - In the center of the screen, draw a pound-sign (bang/hash/etc.) that is exactly centered using a black color and a 3 px line weight. Its dimensions should 50x50px.
     - The previous hash should be inside and centered in a yellow circle with a 3 px line width and a 30 px radius.
     - The rest of the screen should be white. 
-- When the down button is pressed: 
+  
+3. When the down button is pressed: 
     - Clear the screen to white.
-- When the right button is pressed: 
-    - Clear the screen to white
+  
+4. When the right button is pressed: 
+    - Clear the screen to white.
     - Draw "Hello world!" centered vertically and horizontally repeating 5 times in Font8 in different colors.
-- When the left button is pressed: 
-    - Clear the screen to white
+  
+5. When the left button is pressed: 
+    - Clear the screen to white.
     - Experiment with drawing different numbers and characters of different sizes and colors.
-    - The screen should have at least 10 digits and 10 characters
-- When the center button is pressed: 
+    - The screen should have at least 10 digits and 10 characters.
+  
+6. When the center button is pressed: 
     - Clear the screen to white
     - Display the `byu_og.bmp` image from the `pic` directory.
 
 ## Submission
 
-### Compilation
-Since a large portion of this lab's grade depends on me successfully compiling your code, the following points must be adhered to to ensure consistency in the grading process. Any deviation in this will result in points off your grade:
+- Answer the questions in the `README.md`.
 
-- The code in this lab will be compiled at the root of this lab repository (i.e. `display-<your-github-username>`). It is your responsibility to ensure that `gcc` will work from this directory.
-- Your binary must output to a folder called `bin`. This folder will be marked to be ignored by `git`, meaning that I will not receive your final compiled binary to test, but rather your code which must compile successfully on my Pi Z2W.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above.
 
-### Gitignore
-You may have noticed a new file in your lab repository this week. The `.gitignore` file is a special file in a `git` repo that indicates which files to ignore when handling `git` transactions. Every line in this file is a regex pattern that describes which types of patterns to ignore. For example if I wanted to not include every `.vscode` folder that may be generated by using the VSCode debugger in my `git` transactions, I would simply add the line
-```
-*.vscode
-```
-to my `.gitignore` file. 
-
-In this lab you are expected to ignore the following:
-
-- `.vscode` folders
-- the `bin` folder where your binary is generated
-
-### Normal Stuff
-- Complete all of the requirements.
-
-- Answer the questions in the `README.md`. 
-
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Commiting and Pushing Files** and **Tagging Submissions** section.
-
-- **MAKE SURE YOUR CODE FOLLOWS THE CODING STANDARD!** More info on how to set that up is available on the Coding Standard page. 
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 
 ## Explore More!
