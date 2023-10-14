@@ -108,12 +108,13 @@ There are a few essential file operations that exist in the `stdio.h` library. T
     fclose(fp);    // Closes the file that was attached to the fp pointer
     ```
 
-- `fscanf()`
+- `fread()`
 
-    Once we have a file open, what can we actually do with the `FILE` stream pointer in order to actually get data? This is where functions like `fscanf()` come into play. This function takes a file pointer as an argument and reads data from it. For example, if I wanted the first word from our `fancy_output.log` file that we opened above, I could do the following to get the first word from the document:
+    Once we have a file open, what can we actually do with the `FILE` stream pointer in order to actually get data? This is where functions like `fread` come into play. This function reads data from a file pointer. Specifically, it takes a buffer to read data into, the size of the data, the length of the data, and the file pointer.
+
     ```c
-    char word[256];            // Creates a string that can hold up to 256 characters 
-    fscanf(fp, "%s", word);    // Reads in a single word from fp as a string (%s) into the word variable
+    char data[256];            // Creates a string that can hold up to 256 characters 
+    fread(data, 1, 256, fp);   // Reads up to 256 bytes (or characters) from the file
     ```
 
 ## Requirements
