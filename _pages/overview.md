@@ -47,8 +47,6 @@ This course is made up of six major components that all work together to help ma
 | Homeworks               | 10         |
 | Exams                   | 35         |
 
-There are fourteen labs (one for each week), so each lab is worth 2.86% of your grade. There are eight homeworks, so each homework is worth 1.88% of your grade. There are two programming assignments, so each assignment is worth 7.5% of your grade.
-
 
 ## Communication
 All communication will be done over Slack. Slack is intended to be used for announcements, questions, and facilitate student communication. If you have a question, ask it on Slack so that everyone can benefit from seeing the question and answer. 
