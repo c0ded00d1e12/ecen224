@@ -4,14 +4,15 @@ number: 7
 layout: lab
 ---
 
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
-
 ## Objectives
 
 - Read in files into a program
 - Create the necessary logic to handle an interface
 - Filter out files by pattern
+
+## Getting Started
+
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi. Make sure the lab is top level folder of your VSCode editor.**
 
 ## Overview
 
@@ -39,8 +40,16 @@ With our newly allocated `DIR` pointer, we can use the following functions that 
     ```c
     DIR *dp;
     dp = opendir("my-folder");
+
+    if (dp == NULL) {
+        // Folder does not exist
+    }
+
+    // Use dp to read the contents of the folder
     ```
+
     This opens the `my-folder` directory into code and puts the `dp` pointer at the top of this directory. When we are done iterating through the directory, you will need to close it by using the following call to `closedir()`:
+
     ```c
     closedir(dp);
     ```
@@ -51,24 +60,19 @@ While iterating through a directory, you will need to have an object that corres
 - `readdir()` example:
 
     ```c
-    bool is_file = true;    // Flag that denotes whether we have seen all the files in a folder
     struct dirent * dir;    // Current folder object
-    while(is_file)
-    {
-        dir = readdir(dp);
-        if(dir == NULL)
-        {
-            is_file = false;
-        }
+
+    while ((dir = readdir(dp)) != NULL) {
+        // Do something with the directory...
     }
     ```
 
 - `d_name`
     The `d_name` value inside of the `dirent` struct holds the file name of the file we are looking at. In order to see what the name of the current file is from a `readdir()` operation:
+
     ```c
-    char file_name[256];                                    // File name string
-    dir = readdir(dp);                                      // Get the current file object
-    strncpy(file_name, dir->d_name, strlen(dir->d_name));   // Copy the file object name to the file_name string
+    dir = readdir(dp);                      // Get the current file object
+    printf("Item name: %s\n", dir->d_name); // Print out name
     ```
 
 #### Filtering Files
@@ -95,9 +99,11 @@ There are a few essential file operations that exist in the `stdio.h` library. T
     FILE *fp;    // File pointer for interacting with file.
     fp = fopen("fancy_output.log", "r");
     ```
-    this code will create a `FILE` stream pointer called `fp`. We then use `fopen` to set the location of `fp` to the beginning of the `fancy_output.log` file in the current directory with the `r`ead mode (look at the **Explore More!** section for different file modes).
+
+    This code will create a `FILE` stream pointer called `fp`. We then use `fopen` to set the location of `fp` to the beginning of the `fancy_output.log` file in the current directory with the `r`ead mode (look at the **Explore More!** section for different file modes).
 
     Once we have done everything that we want to with the file, we must be responsible and release the pointer back to the system. This is done by closing the file using `fclose()`. To do this, simply do the following:
+
     ```c
     fclose(fp);    // Closes the file that was attached to the fp pointer
     ```
@@ -110,24 +116,17 @@ There are a few essential file operations that exist in the `stdio.h` library. T
     fscanf(fp, "%s", word);    // Reads in a single word from fp as a string (%s) into the word variable
     ```
 
-### Creating a Functional Interface
-
-There are many ways to accomplish creating a functional interface that will display files and allow you to interact with them. The algorithm that I have used to successfully complete the lab is as follows:
-- Scan through the `viewer` folder and create an array of strings of all the valid files that will need to be shown in the viewer.
-- Draw a list of all the correct file names.
-- Create a function for drawing the sample text of a log file to the LCD screen.
-- Call that function or `display_draw_image()` when the currently selected file is highlighted.
-- Comply with all the requirements below.
-
 ## Requirements
 
 In this lab you should accomplish the following:
+
 - Create a simple menu that lists all of the files in the `viewer` folder:
     - Filter out any file that does not end in `.bmp` or `.log`
     - File names should be drawn in 8pt font with a BLACK foreground
     - A selection bar should highlight which file you are about to open
-        - When the up and down buttons are pressed (left and right in code), the selection bar should move and highlight the next or previous entry.
+        - When the up and down buttons are pressed, the selection bar should move and highlight the next or previous entry.
         - When the selection bar is over a file name, the background color of the next should match the color of the selection bar, when it is deselected, it should go back to the default background color.
+  
 - When the center button is pressed do the following:
     - If the file is a `.bmp` image, display the corresponding image for 2 seconds and then go back to the menu view with the highlight bar over the selected image
     - If the file is a `.log` file, display the contents of the file:
@@ -138,30 +137,18 @@ In this lab you should accomplish the following:
 
 ## Submission
 
-### Compilation
-Since a large portion of this lab's grade depends on me successfully compiling your code, the following points must be adhered to to ensure consistency in the grading process. Any deviation in this will result in points off your grade:
+- Answer the questions in the `README.md`.
 
-- The code in this lab will be compiled at the root of this lab repository (i.e. `io-<your-github-username>`). It is your responsibility to ensure that `gcc` will work from this directory.
-- Your binary must output to a folder called `bin`. This folder will be marked to be ignored by `git`, meaning that I will not receive your final compiled binary to test, but rather your code which must compile successfully on my Pi Z2W.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above.
 
-### Gitignore
-In this lab you are expected to ignore the following:
-
-- `.vscode` folders
-- the `bin` folder where your binary is generated
-
-### Normal Stuff
-- Complete all of the requirements.
-
-- Answer the questions in the `README.md`. 
-
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
-
-- **MAKE SURE YOUR CODE FOLLOWS THE CODING STANDARD!** More info on how to set that up is available on the Coding Standard page. 
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 
 ## Explore More!
 - [List Files in Folder in C](https://stackoverflow.com/questions/4204666/how-to-list-files-in-a-directory-in-a-c-program)
+
 - [Opening and Closing a File in C Tutorial](https://www.programiz.com/c-programming/c-file-input-output#:~:text=()%20returns%20NULL.-,rb,Open%20for%20writing.)
+
 - [`fscanf()` Tutorial](https://www.tutorialspoint.com/c_standard_library/c_function_fscanf.htm)
+
 - [Comparing strings in C](https://www.tutorialspoint.com/c_standard_library/c_function_strncmp.htm)
