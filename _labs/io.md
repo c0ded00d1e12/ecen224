@@ -121,19 +121,22 @@ There are a few essential file operations that exist in the `stdio.h` library. T
 In this lab you should accomplish the following:
 
 - Create a simple menu that lists all of the files in the `viewer` folder:
-    - Filter out any file that does not end in `.bmp` or `.log`
-    - File names should be drawn in 8pt font with a BLACK foreground
-    - A selection bar should highlight which file you are about to open
-        - When the up and down buttons are pressed, the selection bar should move and highlight the next or previous entry.
-        - When the selection bar is over a file name, the background color of the next should match the color of the selection bar, when it is deselected, it should go back to the default background color.
+    - Filter out any file that does not end in `.bmp` or `.log`.
+    
+    - File names should be drawn in 8pt font.
+    
+    - A selection bar should highlight which file you are about to open. When the up and down buttons are pressed, the selection bar should move up and down to the next or previous entry. The selection bar should scroll around from the top to the bottom and the bottom to the top. This means if your selection bar is at the top of the list and you press up, it should move to the bottom of the list. The same thing should be true for the bottom of the list and pressing down.
   
 - When the center button is pressed do the following:
-    - If the file is a `.bmp` image, display the corresponding image for 2 seconds and then go back to the menu view with the highlight bar over the selected image
-    - If the file is a `.log` file, display the contents of the file:
-        - You are responsible for handling new lines
-        - You must wordwrap your lines
-        - If a file is too long for the screen, truncate the output by filling out as much text as possible and then adding an ellipse (`...`) at the end
-        - This content must appear for 2 seconds and then go back to the menu view with the highlight bar over the selected image
+    - If the file is a `.bmp` image, display the corresponding image for 2 seconds and then go back to the menu view with the highlight bar over the selected item.
+
+    - If the file is a `.log` file, display the contents of the file for 2 seconds and then go back to the menu view with the highlight bar over the selected item.
+
+- You only need to show up to 8 items on the display. You can ignore the rest of the items if there are more than 8.
+
+- To perform these tasks, we have given you three functions that you must implement and use in your main function: `get_entries`, `draw_menu`, and `draw_file`. Also, use the `#define`d variables at the top of the file to help implement these functions.
+
+<!-- TODO: Record video showing how it works -->
 
 ## Submission
 
