@@ -137,7 +137,18 @@ In this lab you should accomplish the following:
 
 - To perform these tasks, we have given you three functions that you must implement and use in your main function: `get_entries`, `draw_menu`, and `draw_file`. Also, use the `#define`d variables at the top of the file to help implement these functions.
 
-<!-- TODO: Record video showing how it works -->
+
+Here is a demo showing the different features of the lab:
+
+<div class="row">
+    <div class="mx-auto">
+        <video height=500 controls>
+            <source src="{% link assets/io/demo.mp4 %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
 
 ## Submission
 
