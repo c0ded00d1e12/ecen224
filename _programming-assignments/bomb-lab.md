@@ -21,7 +21,7 @@ Assuming your CAEDM username is foo and the Spice Lab computer you want to log i
 
 ### Download Instructions
 
-I will post the website to download the assignment and view the scoreboard on Slack.
+I will post the website to download the assignment and view the scoreboard on Learning Suite.
 
 
 ## Introduction
