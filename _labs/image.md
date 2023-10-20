@@ -18,7 +18,7 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 ## Overview
 
 <figure class="image mx-auto" style="max-width: 750px">
-  <img src="{% link assets/image/original.bmp %}" alt="Units of the course.">
+  <img src="{% link assets/image/original.bmp %}">
   <figcaption style="text-align: center;">Original bitmap image that you will be editing in the lab.</figcaption>
 </figure>
 
@@ -95,14 +95,14 @@ number = number & mask; // number = 0x03
 Images are made out of many different colored points, called pixels, all put together in a two dimensional grid. Pixels are just one color and typically really small. To demonstrate the idea, I have broken the picture into a grid. While they are not the actual pixels of the image (they are much too small), hopefully it gets the idea across.
 
 <figure class="image mx-auto" style="max-width: 350px">
-  <img src="{% link assets/image/image_2d.png %}" alt="Units of the course.">
+  <img src="{% link assets/image/image_2d.png %}">
   <figcaption style="text-align: center;">Images are visualized as a two dimensional grid of pixels.</figcaption>
 </figure>
 
 A computer doesn't necessarily store the image data in a two dimensional grid. It often stores it as a long list (called an array), where each row is concatenated with the previous row.
 
 <figure class="image mx-auto" style="max-width: 800px">
-  <img src="{% link assets/image/image_1d.png %}" alt="Units of the course.">
+  <img src="{% link assets/image/image_1d.png %}">
   <figcaption style="text-align: center;">Images are stored as a one dimensional list.</figcaption>
 </figure>
 
@@ -137,27 +137,51 @@ uint8_t next_blue = pxl_data[(x + 1) * 3]; // Get the blue color for the next pi
 ## Requirements
 In the code provided in this lab, you will be expected to edit the original image listed at the top of this page to provide some fun visual effects!
 
-Much of the code has been given for you, but you are expected to follow the comments in the files and fill in logic for both the `remove_color_channel()` function and the `or_filter()` function.
+Much of the code has been given for you, but you are expected to follow the comments in the files and fill in logic for the following four functions:
+  - `remove_color_channel()`
+  - `grayscale()`
+  - `or_filter()`
 
 ### Remove Color Channel
 In this function, you are expected to create logic that will allow a user to specify a color channel and have that color removed completely from the image. As you can see in the figures below, each image has either the red, green, or blue values set to 0.
 
 <figure class="image mx-auto" style="max-width: 750px">
-  <img src="{% link assets/image/red_mask.bmp %}" alt="Units of the course.">
+  <img src="{% link assets/image/red_mask.bmp %}">
   <figcaption style="text-align: center;">Original.bmp with all of the red values masked out.</figcaption>
 </figure>
 
 <figure class="image mx-auto" style="max-width: 750px">
-  <img src="{% link assets/image/green_mask.bmp %}" alt="Units of the course.">
+  <img src="{% link assets/image/green_mask.bmp %}">
   <figcaption style="text-align: center;">Original.bmp with all of the green values masked out.</figcaption>
 </figure>
 
 <figure class="image mx-auto" style="max-width: 750px">
-  <img src="{% link assets/image/blue_mask.bmp %}" alt="Units of the course.">
+  <img src="{% link assets/image/blue_mask.bmp %}">
   <figcaption style="text-align: center;">Original.bmp with all of the blue values masked out.</figcaption>
 </figure>
 
 These images are the answer to your function! If you have done it correctly, your output should look exactly like whats above.
+
+### Grayscale
+In this function, you will be turning your image from full color into a grayscaled image. To make an pixel gray, the red, green, and blue values must be all the same. To turn the image grayscale, for each pixel use the following equation:
+```
+Y = 0.299 R + 0.587 G + 0.114 B
+```
+
+Where R is the red pixel value, G is the green pixel value, and B is the blue pixel value. Y is the result that will get filled into the RGB value. For example, if a pixel was `RGB(0, 46, 93)`, the new pixel value would be calculated as
+
+```
+Y = 0.299 * 0 + 0.587 * 46 + 0.114 * 93 = 37.604 = 37
+```
+
+And the new RGB value would become `RGB(37, 37, 37)`. Even though `Y` is a float, you can truncate its value.
+
+After applying the grayscale to the image, it should look like this:
+
+<figure class="image mx-auto" style="max-width: 750px">
+  <img src="{% link assets/image/grayscale.bmp %}">
+  <figcaption style="text-align: center;">Original.bmp grayscaled.</figcaption>
+</figure>
 
 ### OR Filter
 
