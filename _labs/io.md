@@ -60,9 +60,9 @@ While iterating through a directory, you will need to have an object that corres
 - `readdir()` example:
 
     ```c
-    struct dirent * dir;    // Current folder object
+    struct dirent * entry;    // Current folder object
 
-    while ((dir = readdir(dp)) != NULL) {
+    while ((entry = readdir(dp)) != NULL) {
         // Do something with the directory...
     }
     ```
