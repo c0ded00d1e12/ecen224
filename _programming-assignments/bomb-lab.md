@@ -8,19 +8,18 @@ layout: lab
 
 ## Getting Started
 
-You must complete this lab on one of the Spice Lab Linux computers. The Spice Lab is located in **CB 425**. You can either go physically into the lab and use one of the Linux computers, or you can SSH into one. You can not SSH into them directly. You must first SSH into `ssh.et.byu.edu` with your CAEDM username and password. From there, you can SSH into the a Spice Lab computer, `spice-##.ee.byu.edu`, where ## can be a number 14 to 48. Again, use your CAEDM username and password to log into those machines. For example, run the following commands
+You must complete this lab on one of the Digital Lab computers. You can either go physically into the lab and use one of the computers, or you can SSH into one. If you are off campus, you can not SSH into them directly. You must first SSH into `ssh.et.byu.edu` with your CAEDM username and password. From there, you can SSH into the a Digital Lab computer, `digital-##.ee.byu.edu`, where ## can be a number 01 to 60. Again, use your CAEDM username and password to log into those machines. For example, run the following commands
 
 ```bash
 ssh foo@ssh.et.byu.edu
 # Once SSH'd into the CAEDM computer
-ssh foo@spice-20.ee.byu.edu
+ssh foo@digital-06.ee.byu.edu
 ```
 
-Assuming your CAEDM username is foo and the Spice Lab computer you want to log into is 20. It doesn't matter which computer you log into. Your home directory is mounted to your J Drive so all folders will be synced between computers. From this SSH session, you will need to solve your bomb.
+Assuming your CAEDM username is foo and the Digital Lab computer you want to log into is 06. It doesn't matter which computer you log into. Your home directory is mounted to your J Drive so all folders will be synced between computers. From this SSH session, you will can solve your bomb.
 
 
 ### Download Instructions
-
 I will post the website to download the assignment and view the scoreboard on Learning Suite.
 
 
@@ -43,7 +42,7 @@ If for some reason you request multiple bombs, this is not a problem. Choose one
 ## Step 2: Defuse Your Bomb
 Your job for this lab is to defuse your bomb.
 
-You must do the assignment on one of the Spice machines. In fact, there is a rumor that Dr. Evil really is evil, and the bomb will always blow up if run elsewhere. There are several other tamper-proofing devices built into the bomb as well, or so we hear.
+You must do the assignment on one of the Digital Lab machines. In fact, there is a rumor that Dr. Evil really is evil, and the bomb will always blow up if run elsewhere. There are several other tamper-proofing devices built into the bomb as well, or so we hear.
 
 You can use many tools to help you defuse your bomb. Please look at the **hints** section for some tips and ideas. The best way is to use your favorite debugger to step through the disassembled binary.
 
@@ -63,8 +62,8 @@ to `stdin`. In a moment of weakness, Dr. Evil added this feature so you don’t 
 To avoid accidentally detonating the bomb, you will need to learn how to single-step through the assembly code and how to set breakpoints. You will also need to learn how to inspect both the registers and the memory states. One of the nice side-effects of doing the lab is that you will get very good at using a
 debugger. This is a crucial skill that will pay big dividends the rest of your career.
 
-## Handin
-The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on the Web page for this lab.)
+## Grading
+The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on the web page for this lab.)
 
 ## Hints *(Please read this!)*
 There are many ways of defusing your bomb. You can examine it in great detail without ever running the program, and figure out exactly what it does. This is a useful technique, but it not always easy to do. You can also run it under a debugger, watch what it does step by step, and use this information to defuse it. This is probably the fastest way of defusing it.
@@ -89,9 +88,11 @@ There are many tools which are designed to help you figure out both how programs
     Here are some other tips for using `gdb`:
     - To keep the bomb from blowing up every time you type in a wrong input, you’ll want to learn how to set breakpoints.
     - For online documentation, type “`help`” at the `gdb` command prompt, or type “`man gdb`”, or “`info gdb`” at a Unix prompt. Some people also like to run `gdb` under `gdb-mode` in `emacs`.
+  
 - `objdump -t`
 
     This will print out the bomb’s symbol table. The symbol table includes the names of all functions and global variables in the bomb, the names of all the functions the bomb calls, and their addresses. You may learn something by looking at the function names!
+
 - `objdump -d`
 
     Use this to disassemble all of the code in the bomb. You can also just look at individual functions. Reading the assembler code can tell you how the bomb works.
@@ -101,6 +102,7 @@ There are many tools which are designed to help you figure out both how programs
     8048c36: e8 99 fc ff ff call 80488d4 <_init+0x1a0>
     ```
     To determine that the call was to `sscanf`, you would need to disassemble within gdb.
+    
 - `strings`
 
     This utility will display the printable strings in your bomb.
