@@ -70,36 +70,58 @@ After the file is opened, you can then use the `fwrite()` command to write to th
 
 ## Requirements
 
-- First verify your camera is working. To do that, run the following command:
+- First verify your camera is working. To do that, run the following command. If this command succeeds, that means you have correctly connected the camera. If the command fails, such as a camera not found error, then you need to fix the connection.
 
 ```
 libcamera-still -n --immediate -e bmp --width 128 --height 128 -o camera-test.bmp
 ```
-
-If this command succeeds, that means you have correctly connected the camera. If the command fails, such as a camera not found error, then you need to fix the connection.
   
-- Copy your code in `main.c` from the previous lab into this lab's `main.c`.
+- Copy the three functions you implemented (`get_entries`, `draw_menu`, and `draw_file`) and your `main` function from last lab into your main.c for this lab.
 
-- Assign the right button to do what the center button did in the previous lab. When you push the dpad to the right position, the file that is selected should be displayed.
+- Copy your `remove_color_channel` and `or_filter` functions into `image.c` from your Image Lab code. You will be using this code later on.
+
+- We have change the contents of the viewer folder slightly. Make sure your code works as expected. If it doesn't fix it.
+
+- Assign the right button to do what the center button did in the previous lab. When you push the d-pad to the right position, the file that is selected should be displayed.
 
 - Reassign the center button to do the following:
-    - Take a photo with the Pi Z2W's camera
+    - Clear the screen and write a message telling the person you are taking a picture. You can write what ever you want (e.g., "Say Cheese!").
   
-    - Save the raw data received from the capture to a `.bmp` file. The files must be named `doorbell-<n>.bmp` where `<n>` is replaced by the current number of pictures taken.
-    
-    - Your code should save up to 5 `.bmp` images. If a 6th image is taken, `doorbell-1.bmp` should be overwritten, if a 7th is taken `doorbell-2.bmp` should be overwritten, etc.
+    - Take a picture with the Pi Z2W's camera using the `camera_capture_data` function found in `camera.c`.
+  
+    - Save the raw data received from the capture to a `.bmp` file. You will have to implement the `camera_save_to_file` function found in `camera.c`. The file must be named `doorbell.bmp` and saved in the `viewer` folder.
 
-    - Update your fileviewer code to include the new bitmap files that you save.
+    - Update the contents of your menu. It should now include the newly saved file.
 
-    - Show your most recent photo for 5 seconds before you return to the file viewer.
+    - Display the contents of the picture using the newly added `display_draw_image_data` function. However, before you can use that function, you must convert the raw `uint8_t *` buffer into a `Bitmap` struct. This is because `camera_campture_data` returns the bytes of the BMP image file, which includes the BMP header. `display_draw_image_data` is expecting raw pixels values without a header. To process the header and pixel values, call `create_bmp` located in image.c. This function will parse the header and set the `pxl_data` struct field to just the raw pixel data.
 
-    - All other functionality should stay the same.
+    - While the contents of the picture is showing, you must handle the following:
+      - If the right button of the d-pad is pressed, filter out the red color of the image.
+      - If the left button of the d-pad is pressed, filter out the blue color of the image.
+      - If the up button of the d-pad is pressed, filter out the green color of the image.
+      - If the down button of the d-pad is pressed, or-filter the image.
+      - If the center button of the d-pad is pressed, exit from the submenu by clearing the picture and displaying the menu.
+
+- Your program must not have any memory leaks. This means for every `malloc`, you need to have a corresponding `free` call. `create_bmp` allocates memory for the `Bitmap` struct using `malloc`. You must free that space by calling `destroy_bmp` when you are done with the struct.
+
+- All other functionality should stay the same.
+
+Here is a demo showing the different features of the lab:
+
+<div class="row">
+    <div class="mx-auto">
+        <video height=500 controls>
+            <source src="{% link assets/camera/demo.mp4 %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
 
 ## Submission
 
 - Answer the questions in the `README.md`.
 
-- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above. You must also show the TAs where you are calling `free` and `destroy_bmp`.
 
 - To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
