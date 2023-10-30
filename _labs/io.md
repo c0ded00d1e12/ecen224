@@ -71,8 +71,8 @@ While iterating through a directory, you will need to have an object that corres
     The `d_name` value inside of the `dirent` struct holds the file name of the file we are looking at. In order to see what the name of the current file is from a `readdir()` operation:
 
     ```c
-    dir = readdir(dp);                      // Get the current file object
-    printf("Item name: %s\n", dir->d_name); // Print out name
+    entry = readdir(dp);                      // Get the current file object
+    printf("Item name: %s\n", entry->d_name); // Print out name
     ```
 
 #### Filtering Files
