@@ -33,7 +33,7 @@ uint8_t my_new_buf[256];    // Create a buffer of a known size
 However, this becomes difficult when our buffers become very large. For example, the buffers that you dealt with in the **Image** lab had millions of values in it! This is much too large for variables that are declared on the stack. Instead, you will need to use `malloc()` in conjunction with an unbounded array:
 
 ```c
-uint8_t * my_new_buf = malloc(sizeof(uint8_t) * SIZEOFYOURBUFFER);
+uint8_t *my_new_buf = malloc(sizeof(uint8_t) * SIZEOFYOURBUFFER);
 
 // Whenever we are done with a malloc'd buffer in C, don't forget to call the following line:
 free(my_new_buf);
