@@ -37,10 +37,14 @@ PING byu.edu (128.187.16.184) 56(84) bytes of data.
 
 Note that `128.187.16.184` is the IP address of the server that responded to our `ping`.
 
-Now that we know the address of the computer that we want to talk to, we need to know where on that computer the program that we are trying to interact with is happening. Programs that communicate on the remote computer through a special window called a **port**. For example, web server that is hosting a website normally does this under port `80` or `443` (if you are using HTTPS instead of HTTP). Every time you use `ssh` on your computer, you are talking to the remote computer over port `22` by default.
+Now that we know the address of the computer that we want to talk to, we need to know what **port** is being used by the program we want to communicate with. 
+A port is a special window that a program uses to communicate with other programs. 
+For example, a web server that is hosting a website normally does this under port `80` or `443` (if you are using HTTPS instead of HTTP). Every time you use `ssh` on your computer, you are talking to the remote computer over port `22` by default.
+
+When we connect to another computer that is *listening* on a specific port, we refer to the listening computer as the **server** and the computer that is trying to connect to the server as the **client**. 
 
 #### Struct Data Members
-In order to talk to a remote computer running a program that we want to interact with (or a **server**), we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
+In order to talk to a server, we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
 
 ```c
 typedef struct Config {
@@ -56,8 +60,7 @@ typedef struct Config {
 | `port`                                                                                                 | The location of photo uploader program is running                                                                                 |
 | `host`                                                                                                 | This is the hostname of the server we are trying to connect to                                                                    |
 | `payload`                                                                                              | This is the data we want to send to the server. In this lab, that will be the image data.                                         |
-| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > |
-| this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
+| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
 
 The location you will be connecting to to upload your photos in this lab will be:
 - Host: netlab.et.byu.edu
