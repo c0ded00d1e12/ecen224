@@ -67,17 +67,19 @@ The location you will be connecting to to upload your photos in this lab will be
 - Port: 2225
 
 ### Network Socket
-Now that we know where to go to talk to a different computer/server in our program, how do we go about doing that? The answer is quite simple and more surprising than you would think. Talking to a different computer in C is much like writing or reading data to a file. However, instead of writing to a file, we will be writing to a socket.
+Now that we know the server name and port that we want to connect to, how do we go about doing that? The answer is quite simple and more surprising than you would think. Talking to a different computer in C is much like writing or reading data to a file. However, instead of writing to a file, we will be writing to a **socket**.
 
-When we want to write to a file in C, we need to use the function `fopen()` to create or open the file that we want to read from or edit. In network programming, it is not this simple and actually requires a bit of investigating. However, for this lab, you will not be expected to create a network socket by yourself. The function `client_connect()` has been written for you to do this. However, just like a `fopen()` returns a `FILE` pointer so that you can keep track or your progress in reading or writing to the file, in this lab, `client_connect()` returns a file descriptor (with the data type of int) that lets your program keep track of which port your computer will use to talk to the remote computer.
+When we want to write to a file in C, we need to use the `fopen()` function to open the file. In network programming, it is a bit more complicated. However, for this lab, you will not be expected to create a network socket by yourself. The function `client_connect()`, which connects to a server port and opens a socket, has been written for you. Similar to how `fopen()` returns a `FILE` pointer that you use to interact with a file, `client_connect()` returns a file descriptor (with the data type of `int`) that lets your program keep track of which port your computer will use to talk to the remote computer.
 
 ### Sending Data
-Just like in the I/O lab, you will notice that much of what you will be doing in this lab is using write functions to the socket file descriptor. Instead of using `fwrite()` you will be using a function (see the link in **Explore More**) called `send()`. Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
+While in previous labs you used `write()` to write to a file, for network programming, we use `send()` to write to a socket (see the link in **Explore More** for more details about this function). 
+Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
 
-### Freeing Memory
-Just like in any other file, directory, or memory operation that allocates a pointer or memory off of the stack, you will need to free that memory. If this is not done, unexpected behavior may occur on your system. So remember the following:
+### Deallocating Resources
+When calling functions that create or allocate system resources, you need to remember to free those resources when you are done with them. 
+If this is not done, unexpected behavior may occur on your system. So remember the following:
 
-| Memory Allocation                                                                                                                      | Freeing Call |
+| Resource Allocation                                                                                                                      | Freeing Call |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | `malloc`                                                                                                                               | `free`       |
 | `fopen`                                                                                                                                | `fclose`     |
