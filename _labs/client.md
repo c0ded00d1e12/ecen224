@@ -16,7 +16,7 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 ## Overview
 You have come very far in understanding how to control your computer! Up until this point, we have covered programming peripheral devices, handling inputs from a user, and many other skills that allow you to control your Pi Z2W to the fullest! In this we will take you from influencing processes on your own system to interacting with programs on other systems! 
 
-In this lab you will be sending some of your saved photos
+In this lab you will gain practice with network programming by sending some of your saved photos over a network to a server.
 
 ### Config Struct
 
@@ -91,7 +91,7 @@ If this is not done, unexpected behavior may occur on your system. So remember t
 
 In this lab you should accomplish the following:
 - Copy your code from the previous lab into the cloned repository for this lab on your Pi Z2W.
-- Assign the left button (or the up button in code) to send the selected image to the server at netlab.et.byu.edu:2225
+- Assign the left button to send the `doorbell.bmp` image to the server at `netlab.et.byu.edu:2225` (if any other item is selected, the left button can continue to do nothing)
     - Load the Config struct with the appropriate address data
     - Start the client connection
     - Load the appropriate image data into the struct
