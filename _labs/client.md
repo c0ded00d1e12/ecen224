@@ -51,16 +51,18 @@ typedef struct Config {
     char *port;
     char *host;
     uint8_t *payload;
+    uint32_t payload_size;
     char *hw_id;
 } Config;
 ```
 
-| Data Member | Description                                                                                                                                                                                                                            |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `port`      | The port number of the application you are trying to connect to.                                                                                                                                                                       |
-| `host`      | This is the hostname of the server you are trying to connect to.                                                                                                                                                                       |
-| `payload`   | This is the data you want to send to the server. In this lab, that will be the image data.                                                                                                                                             |
-| `hw_id`     | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades and then click on the small link at the top that says "Show Course Homework ID" |
+| Data Member    | Description                                                                                                                                                                                                                            |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `port`         | The port number of the application you are trying to connect to.                                                                                                                                                                       |
+| `host`         | This is the hostname of the server you are trying to connect to.                                                                                                                                                                       |
+| `payload`      | This is the data you want to send to the server. In this lab, that will be the image data.                                                                                                                                             |
+| `payload_size` | The size of the data in `payload`.                                                                                                                                                                                                     |
+| `hw_id`        | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades and then click on the small link at the top that says "Show Course Homework ID" |
 
 The location you will be connecting to to upload your photos in this lab will be:
 - Host: ecen224.byu.edu
