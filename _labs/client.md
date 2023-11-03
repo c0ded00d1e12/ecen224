@@ -73,9 +73,9 @@ When we want to write to a file in C, we need to use the `fopen()` function to o
 
 ### Sending Data
 While in previous labs you used `write()` to write to a file, for network programming, we use `send()` to write to a socket (see the link in **Explore More** for more details about this function). 
-Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly by implementing a function called `send_all`.
+Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly by implementing a function called `client_send_image` in `client.c`.
 
-The `send` function will return how much of the data actually got sent. If the amount of data you were expecting to send is not the same as what `send` returned, that means not all of the data got sent. For example, if I am sending data that is 100 bytes long and I call `send` and it only returns 50, that means only the first 50 bytes got sent. I need to call `send` again, passing the rest of the data. You will need to keep calling send until the total bytes sent is equal to 100. Here is some pseudo-code to help:
+The standard `send` function will return how much of the data actually got sent. If the amount of data you were expecting to send is not the same as what `send` returned, that means not all of the data got sent. For example, if I am sending data that is 100 bytes long and I call `send` and it only returns 50, that means only the first 50 bytes got sent. I need to call `send` again, passing the rest of the data. You will need to keep calling send until the total bytes sent is equal to 100. Here is some pseudo-code to help:
 
 ```
 int socket = ...
@@ -110,27 +110,29 @@ If this is not done, unexpected behavior may occur on your system. So remember t
 
 - Copy your code from the previous lab into the cloned repository for this lab on your Pi Z2W.
 
-- Implement the `send_all` function. This function's job is to make sure all of the data is successfully sent to the server. The function should take three parameters, a socket, a buffer, and the size of the buffer. The function does not need to return anything.
-
 - Same as last lab, when you press the center button, you should take a picture and show the picture, allowing the user to apply different filters. When you press the center button again, instead of exiting the picture and going to the menu right away, first connect to the server and send the picture. Once you have sent the picture, show the menu. Specifically, when the center button gets pressed while showing the picture you should do the following:
-    - Load the `Config struct` with the appropriate address data
+    - Load the `Config struct` with the appropriate address data.
 
-    - Load the appropriate image data into the `Config struct`. Use the buffer used in `` function to as the payload.
+    - Load the appropriate image data into the `Config struct`. Use the buffer filled by the `camera_capture_data` function (the data with the BMP header and BMP data) as the payload.
     
-    - Start the client connection using `client_connect()`
+    - Start the client connection using `client_connect()`.
     
-    - Call the `send_all` function
+    - Call the `client_send_image` function to send the data.
     
-    - Close the connection using `close()`
+    - Close the connection using `client_close()`.
 
-    - Show the menu
+    - Show the menu.
+
+- Implement `client_close()` function in `client.c`.
+
+- Implement the `client_send_image()` function in `client.c`. This function's job is to make sure all of the data is successfully sent to the server.
     
 
 ## Submission
 
 - Answer the questions in the `README.md`.
 
-- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above. You must also show the TAs your implementation of the `send_all` function and where you close the socket.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above. You must also show the TAs your implementation of the `client_send_image` function and where you close the socket.
 
 - To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
