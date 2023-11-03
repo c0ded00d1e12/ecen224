@@ -110,7 +110,15 @@ If this is not done, unexpected behavior may occur on your system. So remember t
 
 ## Requirements
 
-- Copy your code from the previous lab into the cloned repository for this lab on your Pi Z2W.
+- Copy your `main.c`, `viewer` folder, and `lib` folder from the previous lab into the cloned repository. Make sure to keep the `client.h` and `client.c` files in your lib folder. You can run something like this:
+
+```bash
+cp ~/camera/main.c ~/client    # Copy main.c
+cp -r ~/camera/viewer ~/client # Copy viewer folder 
+cp -r ~/camera/lib ~/client    # Copy lib folder
+```
+
+- Add `lib/client.h` to your list of `#include`s in your `main.c`.
 
 - Same as last lab, when you press the center button, you should take a picture and show the picture, allowing the user to apply different filters. When you press the center button again, instead of exiting the picture and going to the menu right away, first connect to the server and send the picture. Once you have sent the picture, show the menu. Specifically, when the center button gets pressed while showing the picture you should do the following:
     - Load the `Config` `struct` with the appropriate address data.
