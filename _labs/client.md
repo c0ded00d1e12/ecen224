@@ -4,19 +4,19 @@ number: 9
 layout: lab
 ---
 
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
-
 ## Objectives
 
 - Interact with `struct`s
 - Handle raw data in a buffer
 - Send data over a network socket
 
-## Overview
-You have come very far in understanding how to control your computer! Up until this point, we have covered programming peripheral devices, handling inputs from a user, and many other skills that allow you to control your Pi Z2W to the fullest! In this we will take you from influencing processes on your own system to interacting with programs on other systems! 
+## Getting Started
 
-In this lab you will gain practice with network programming by sending some of your saved photos over a network to a server.
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi. Make sure the lab is top level folder of your VSCode editor.**
+
+## Overview
+
+You have come very far in understanding how to control your computer! Up until this point, we have covered programming peripheral devices, handling inputs from a user, and many other skills that allow you to control your Pi Z2W to the fullest! In this lab, we will take you from influencing processes on your own system to interacting with programs on other systems! In this lab you will gain practice with network programming by sending some of your saved photos over a network to a server.
 
 ### Config Struct
 
@@ -44,7 +44,7 @@ For example, a web server that is hosting a website normally does this under por
 When we connect to another computer that is *listening* on a specific port, we refer to the listening computer as the **server** and the computer that is trying to connect to the server as the **client**. 
 
 #### Struct Data Members
-In order to talk to a server, we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
+As mentioned previously, in order to talk to a server, we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
 
 ```c
 typedef struct Config {
@@ -55,16 +55,16 @@ typedef struct Config {
 } Config;
 ```
 
-| Data Member                                                                                            | Description                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| `port`                                                                                                 | The location of photo uploader program is running                                                                                 |
-| `host`                                                                                                 | This is the hostname of the server we are trying to connect to                                                                    |
-| `payload`                                                                                              | This is the data we want to send to the server. In this lab, that will be the image data.                                         |
-| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
+| Data Member | Description                                                                                                                                                                                                                            |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `port`      | The port number of the application you are trying to connect to.                                                                                                                                                                       |
+| `host`      | This is the hostname of the server you are trying to connect to.                                                                                                                                                                       |
+| `payload`   | This is the data you want to send to the server. In this lab, that will be the image data.                                                                                                                                             |
+| `hw_id`     | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades and then click on the small link at the top that says "Show Course Homework ID" |
 
 The location you will be connecting to to upload your photos in this lab will be:
-- Host: netlab.et.byu.edu
-- Port: 2225
+- Host: ecen224.byu.edu
+- Port: 2240
 
 ### Network Socket
 Now that we know the server name and port that we want to connect to, how do we go about doing that? The answer is quite simple and more surprising than you would think. Talking to a different computer in C is much like writing or reading data to a file. However, instead of writing to a file, we will be writing to a **socket**.
@@ -73,13 +73,32 @@ When we want to write to a file in C, we need to use the `fopen()` function to o
 
 ### Sending Data
 While in previous labs you used `write()` to write to a file, for network programming, we use `send()` to write to a socket (see the link in **Explore More** for more details about this function). 
-Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
+Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly by implementing a function called `send_all`.
+
+The `send` function will return how much of the data actually got sent. If the amount of data you were expecting to send is not the same as what `send` returned, that means not all of the data got sent. For example, if I am sending data that is 100 bytes long and I call `send` and it only returns 50, that means only the first 50 bytes got sent. I need to call `send` again, passing the rest of the data. You will need to keep calling send until the total bytes sent is equal to 100. Here is some pseudo-code to help:
+
+```
+int socket = ...
+uint8_t *data = ...
+int data_length = ...
+int total_sent = 0
+int num_sent = 0
+
+while total_sent < data_length:
+    num_sent = send(socket, data + total_sent, data_length - total_sent, 0)
+
+    if num_sent == 0:
+        print("Error while sending data")
+        break
+
+    total_sent += num_sent
+```
 
 ### Deallocating Resources
 When calling functions that create or allocate system resources, you need to remember to free those resources when you are done with them. 
 If this is not done, unexpected behavior may occur on your system. So remember the following:
 
-| Resource Allocation                                                                                                                      | Freeing Call |
+| Resource Allocation                                                                                                                    | Freeing Call |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | `malloc`                                                                                                                               | `free`       |
 | `fopen`                                                                                                                                | `fclose`     |
@@ -89,40 +108,37 @@ If this is not done, unexpected behavior may occur on your system. So remember t
 
 ## Requirements
 
-In this lab you should accomplish the following:
 - Copy your code from the previous lab into the cloned repository for this lab on your Pi Z2W.
-- Assign the left button to send the `doorbell.bmp` image to the server at `netlab.et.byu.edu:2225` (if any other item is selected, the left button can continue to do nothing)
-    - Load the Config struct with the appropriate address data
-    - Start the client connection
-    - Load the appropriate image data into the struct
-    - Implement the sending function
-    - Close the connection
+
+- Implement the `send_all` function. This function's job is to make sure all of the data is successfully sent to the server. The function should take three parameters, a socket, a buffer, and the size of the buffer. The function does not need to return anything.
+
+- Same as last lab, when you press the center button, you should take a picture and show the picture, allowing the user to apply different filters. When you press the center button again, instead of exiting the picture and going to the menu right away, first connect to the server and send the picture. Once you have sent the picture, show the menu. Specifically, when the center button gets pressed while showing the picture you should do the following:
+    - Load the `Config struct` with the appropriate address data
+
+    - Load the appropriate image data into the `Config struct`. Use the buffer used in `` function to as the payload.
+    
+    - Start the client connection using `client_connect()`
+    
+    - Call the `send_all` function
+    
+    - Close the connection using `close()`
+
+    - Show the menu
+    
 
 ## Submission
 
-### Compilation
-Since a large portion of this lab's grade depends on me successfully compiling your code, the following points must be adhered to to ensure consistency in the grading process. Any deviation in this will result in points off your grade:
+- Answer the questions in the `README.md`.
 
-- The code in this lab will be compiled at the root of this lab repository (i.e. `client-<your-github-username>`). It is your responsibility to ensure that `gcc` will work from this directory.
-- Your binary must output to a folder called `bin`. This folder will be marked to be ignored by `git`, meaning that I will not receive your final compiled binary to test, but rather your code which must compile successfully on my Pi Z2W.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above. You must also show the TAs your implementation of the `send_all` function and where you close the socket.
 
-### Gitignore
-In this lab you are expected to ignore the following:
-
-- `.vscode` folders
-- the `bin` folder where your binary is generated
-
-### Normal Stuff
-- Complete all of the requirements.
-
-- Answer the questions in the `README.md`. 
-
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
-
-- **MAKE SURE YOUR CODE FOLLOWS THE CODING STANDARD!** More info on how to set that up is available on the Coding Standard page. 
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 
 ## Explore More!
+
 - [`memcpy()` in C](https://www.tutorialspoint.com/c_standard_library/c_function_memcpy.htm)
+
 - [`send()` in C](https://man7.org/linux/man-pages/man2/send.2.html)
+
 - [Ultimate Guide to Network Programming in C](https://beej.us/guide/bgnet/html/)
