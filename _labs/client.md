@@ -16,7 +16,7 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 ## Overview
 You have come very far in understanding how to control your computer! Up until this point, we have covered programming peripheral devices, handling inputs from a user, and many other skills that allow you to control your Pi Z2W to the fullest! In this we will take you from influencing processes on your own system to interacting with programs on other systems! 
 
-In this lab you will be sending some of your saved photos
+In this lab you will gain practice with network programming by sending some of your saved photos over a network to a server.
 
 ### Config Struct
 
@@ -37,10 +37,14 @@ PING byu.edu (128.187.16.184) 56(84) bytes of data.
 
 Note that `128.187.16.184` is the IP address of the server that responded to our `ping`.
 
-Now that we know the address of the computer that we want to talk to, we need to know where on that computer the program that we are trying to interact with is happening. Programs that communicate on the remote computer through a special window called a **port**. For example, web server that is hosting a website normally does this under port `80` or `443` (if you are using HTTPS instead of HTTP). Every time you use `ssh` on your computer, you are talking to the remote computer over port `22` by default.
+Now that we know the address of the computer that we want to talk to, we need to know what **port** is being used by the program we want to communicate with. 
+A port is a special window that a program uses to communicate with other programs. 
+For example, a web server that is hosting a website normally does this under port `80` or `443` (if you are using HTTPS instead of HTTP). Every time you use `ssh` on your computer, you are talking to the remote computer over port `22` by default.
+
+When we connect to another computer that is *listening* on a specific port, we refer to the listening computer as the **server** and the computer that is trying to connect to the server as the **client**. 
 
 #### Struct Data Members
-In order to talk to a remote computer running a program that we want to interact with (or a **server**), we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
+In order to talk to a server, we need to know several things about it. For this lab, the `Config` `struct` in `client.h` contains the information you will need in order to connect to the server:
 
 ```c
 typedef struct Config {
@@ -56,25 +60,26 @@ typedef struct Config {
 | `port`                                                                                                 | The location of photo uploader program is running                                                                                 |
 | `host`                                                                                                 | This is the hostname of the server we are trying to connect to                                                                    |
 | `payload`                                                                                              | This is the data we want to send to the server. In this lab, that will be the image data.                                         |
-| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > |
-| this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
+| `hw_id`                                                                                                | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades > And then click on the small link at the top that says `Show Course Homework ID` |
 
 The location you will be connecting to to upload your photos in this lab will be:
 - Host: netlab.et.byu.edu
 - Port: 2225
 
 ### Network Socket
-Now that we know where to go to talk to a different computer/server in our program, how do we go about doing that? The answer is quite simple and more surprising than you would think. Talking to a different computer in C is much like writing or reading data to a file. However, instead of writing to a file, we will be writing to a socket.
+Now that we know the server name and port that we want to connect to, how do we go about doing that? The answer is quite simple and more surprising than you would think. Talking to a different computer in C is much like writing or reading data to a file. However, instead of writing to a file, we will be writing to a **socket**.
 
-When we want to write to a file in C, we need to use the function `fopen()` to create or open the file that we want to read from or edit. In network programming, it is not this simple and actually requires a bit of investigating. However, for this lab, you will not be expected to create a network socket by yourself. The function `client_connect()` has been written for you to do this. However, just like a `fopen()` returns a `FILE` pointer so that you can keep track or your progress in reading or writing to the file, in this lab, `client_connect()` returns a file descriptor (with the data type of int) that lets your program keep track of which port your computer will use to talk to the remote computer.
+When we want to write to a file in C, we need to use the `fopen()` function to open the file. In network programming, it is a bit more complicated. However, for this lab, you will not be expected to create a network socket by yourself. The function `client_connect()`, which connects to a server port and opens a socket, has been written for you. Similar to how `fopen()` returns a `FILE` pointer that you use to interact with a file, `client_connect()` returns a file descriptor (with the data type of `int`) that lets your program keep track of which port your computer will use to talk to the remote computer.
 
 ### Sending Data
-Just like in the I/O lab, you will notice that much of what you will be doing in this lab is using write functions to the socket file descriptor. Instead of using `fwrite()` you will be using a function (see the link in **Explore More**) called `send()`. Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
+While in previous labs you used `write()` to write to a file, for network programming, we use `send()` to write to a socket (see the link in **Explore More** for more details about this function). 
+Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly.
 
-### Freeing Memory
-Just like in any other file, directory, or memory operation that allocates a pointer or memory off of the stack, you will need to free that memory. If this is not done, unexpected behavior may occur on your system. So remember the following:
+### Deallocating Resources
+When calling functions that create or allocate system resources, you need to remember to free those resources when you are done with them. 
+If this is not done, unexpected behavior may occur on your system. So remember the following:
 
-| Memory Allocation                                                                                                                      | Freeing Call |
+| Resource Allocation                                                                                                                      | Freeing Call |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | `malloc`                                                                                                                               | `free`       |
 | `fopen`                                                                                                                                | `fclose`     |
@@ -86,7 +91,7 @@ Just like in any other file, directory, or memory operation that allocates a poi
 
 In this lab you should accomplish the following:
 - Copy your code from the previous lab into the cloned repository for this lab on your Pi Z2W.
-- Assign the left button (or the up button in code) to send the selected image to the server at netlab.et.byu.edu:2225
+- Assign the left button to send the `doorbell.bmp` image to the server at `netlab.et.byu.edu:2225` (if any other item is selected, the left button can continue to do nothing)
     - Load the Config struct with the appropriate address data
     - Start the client connection
     - Load the appropriate image data into the struct
