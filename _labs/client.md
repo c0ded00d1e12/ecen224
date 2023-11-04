@@ -77,7 +77,7 @@ When we want to write to a file in C, we need to use the `fopen()` function to o
 While in previous labs you used `write()` to write to a file, for network programming, we use `send()` to write to a socket (see the link in **Explore More** for more details about this function). 
 Look at the tutorial below to see how the function behaves and you will notice it is very close to writing to a file. However, be careful. Since this is network programming, there is no guarantee that when you call `send()` that it will send all the data in the buffer you tried to send. You will be responsible for writing the logic to ensure that **all** of the data is sent correctly by implementing a function called `client_send_image` in `client.c`.
 
-The standard `send` function will return how much of the data actually got sent. If the amount of data you were expecting to send is not the same as what `send` returned, that means not all of the data got sent. For example, if I am sending data that is 100 bytes long and I call `send` and it only returns 50, that means only the first 50 bytes got sent. I need to call `send` again, passing the rest of the data. You will need to keep calling send until the total bytes sent is equal to 100. Here is some pseudo-code to help:
+The standard `send` function will return how much of the data actually got sent. If the amount of data you were expecting to send is not the same as what `send` returned, that means not all of the data got sent. For example, if I am sending data that is 100 bytes long and I call `send` and it only returns 50, that means only the first 50 bytes got sent. I need to call `send` again, passing the rest of the data. You will need to keep calling send until the total bytes sent is equal to the total bytes you were expecting to send. Here is some pseudo-code showing this concept:
 
 ```
 int socket = ...
@@ -95,6 +95,11 @@ while total_sent < data_length:
 
     total_sent += num_sent
 ```
+
+In this lab, you will need to send your homework ID and your image data. The easiest way of doing this is combining the data into one block of data (using `malloc` and `memcpy`). Your homework ID must go first, followed by the image data.
+
+The results will be displayed at `ecen224.byu.edu:2241/<homework_id>`. If your homework ID was 123456789, then the URL where your pictures are stored are at http://ecen224.byu.edu:2241/123456789.
+
 
 ### Deallocating Resources
 When calling functions that create or allocate system resources, you need to remember to free those resources when you are done with them. 
@@ -128,6 +133,8 @@ cp -r ~/camera/lib ~/client    # Copy lib folder
     - Start the client connection using `client_connect()`.
     
     - Call the `client_send_image` function to send the data.
+
+    - Call the `client_receive_response` function. This function is implemented for you and will print out the response from the server. This function can help debug any problems you might have with sending your image data.
     
     - Close the connection using `client_close()`.
 
