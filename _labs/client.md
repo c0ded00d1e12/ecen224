@@ -126,11 +126,10 @@ cp -r ~/camera/lib ~/client    # Copy lib folder
 - Add `lib/client.h` to your list of `#include`s in your `main.c`.
 
 - Same as last lab, when you press the center button, you should take a picture and show the picture, allowing the user to apply different filters. When you press the center button again, instead of exiting the picture and going to the menu right away, first connect to the server and send the picture. Once you have sent the picture, show the menu. Specifically, when the center button gets pressed while showing the picture you should do the following:
-    - Load the `Config` `struct` with the appropriate address data.
-
-    - Load the appropriate image data into the `Config` `struct`. Use the buffer filled by the `camera_capture_data` function (the data with the BMP header and BMP data) as the payload.
+  
+    - Load the `Config` `struct` with the appropriate data. Most of the values can be hard-coded. For the `payload`, use the buffer filled by the `camera_capture_data` function (the data with the BMP header and BMP data).
     
-    - Start the client connection using `client_connect()`.
+    - Start the client connection using `client_connect()`. This function is implemented for you and will print out the status of the connection to the server.
     
     - Call the `client_send_image` function to send the data.
 
