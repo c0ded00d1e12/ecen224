@@ -98,7 +98,7 @@ while total_sent < data_length:
 
 In this lab, you will need to send your homework ID and your image data. The easiest way of doing this is combining the data into one block of data (using `malloc` and `memcpy`). Your homework ID must go first, followed by the image data.
 
-The results will be displayed at `ecen224.byu.edu:2241/<homework_id>`. If your homework ID was 123456789, then the URL where your pictures are stored are at [http://ecen224.byu.edu:2241/123456789](http://ecen224.byu.edu:2241/123456789).
+The results will be displayed at `http://ecen224.byu.edu:2241/<homework_id>`, replacing `<homework_id>` with your actual homework ID. For example, if your homework ID was 123456789, then the URL where your pictures are stored are at [http://ecen224.byu.edu:2241/123456789](http://ecen224.byu.edu:2241/123456789).
 
 
 ### Deallocating Resources
