@@ -65,7 +65,7 @@ typedef struct Config {
 | `hw_id`        | This is your Learning Suite assigned homework ID for this class. In order to find your unique homework ID, go to Learning Suite > this course > Grades and then click on the small link at the top that says "Show Course Homework ID" |
 
 The location you will be connecting to to upload your photos in this lab will be:
-- Host: ecen224.byu.edu
+- Host: ecen224.byu.edu (Note: this host is only available from the campus network)
 - Port: 2240
 
 ### Network Socket
@@ -98,7 +98,7 @@ while total_sent < data_length:
 
 In this lab, you will need to send your homework ID and your image data. The easiest way of doing this is combining the data into one block of data (using `malloc` and `memcpy`). Your homework ID must go first, followed by the image data.
 
-The results will be displayed at `http://ecen224.byu.edu:2241/<homework_id>`, replacing `<homework_id>` with your actual homework ID. For example, if your homework ID was 123456789, then the URL where your pictures are stored are at [http://ecen224.byu.edu:2241/123456789](http://ecen224.byu.edu:2241/123456789).
+The results will be displayed at `http://ecen224.byu.edu:2241/<homework_id>`, replacing `<homework_id>` with your actual homework ID. For example, if your homework ID was 123456789, then the URL where your pictures are stored are at [http://ecen224.byu.edu:2241/123456789](http://ecen224.byu.edu:2241/123456789). Remember, this server is only available when you are on the campus network.
 
 
 ### Deallocating Resources
