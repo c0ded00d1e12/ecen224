@@ -32,14 +32,14 @@ Threads in Linux programming are known as [POSIX](https://en.wikipedia.org/wiki/
 pthread_t my_thread;
 ```
 
-This object is used inside a range of different functions found inside the `pthread.h` library. WThe most important one of these functions for this lab is `pthread_create()` which allows us to spawn a new thread and assign the function that it will run. Consider the simple threading program below:
+This object is used inside a range of different functions found inside the `pthread.h` library. The most important function for this lab is `pthread_create()`, which allows us to spawn a new thread and provide the function that it will run. Consider the simple threading program below:
 
 ```c
 #include <stdio.h>
 #include <unistd.h>   // Library that includes sleep()
 #include <pthread.h>  // Library that includes pthreading types and functions
 
-void * print_msg()
+void * print_msg(void *unused)
 {
     while(1)
     {
@@ -68,10 +68,10 @@ To compile using the `pthread.h` library, you will need to add `-lpthread` to yo
 Let's take a closer look at what is going on in the `pthread_create()` function. The arguments that are expected in the function are as follows:
 1. The address of your thread identifier. This is how your program will know how to identify your thread in the program.
 2. This argument expects a special `pthread_attr_t` struct pointer. Since we are covering the basics of threading in this class, this field is ignored by putting a `NULL` in its place.
-3. The name of the function that will be run inside of the thread. You'll notice that we only provide the **name of the function and _we are not calling the function_** (`print_msg` instead of `print_msg()`).
-4. This argument is meant for the arguments that will be provided for the function to be run in the thread. Notice that for this example it is `NULL` since our function doesn't require any special arguments. More on how to pass arguments into a thread is found in the following section.
+3. A pointer to the function we are calling.  Function pointers can be provided by giving the name of the function.  Make sure you only provide the name, and don't *call* the function (eg. `print_msg` instead of `print_msg()`).  If you like, you can put a `&` in front of the function name to make it more obvious it's a function pointer (eg. `&print_msg`), but this is not required by the compiler.
+4. A pointer you provide to this argument will be passed as an argument to the function you are running in the new thread.  This is a great way to provide information to the new thread.  Notice that for this example it is `NULL` since our function doesn't require any special arguments.  The following section has more information about how to pass arguments into a thread.
 
-You'll notice that both our `main()` function and our `print_msg()` function have `while(1)` loops that will run indefinitely. Were we not using threading our program would always be stuck inside the loop inside of `main`, however, since we spawned a thread with `pthread_create()` before that loop was reached, the thread will its function alongside of `main` and we can expect output like the following:
+You'll notice that both our `main()` function and our `print_msg()` function have `while(1)` loops that will run indefinitely. Because threading allows us to run different functions simultaneously, we will see output that looks something like this:
 
 ```
 I'm in a thread!
@@ -93,21 +93,23 @@ I'm in main!
 While the previous example may have been interesting in the sense that we've learned to use threads, it is pretty lackluster in the sense that we can't get any information into or out of the thread. To do this, we will need to understand working with `void *` and allocating memory.
 
 #### void *: The Generic Pointer
-A `void *` is the generic pointer in C. This means that anything can be cast to or from a `void *` object. This datatype is very useful when using threading functions because it allows us to pass in virtually anything in. You can see this manifest in the datatypes that `pthread_create()` expects for its arguments. This also accounts for why our `print_msg()` function in the previous example program's return type had to be a `void *`. The datatype that is expected to pass in arguments to the function we are running in a thread is also a `void *`. So what would that look like?
+A `void *` is the generic pointer in C. It is used to store a memory address, but does not indicate the type of data stored at the address.  This means that any type of pointer can be cast to or from a `void *` object. This datatype is very useful when using threading functions because it allows us to pass in the address of *any* type of data to the function we are spawning.  The function also *returns* a `void *` data type, allowing it to pass back a pointer to any type of data.  This accounts for why our `print_msg()` function in the previous example program's return type was a `void *`. 
+<!-- The datatype that is expected to pass in arguments to the function we are running in a thread is also a `void *`. So what would that look like? -->
 
 #### Example
 Consider the following program:
 ```c
 #include <stdio.h>
-#include <unistd.h>   // Library that includes sleep()
-#include <pthread.h>  // Library that includes pthreading types and functions
+#include <unistd.h>  // Library that includes sleep()
+#include <stdlib.h>  // Library that includes malloc()
+#include <pthread.h> // Library that includes pthreading types and functions
 
 void * print_num(void *arg)
 {
     while(1)
     {
         // Notice that we have to cast the void * back to an int * and then we use the * to get the value inside
-        printf("The number is:\t%d\n", *(int *) arg);
+        printf("The number is:\t%d\n", *((int *) arg));
         sleep(2);     // Sleeps for 2 seconds
     }
 }
@@ -120,7 +122,7 @@ int main()
     pthread_t my_thread;
 
     // Notice that we have to cast i to a void *
-    pthread_create(&my_thread, NULL, print_msg, (void *) i); 
+    pthread_create(&my_thread, NULL, print_num, (void *) i); 
 
     while(1)
     {
@@ -133,17 +135,19 @@ int main()
 }
 ```
 
-Let's take a closer look at our `pthread_create()` function and the handling of our `i` pointer. You'll notice some things about `i`:
-- It is a pointer that needed to be `malloc`d.
-- To set a value to it we needed to refer to the pointer's contents `*i`
-- When we passed it into `pthread_create()`, we needed to cast it to a `void *`.
+Let's take a closer look at this code example.  The `pthread_create()` function is spawning a new thread to run the `print_num` function.  We want to pass an integer to this function.  Since we always use a `void *` to pass data to a function run by `pthread_create()`, we need to allocate memory for an integer and provide it's address as the last argument to `pthread_create()`.
 
-With `i` in its proper form, we can use it inside of `pthread_create()` without any issues, but how do we actually handle that inside of the function of our thread? Let's take a look at our `print_num()` function:
-- The argument now is a `void *`
+You'll notice some things about how we've done this:
+- We have allocated the space for the integer using `malloc`. While we could have simply declared an integer (`int i;`), this would create the integer on the stack.  In general, it's bad practice to pass addresses on the stack to other threads as they may continue to execute after stack variable goes out of scope.  Another alternative to `malloc` is to declare the integer as a global variable.
+- To set the value of the integer to zero, we needed to refer to the pointer's contents: `*i = 0;`
+- When we passed it into `pthread_create()`, we needed to cast it from a `int *` to a `void *`.
+
+Now that we have provided the address of our integer to `pthread_create()`, let's take a look at how it is received by the `print_num()` function:
+- The address is provided as an argument to the function with type `void *`.
 - To use `arg` we need to do two things:
 
-    1. Cast `arg` back into the type that we expect (in this case an `int *`)
-    2. Deference it with a * to get the value inside (the `*` infront of the cast statement)
+    1. Cast `arg` back into the type that we expect (in this case an `int *`).
+    2. Deference it with a `*` to get the integer value pointed to by this address (the `*` in front of the cast statement).
 
 ### Return Values from Threads
 To get a return value from a thread in C, you would need to use the `pthread_join()` function. For the purposes of this lab, we will not be using `pthread_join()`, but you can read more about it in the **Explore More!** section. `pthread_join()` is **NOT** recommended for this lab.
@@ -156,8 +160,8 @@ You may have noticed at this point that threading is very function heavy. This m
 ## Requirements
 In this lab you should accomplish the following:
 - You will use the code from your previous lab. However, a new `main.c` has been provided in this lab as a boilerplate for you to paste your old code into. Several new functions have been added that you will need to fill out.
-- Refactor your code by putting all code that sends image data to the server into the `send_data` boilerplate function
-- Put a 10 second delay at the beginning of the `send_data` function. This is to make the effects of threading more obvious
+- Refactor your code by putting all code that sends image data to the server into the `send_image` boilerplate function.
+- Put a 10 second delay at the beginning of the `send_image` function. This is to make the effects of threading more obvious.
 - When the center button is pressed, take a picture and show it for 1 second and save the data to a new file (just like the previous lab with the 5 doorbell files)
 - When the left button is pressed, send the data of the selected image inside the main thread by calling the `send_data` function
 - When the right button is presesed, send the data of the selected image in a thread.
