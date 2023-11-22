@@ -8,20 +8,17 @@ layout: lab
 
 ## 0. Getting Started
 
-You must complete this lab on one of the Spice Lab Linux computers. The Spice Lab is located in **CB 425**. You can either go physically into the lab and use one of the Linux computers, or you can SSH into one. You can not SSH into them directly. You must first SSH into `ssh.et.byu.edu` with your CAEDM username and password. From there, you can SSH into the a Spice Lab computer, `spice-##.ee.byu.edu`, where ## can be a number 14 to 48. Again, use your CAEDM username and password to log into those machines. For example, run the following commands
+You must complete this lab on the CAEDM server (`ssh.et.byu.edu`) to perform this lab. You can ssh into the server by running the following command:
 
 ```bash
-ssh foo@ssh.et.byu.edu
-# Once SSH'd into the CAEDM computer
-ssh foo@spice-20.ee.byu.edu
+ssh [caedm_username]@ssh.et.byu.edu
 ```
 
-Assuming your CAEDM username is foo and the Spice Lab computer you want to log into is 20. It doesn't matter which computer you log into. Your home directory is mounted to your J Drive so all folders will be synced between computers. From this SSH session, you will need to perform this assignment.
+Replacing `[caedm_username]` with your actual CAEDM username
 
 
 ### Download Instructions
-
-I will post the website to download the assignment and view the scoreboard on Slack.
+I will post the website to download the assignment and view the scoreboard on Learning Suite.
 
 
 ## 1. Introduction
