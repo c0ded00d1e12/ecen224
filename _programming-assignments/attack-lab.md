@@ -11,10 +11,10 @@ layout: lab
 You must complete this lab on the CAEDM server (`ssh.et.byu.edu`) to perform this lab. You can ssh into the server by running the following command:
 
 ```bash
-ssh [caedm_username]@ssh.et.byu.edu
+ssh <caedm_username>@ssh.et.byu.edu
 ```
 
-Replacing `[caedm_username]` with your actual CAEDM username
+Replacing `<caedm_username>` with your actual CAEDM username. Your home directory is mounted between `ssh.et.byu.edu`, the Digital Lab computers, and the Embedded Lab computers, so you can download the target from any of those locations.
 
 
 ### Download Instructions
