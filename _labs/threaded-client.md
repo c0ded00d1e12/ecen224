@@ -189,7 +189,7 @@ You may have noticed at this point that threading is very function heavy. This m
 
     - When your image is being sent in a thread, the text of the bar should say "Sending..." with the bar as a blue background.
 
-    - When your image is sent successfully (i.e. the thread reached the end successfully), change the color of the status bar to green and show "Sent!" as the text. *How are you going to know when the thread is done sending? A global variable might be helpful.*
+    - When your image is sent successfully (i.e. the thread reached the end successfully), change the color of the status bar to green and show "Sent!" as the text. *How are you going to know when the thread is done sending? A global variable or two might be helpful.*
     
     - The status bar should should stay green with the sent message for 2 seconds. After the 2 seconds hide the status bar. *How do you know when it has been 2 seconds? Spawning another thread that calls a function that just waits for 2 seconds might be helpful.*
 
