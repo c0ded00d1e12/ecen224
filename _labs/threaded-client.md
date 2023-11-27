@@ -66,7 +66,7 @@ int main()
 }
 ```
 
-To compile using the `pthread.h` library, you will need to add `-lpthread` to your normal `gcc` compile command. We have taken care of this in the Makefile we have provided.
+To compile using the `pthread.h` library, you will need to add `-pthread` to your normal `gcc` compile command.
 
 Let's take a closer look at what is going on in the `pthread_create()` function. The arguments that are expected in the function are as follows:
 
@@ -174,7 +174,10 @@ You may have noticed at this point that threading is very function heavy. This m
 
 - Copy all of your code, except for the `README.md` file from last lab into your newly cloned repository.
 
-- In order to use the threading library, you need to include the library in your compilation. You can do this by adding `-lthreads` to the `CFLAGS` variable in your Makefile. Before you go any farther, try making your project to make sure everything is still working.
+- In order to use the threading library, you need to include the library in source code and your compilation. 
+  - Add `#include <threads.h>` and `#include <unistd.h>` to your headers in `main.c`.
+  - Add `-pthreads` to the `CFLAGS` variable in your Makefile. 
+  - Before you go any farther, try making your project to make sure everything is still working.
 
 - Write a function called `send_image`. This function should take care of connecting to the server, sending the image, receiving the response, and closing the socket. You need to figure out the correct signature for this function.
 
@@ -188,7 +191,18 @@ You may have noticed at this point that threading is very function heavy. This m
 
     - When your image is sent successfully (i.e. the thread reached the end successfully), change the color of the status bar to green and show "Sent!" as the text. *How are you going to know when the thread is done sending? A global variable might be helpful.*
     
-    - The status bar should should stay green with the sent message for 5 seconds. After the 5 seconds turn the status bar background color back to blue with no text. *How do you know when it has been 5 seconds? Spawning another thread that calls a function that just waits for 5 seconds might be helpful.*
+    - The status bar should should stay green with the sent message for 2 seconds. After the 2 seconds hide the status bar. *How do you know when it has been 2 seconds? Spawning another thread that calls a function that just waits for 2 seconds might be helpful.*
+
+Here is a demo showing the different features of the lab:
+
+<div class="row">
+    <div class="mx-auto">
+        <video height=500 controls>
+            <source src="{% link assets/threaded-client/demo.mp4 %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
 
 
 ## Submission
