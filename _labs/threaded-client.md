@@ -175,8 +175,8 @@ You may have noticed at this point that threading is very function heavy. This m
 - Copy all of your code, except for the `README.md` file from last lab into your newly cloned repository.
 
 - In order to use the threading library, you need to include the library in source code and your compilation. 
-  - Add `#include <threads.h>` and `#include <unistd.h>` to your headers in `main.c`.
-  - Add `-pthreads` to the `CFLAGS` variable in your Makefile. 
+  - Add `#include <pthread.h>` and `#include <unistd.h>` to your headers in `main.c`.
+  - Add `-pthread` to the `CFLAGS` variable in your Makefile. 
   - Before you go any farther, try making your project to make sure everything is still working.
 
 - Write a function called `send_image`. This function should take care of connecting to the server, sending the image, receiving the response, and closing the socket. You need to figure out the correct signature for this function.
