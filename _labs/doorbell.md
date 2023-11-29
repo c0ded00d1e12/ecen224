@@ -4,13 +4,15 @@ number: 11
 layout: lab
 ---
 
-## GitHub Classroom
-Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment.
-
 ## Objectives
+
 - Learn about daemons
 - Create a program that runs on boot
 - Deal with different modes of program operation
+
+## Getting Started
+
+Use the GitHub Classroom link posted in the Learning Suite for the lab to accept the assignment. Next, ssh into your Raspberry Pi using VSCode and clone the repository in your home directory. **This lab should be done in VSCode on your Raspberry Pi.**
 
 ## Overview
 Welcome to the end of the semester! You have come very far in your abilities to understand how computers work under the hood and how you can control them programmatically. The difference between the computer you are using now and most single-use devices that exist on the market is that your Pi Z2W in its current state still acts as any normal desktop/laptop/phone. When you turn the device on, the operating system loads and then you are expected to start any program that you wish to have running. 
@@ -18,9 +20,9 @@ Welcome to the end of the semester! You have come very far in your abilities to 
 This is not the case for most single-use devices. For example, when you turn on a microwave, it immediately starts heating up your food. When you turn on an electric kettle, it immediately starts heating up your water. When you turn on a doorbell, it immediately starts ringing. This is because these devices are programmed to start running as soon as they are turned on. In this lab, we will work to make the Pi Z2W act as a smart doorbell. This entails having your program run on boot.
 
 ### systemd Daemons
-To enable our program to run on boot in Linux, we need to understand how Linux manages its processes. Linux uses a system called `systemd` to manage its processes. `systemd` is a system and service manager that runs as PID 1 when the system boots. It is responsible for starting and stopping processes, as well as managing the boot process. 
+To enable our program to run on boot in Linux, we need to understand how Linux manages its processes. Linux uses a system called `systemd` to manage its processes. `systemd` is a system and service manager that runs as the first thing when your computer boots (process ID 1). It is responsible for starting and stopping processes, as well as managing the boot process. 
 
-It also manages programs that run in the background, called daemons. A daemon is a program that runs in the background and is not directly started by the user. Daemons are often used to provide services to the user, such as the `sshd` daemon that provides the ability to connect to the Pi Z2W over SSH.
+`systemd` also manages programs that run in the background, called daemons. A daemon is a program that runs in the background and is not directly started by the user. Daemons are often used to provide services to the user, such as the `sshd` daemon that provides the ability to connect to the Pi Z2W over SSH.
 
 #### Service Files
 For our doorbell to run on boot, we need to create a daemon that runs our program. This is done by creating a `systemd` service file. A `systemd` service file is a file that contains information about a service that `systemd` can be used to start and stop the service.
@@ -33,7 +35,7 @@ For example, let's say we want to observe the `sshd` daemon on our Pi Z2W. We ca
 sudo systemctl status sshd    # Shows status of the sshd daemon
 ```
 
-Likewise, if we wanted to start or stop the daemon, we could use the following commands:
+Likewise, if we wanted to start or stop the daemon, we could use the following commands (don't actually run these commands):
 
 ```bash
 sudo systemctl start sshd     # Starts the sshd daemon
@@ -46,10 +48,11 @@ To create a service file, we need to create a file in the `/etc/systemd/system` 
 
 ```ini
 [Unit]
-Description=Name of your service
+Description=<Name of your service>
 
 [Service]
-ExecStart=command to start your program
+WorkingDirectory=<Path to your project folder>
+ExecStart=<Absolute command to start your program>
 
 [Install]
 WantedBy=multi-user.target
@@ -71,7 +74,7 @@ you would be using an absolute path. The path to your executable must be absolut
 
 **NOTE, you will also need to change any relative paths in your program to absolute paths.** So if you accessed your  `viewer` folder with a relative path, your program will not work when it is run as a daemon. You must change this to an absolute path.
 
-Once we have created out `.service` file, we can use the commands above to start and stop our program. However, what if I want to start my program when the computer boots? We need to **enable** our service. To do this, we can use the following command:
+Once we have created the `.service` file, we can use the commands above to start and stop our program. However, what if I want to start my program when the computer boots? We need to **enable** our service. To do this, we can use the following command:
 
 ```bash
 sudo systemctl enable my-service.service    # Enables the my-service service
@@ -85,48 +88,43 @@ sudo systemctl disable my-service.service    # Disables the my-service service
 
 ## Requirements
 Now that we know how to create a daemon, we can start working on our doorbell. Your doorbell should have the following features:
-1. The program should run on boot.
 
-2. When the program starts, it should show a welcome message on the screen.
+1. Update your program to have the following behavior:
 
-3. When the center button is pressed, do the following in a thread:
+    - When the program starts, it should show a welcome message on the screen.
 
-    - Your doorbell should take a picture and save it to your viewer folder.
-    - Send your saved image to the web site.
+    - When the center button is pressed, do the following in a thread:
 
-4. Change the display to show the message to let the user know that doorbell was rung (i.e. "Ding dong!"). Make this message visible for 5 seconds and then change back to the initial welcome message. (This part will require threading)
+        - Your doorbell should take a picture and save it to your viewer folder.
 
-5. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, the sequence (Left-Right-Left-Right) should be entered. The functionality inside the file viewer should have the following:
+        - Send your saved image to the web site.
+
+        - Change the display to show the message to let the user know that doorbell was rung (e.g., "Ding dong!"). Make this message visible for 5 seconds and then change back to the initial welcome message.
+
+2. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, the sequence (Left-Right-Left-Right) should be entered. The functionality inside the file viewer should have the following:
 
     - Up and down to select the files
+    
     - Center button to show the selected file for two seconds
+    
     - **NO STATUS BAR LOGIC IS NECESSARY**
+
+3. Create a service file in `/etc/systemd/system` named doorbell.service. Test the service by running `systemctl start doorbell.service` and make sure your program starts successfully. If you run `systemctl status doorbell.service`, you can see log messages from your program.
+
+4. Set the program to run on boot. Test it out by rebooting your Pi Z2W and making sure your program starts up.
+
 
 ## Submission
 
-### Compilation
-Since a large portion of this lab's grade depends on me successfully compiling your code, the following points must be adhered to to ensure consistency in the grading process. Any deviation in this will result in points off your grade:
+- Answer the questions in the `README.md`.
 
-- The code in this lab will be compiled at the root of this lab repository (i.e. `doorbell-<your-github-username>`). It is your responsibility to ensure that `gcc` will work from this directory.
-- Your binary must output to a folder called `bin`. This folder will be marked to be ignored by `git`, meaning that I will not receive your final compiled binary to test, but rather your code which must compile successfully on my Pi Z2W.
+- To pass off to a TA, demonstrate your doorbell running your program that fulfills all of the requirements outlined above.
 
-### Gitignore
-In this lab you are expected to ignore the following:
-
-- `.vscode` folders
-- the `bin` folder where your binary is generated
-
-### Normal Stuff
-- Complete all of the requirements.
-
-- Answer the questions in the `README.md`. 
-
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
-
-- **MAKE SURE YOUR CODE FOLLOWS THE CODING STANDARD!** More info on how to set that up is available on the Coding Standard page. 
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 
 ## Explore More!
+
 - [What is systemd?](https://en.wikipedia.org/wiki/Systemd)
 - [systemd's website](https://systemd.io/)
 - [Creating a systemd Service](https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6)
