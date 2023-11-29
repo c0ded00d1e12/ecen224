@@ -183,15 +183,15 @@ You may have noticed at this point that threading is very function heavy. This m
 
 - Run your code using this newly created function (not using threads) to make sure that everything is still working as expected. Notice that sending data to the server is slow and your menu gets blocked while you are waiting to send the data.
 
-- Instead of calling `send_image` directly, use a thread to call the function instead. Now that calling `send_image` is no longer blocking, you might need to refactor your code to not call `free` right after the thread is started.
+- Instead of calling `send_image` directly, use a thread to call the function instead. Now that calling `send_image` is no longer blocking, you might need to refactor your code to not call `free` right after the thread is started. **Warning: you should not call any display functions in a thread.** The display functions are not thread-safe, meaning that if multiple threads call the same function, weird things can happen. You should only call the display functions in your main loop.
 
 - Create a status bar the size of your highlight bar at the bottom of the screen with a blue background:
 
     - When your image is being sent in a thread, the text of the bar should say "Sending..." with the bar as a blue background.
 
-    - When your image is sent successfully (i.e. the thread reached the end successfully), change the color of the status bar to green and show "Sent!" as the text. *How are you going to know when the thread is done sending? A global variable or two might be helpful.*
+    - When your image is sent successfully (i.e. the thread reached the end successfully), change the color of the status bar to green and show "Sent!" as the text. *How are you going to know when the thread is done sending? A global variable that helps you to maintain what state you are in might be helpful.*
     
-    - The status bar should should stay green with the sent message for 2 seconds. After the 2 seconds hide the status bar. *How do you know when it has been 2 seconds? Spawning another thread that calls a function that just waits for 2 seconds might be helpful.*
+    - The status bar should should stay green with the sent message for 2 seconds. After the 2 seconds hide the status bar. *How do you know when it has been 2 seconds? Consider editing your `send_image`.*
 
 Here is a demo showing the different features of the lab:
 
