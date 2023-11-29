@@ -42,13 +42,15 @@ This object is used inside a range of different functions found inside the `pthr
 #include <unistd.h>   // Library that includes sleep()
 #include <pthread.h>  // Library that includes pthreading types and functions
 
-void * print_msg(void *unused)
+void *print_msg(void *unused)
 {
     while(1)
     {
         printf("I'm in a thread!\n");
         sleep(2);     // Sleeps for 2 seconds
     }
+
+    return NULL;
 }
 
 int main()
@@ -111,7 +113,7 @@ Consider the following program:
 #include <stdlib.h>  // Library that includes malloc()
 #include <pthread.h> // Library that includes pthreading types and functions
 
-void * print_num(void *arg)
+void *print_num(void *arg)
 {
     while(1)
     {
@@ -119,11 +121,13 @@ void * print_num(void *arg)
         printf("The number is:\t%d\n", *((int *) arg));
         sleep(2);     // Sleeps for 2 seconds
     }
+
+    return NULL;
 }
 
 int main()
 {
-    int * i = (int *)malloc(sizeof(int));    // Create an int pointer and give it enough space to hold an int.
+    int *i = (int *)malloc(sizeof(int));    // Create an int pointer and give it enough space to hold an int.
     *i = 0;                                  // Set the value inside the pointer to 0
 
     pthread_t my_thread;
