@@ -51,7 +51,7 @@ To create a service file, we need to create a file in the `/etc/systemd/system` 
 Description=<Name of your service>
 
 [Service]
-WorkingDirectory=<Path to your project folder>
+WorkingDirectory=<Absolute path to your project folder>
 ExecStart=<Absolute command to start your program>
 
 [Install]
@@ -71,8 +71,6 @@ sudo /home/USERNAME/path/to/my-program
 ```
 
 you would be using an absolute path. The path to your executable must be absolute in the `.service` file, so you must use the second command to run your program.
-
-**NOTE, you will also need to change any relative paths in your program to absolute paths.** So if you accessed your  `viewer` folder with a relative path, your program will not work when it is run as a daemon. You must change this to an absolute path.
 
 Once we have created the `.service` file, we can use the commands above to start and stop our program. However, what if I want to start my program when the computer boots? We need to **enable** our service. To do this, we can use the following command:
 
