@@ -87,31 +87,27 @@ sudo systemctl disable my-service.service    # Disables the my-service service
 ```
 
 ## Requirements
-Now that we know how to create a daemon, we can start working on our doorbell. Your doorbell should have the following features:
+- Copy all of your code, except for the README.md file from last lab into your newly cloned repository. Run your program to make sure it is still working properly.
 
-1. Update your program to have the following behavior:
+- Change your program to be more doorbell-ish:
 
     - When the program starts, it should show a welcome message on the screen.
 
-    - When the center button is pressed, do the following in a thread:
+    - When the center button is pressed, do the following:
 
-        - Your doorbell should take a picture and save it to your viewer folder.
+        - In a thread, take a picture. save it to your viewer folder, and send the image to the website.
 
-        - Send your saved image to the web site.
+        - Change the display to show the message to let the user know that doorbell was rung (e.g., "Ding dong!"). Make this message visible for 2 seconds and then change back to the initial welcome message.
 
-        - Change the display to show the message to let the user know that doorbell was rung (e.g., "Ding dong!"). Make this message visible for 5 seconds and then change back to the initial welcome message.
+        - **NO STATUS BAR LOGIC IS NECESSARY**
 
-2. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, the sequence (Left-Right-Left-Right) should be entered. The functionality inside the file viewer should have the following:
+- Add a hidden menu to your doorbell. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, press the left button of the d-pad.
 
-    - Up and down to select the files
-    
-    - Center button to show the selected file for two seconds
-    
-    - **NO STATUS BAR LOGIC IS NECESSARY**
+- Create a service file in `/etc/systemd/system` named `doorbell.service`. You will need to create the file with `sudo` privileges. Test the service by running `sudo systemctl start doorbell.service` and make sure your program starts successfully. If you run `sudo systemctl status doorbell.service`, you can see log messages from your program.
 
-3. Create a service file in `/etc/systemd/system` named doorbell.service. Test the service by running `systemctl start doorbell.service` and make sure your program starts successfully. If you run `systemctl status doorbell.service`, you can see log messages from your program.
+- Before you set up your program to run on boot, add a 15 second sleep to the first line of your main function. This is because the program that prints the IP addresses also uses the displays and if they run at the same time, the display can get messed up. This ensures that the IP address program is finished before your program starts. Make sure to rebuild your program (`make`) so the change takes effect.
 
-4. Set the program to run on boot. Test it out by rebooting your Pi Z2W and making sure your program starts up.
+- Set the program to run on boot. Test it out by rebooting your Pi Z2W and making sure your program starts up.
 
 
 ## Submission
