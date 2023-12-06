@@ -61,13 +61,13 @@ WantedBy=multi-user.target
 **The file path to your executable must be absolute.** This means if your ran your code by doing:
 
 ```bash
-sudo ./my-program
+./my-program
 ```
 
 You would be running your program using a relative path. However, if you ran your program by doing:
 
 ```bash
-sudo /home/USERNAME/path/to/my-program
+/home/USERNAME/path/to/my-program
 ```
 
 you would be using an absolute path. The path to your executable must be absolute in the `.service` file, so you must use the second command to run your program.
@@ -101,7 +101,7 @@ sudo systemctl disable my-service.service    # Disables the my-service service
 
 - Add a hidden menu to your doorbell. When the following sequence of buttons are pressed (Up-Up-Down), take the user to the file browser menu. To go back to the original welcome message, press the left button of the d-pad.
 
-- Create a service file in `/etc/systemd/system` named `doorbell.service`. You will need to create the file with `sudo` privileges. Test the service by running `sudo systemctl start doorbell.service` and make sure your program starts successfully. If you run `sudo systemctl status doorbell.service`, you can see log messages from your program.
+- Create a service file in `/etc/systemd/system` named `doorbell.service`. You will need to create the file with `sudo` privileges. Test the service by running `sudo systemctl start doorbell.service` and make sure your program starts successfully. If you run `sudo systemctl status doorbell.service`, you can see log messages from your program. To test out your service file, run `sudo systemctl start doorbell.service` to make sure that your program works as expected. If you run into problems, you can use `status` to see what the problem is: `sudo systemctl status doorbell.service`
 
 - Before you set up your program to run on boot, add a 15 second sleep to the first line of your main function. This is because the program that prints the IP addresses also uses the displays and if they run at the same time, the display can get messed up. This ensures that the IP address program is finished before your program starts. Make sure to rebuild your program (`make`) so the change takes effect.
 
