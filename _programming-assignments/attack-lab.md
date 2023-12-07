@@ -37,7 +37,6 @@ This assignment involves generating a total of five attacks on two programs havi
 You will want to study Sections 3.10.3 and 3.10.4 of the CS:APP3e book as reference material for this lab.
 
 ## 2. Logistics
-You may complete this lab working by yourself or with a partner. You will generate attacks for target programs that are custom generated for you. Clarifications and corrections will be posted on the Web pages for the lab.
 
 ### 2.1 Getting Files
 To obtain the unique file for your team, follow the instructions on the webpage for this lab. (You point your Web browser at a particular server and the server builds your files and returns them to your browser in a `tar` file called `targetK.tar`, where `K` is the unique number of your target programs.)
