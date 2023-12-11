@@ -261,48 +261,78 @@ Now that you have confirmed your Pi has a working operating installed, shut it d
 ### Assemble the remaining kit
 We will proceed to assemble the remaining components of your doorbell.
 
+Your kit should look something like this:
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <figure class="image mx-auto" style="max-width: 750px">
+                <img src="{% link assets/getting-started/assembly/kit_packed.jpeg %}" alt="Parts of kit packed">
+                <p>All parts still in packages</p>
+            </figure>
+        </div>
+        <div class="col">
+            <figure class="image mx-auto" style="max-width: 750px">
+                <img src="{% link assets/getting-started/assembly/kit_unpacked.jpeg %}" alt="Parts of kit unpacked">
+                <p>All parts unpacked</p>
+            </figure>
+        </div>
+    </div>
+</div>
+
 1. Unpackage and prepare your display, standoffs, screws, nuts, and washers for assembly.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_1 %}" alt="Step 1 parts">
+      <img src="{% link assets/getting-started/assembly/step_1.jpeg %}" alt="Step 1 parts">
     </figure>
+
 2. Put the screws through the holes of the Raspberry Pi Zero, on the side with the USB ports, so that the threads of the screw are on the same side of the PCB as the USBs.
+
 3. Put the plastic washers on the screws, one washer per screw.
+
 4. Thread the brass standoffs onto the screws
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_4_assembly %}" alt="Step 4 assembly state">
+      <img src="{% link assets/getting-started/assembly/step_4_assembly.jpeg %}" alt="Step 4 assembly state">
     </figure>
+
 5. Take the display PCB and line up the black plastic socket (on the back side of the PCB) with the metal pins sticking out of the Raspberry Pi. Gently press the display into the socket, making sure all pins seated into their corresponding holes without getting bent. Two of the holes on the display should have slid over the brass standoffs installed earlier.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_6_1 %}" alt="Step 6 assembly state">
+      <img src="{% link assets/getting-started/assembly/step_6_1.jpeg %}" alt="Step 6 assembly state">
     </figure>
+
 6. Screw the nuts onto the standoffs to secure the display to the Raspberry Pi. Peel off the packaging protecting the surface of the display.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_6_2 %}" alt="Step 6 assembly state">
+      <img src="{% link assets/getting-started/assembly/step_6_2.jpeg %}" alt="Step 6 assembly state">
     </figure>
+
 7. Unpackage and prepare your camera kit and the case lid for assembly. Your kit came with two ribbon cables of different lengths. **WE WILL BE USING THE BROWN RIBBON CABLE, NOT THE WHITE CABLE**. Be aware that these ribbon cables are fragile.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_7_parts %}" alt="Step 7 parts">
+      <img src="{% link assets/getting-started/assembly/step_7_parts.jpeg %}" alt="Step 7 parts">
     </figure>
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/camera/pi-camera.png %}" alt="Units of the course.">
       <figcaption style="text-align: center;">The Raspberry Pi Zero 2 W with the camera unit and connection cable. In this lab we will be using the larger cable and wrap it around the back of the Pi Z2W.</figcaption>
     </figure>
-8. Familiarize yourself with the connector on your camera PCB. Note the orientation of the metal pins inside the conector and the plastic shroud along the edges. This shroud "locks" the connector, preventing the cable from being removed. Unlock it by gently pulling on the edges of the shroud until it slides out
+
+8. Familiarize yourself with the connector on your camera PCB. Note the orientation of the metal pins inside the connector and the plastic shroud along the edges. This shroud "locks" the connector, preventing the cable from being removed. Unlock it by gently pulling on the edges of the shroud until it slides out
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_8_camera_closeup %}" alt="Camera connector closeup">
     </figure>
-9. Insert the wider end of the cable into the camera module, making sure the copper contacts on the ribbon are oriented correctly. *Note - in this image, the connector is in the "unlocked" state. Make sure to lock the connector once you have installed the ribbon.*
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_9_ribbon %}" alt="Step 9 - ribbon cable inserted but not locked">
-    </figure>
-10. Repeat the same step with the narrow end of the cable on the Raspberry Pi. *Note - in this image, the connector is in the "locked" state*
+
+9. Insert the narrow end of the cable on the Raspberry Pi, making sure the copper contacts on the ribbon are oriented correctly. *Note - in this image, the connector is in the "locked" state*
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_10_ribbon %}" alt="Step 10 - ribbon cable inserted, locked.">
     </figure>
-11. Gently bend the end of the ribbon cable attached to the Raspberry Pi, right near the socket. This is necessary in order to get the Pi to fit into the provided case.
+
+10. Gently wrap the ribbon cable between the Raspberry Pi and the display HAT. Be careful not to bend the mental part of the ribbon cable that is coming out of the Raspberry Pi.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_11_bent %}" alt="Bent ribbon cable">
+      <img src="{% link assets/getting-started/assembly/step_11_bent.jpeg %}" alt="Bent ribbon cable">
     </figure>
+
+11. Insert the wider end of the cable into the camera module, making sure the copper contacts on the ribbon are oriented correctly. *Note - in this image, the connector is in the "unlocked" state. Make sure to lock the connector once you have installed the ribbon.*
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_9_ribbon %}" alt="Step 9 - ribbon cable inserted but not locked">
+    </figure>
+
 12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit.
     <!-- Import maps polyfill -->
     <!-- Remove this when import maps will be widely supported -->
@@ -546,19 +576,29 @@ We will proceed to assemble the remaining components of your doorbell.
         <div id="camera-lid"></div>
       <figcaption style="text-align: center;">Doorbell case 3D printed file. You will need to attach the camera module to the standoffs on the lid. Note that the button in this file is not included in the case you will receive in this lab.</figcaption>
     </figure>
-    As visible in the 3D model above, there are several components that comprise this enclosure. The top of the case is the long, rectangular part with holes for the camera, LCD screen, and button respectively. You'll notice that around the camera holes are four standoffs. These standoffs correspond to the holes in the camera module mentioned in the section before. Remove the packaging film covering the lense of your camera, then mount the camera board to the lid of the case using the 4 screws.
-13. Position the Raspberry Pi near next to the camera board, and run the slack in the ribbon cable into the gap between the Pi and the Display board.
+    As visible in the 3D model above, there are several components that comprise this enclosure. The top of the case is the long, rectangular part with holes for the camera, LCD screen, and button respectively. 
+    
+13. You'll notice that around the camera holes are four standoffs. These standoffs correspond to the holes in the camera module mentioned in the section before. Remove the packaging film covering the lense of your camera, then mount the camera board to the lid of the case using the 4 screws. It is easiest to do this with the Raspberry Pi face down.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_13_mounted_camera %}" alt="Mounted camera and ribbon cable routing">
+      <img src="{% link assets/getting-started/assembly/step_13_mounted_camera.jpeg %}" alt="Mounted camera and ribbon cable routing">
     </figure>
-14. Insert the Raspberry Pi into the case. Make sure the remaining 2 empty holes on the Raspberry Pi line up with the pegs in the case, the camera ribbon is not being pinched, and the holes in the lid line up with the button and LCD screen
+    
+14. Insert the Raspberry Pi into the case. Make sure the remaining 2 empty holes on the Raspberry Pi line up with the pegs in the case.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_14_case_positioning %}" alt="Positioning of components in the case">
+      <img src="{% link assets/getting-started/assembly/step_14_case_positioning.jpeg %}" alt="Positioning of components in the case">
     </figure>
-15. Snap the lid onto the bottom of the case
+
+15. Tuck the extra slack of the ribbon cable under the camera. Be careful not to pinch the ribbon cable.
     <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/assembly/step_15_completed %}" alt="Completed assembly">
+      <img src="{% link assets/getting-started/assembly/step_15_case.jpeg %}" alt="Positioning of components in the case">
     </figure>
+
+16. Snap the lid onto the bottom of the case.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/step_16_completed.jpeg %}" alt="Completed assembly">
+    </figure>
+
+17. Slide the 3D button on the square peg of the display HAT.
 
 Details about the display and camera hardware will be presented in future labs.
 
