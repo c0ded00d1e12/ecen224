@@ -206,7 +206,7 @@ table {
     --fa-primary-opacity: 1;
     --fa-secondary-opacity: 1;
     --fa-primary-color: #60b3beff;
-    --fa-secondary-color: #CFCBE66c;
+    --fa-secondary-color: #cfcbe66c;
 
     .fa-secondary {
         stroke: rgba(255, 255, 255, 0.603);
@@ -280,4 +280,9 @@ figcaption {
 
 .hw-icon {
     padding: 20px;
+}
+
+.code-header {
+    display: flex;
+    justify-content: flex-end;
 }
