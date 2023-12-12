@@ -35,45 +35,52 @@ In order to interface with the GPIO of the Pi Z2W, we need to install a library.
 
 1. First make sure that you are in your home directory on the Pi Z2W:
 
-    ```bash
-    cd ~
-    ```
+{% include code_header.html %}
+```bash
+cd ~
+```
 
 2. Then use `wget` to download the compressed archive with the library from the developer's website:
 
-    ```bash
-    wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.71.tar.gz
-    ```
+{% include code_header.html %}
+```bash
+wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.71.tar.gz
+```
 
 3. Once the file has downloaded, uncompress the archive using the `tar` utility:
 
-    ```bash
-    tar xvfz bcm2835-1.71.tar.gz
-    ```
+{% include code_header.html %}
+```bash
+tar xvfz bcm2835-1.71.tar.gz
+```
 
 4. Go into the uncompressed directory:
 
-    ```bash
-    cd bcm2835-1.71
-    ```
+{% include code_header.html %}
+```bash
+cd bcm2835-1.71
+```
 
 5. Run the `configure` script. This will provide operating system information to the library so it knows how to configure itself to work specifically on the Pi Z2W architecture:
 
-    ```bash 
-    ./configure
-    ```
+{% include code_header.html %}
+```bash 
+./configure
+```
 
 6. Once the `configure` script has prepared the necessary modifications, run the `make` command to compile library's source files (i.e all its `.c` files)
 
-    ```bash    
-    make
-    ```
+{% include code_header.html %}
+```bash    
+make
+```
 
 7. Finally, move the compiled binaries to the folder in the operating system where your `gcc` compiler looks for system libraries:
 
-    ```bash
-    sudo make install
-    ```
+{% include code_header.html %}
+```bash
+sudo make install
+```
 
 #### Compiling into a Project
 
