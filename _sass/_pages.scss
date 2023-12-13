@@ -155,11 +155,6 @@ tr:nth-child(even) {
     // background-color: rgba($selection-color, 0.2);
 }
 
-tr:hover {
-    // background-color: #ddd;
-    // background-color: rgba($sidebar-hover-color, 0.7);
-}
-
 th {
     min-width: 150px;
     padding-top: 12px;
@@ -282,7 +277,13 @@ figcaption {
     padding: 20px;
 }
 
-.code-header {
-    display: flex;
-    justify-content: flex-end;
+div[class*="language-"] {
+    position: relative;
+    overflow: auto;
+}
+
+div[class*="language-"] button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

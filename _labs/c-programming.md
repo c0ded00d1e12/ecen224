@@ -171,6 +171,7 @@ This will create a new file in our directory called `a.out` which we can run by:
 ```
 
 If you followed these steps correctly, your code should output the following to the terminal:
+
 ```
 Hello, World!
 
@@ -204,12 +205,14 @@ It would be impractical to go over every data type that exists in C and explain 
 Sometimes it will be necessary to take the result of one number and represent it in a different type of variable. The process of the translating from one data type to another is known as **casting** and will be a very useful tool in this and other labs.
 
 For example, let's say I have a variable that was stored as a `int` and another variable that is a `float`. :
+
 ```c
 int num = 7;
 float num_f = 0;
 ```
 
 If I want to create a new variable where the `7` in in `num` is treated as a floating point number, (i.e. `7.0`), I can cast it by doing the following.
+
 ```c
 num_f = (float) num;
 ```
@@ -238,6 +241,7 @@ printf("Final grade:\t%d", grade);  // This should print out "Final grade:    87
 Characters with a `%` followed by a letter represent a placeholder for certain types of data which are injected into our `printf()` message. For example, `%d` means that the place holder can be replaced by a **d**ecimal number. In our example above, the `%d` would be replaced with the variable `grade`.
 
 For multiple placeholders in the `printf()` statement, multiple variables will need to be provided:
+
 ```c
 int num1 = 0;
 int num2 = 1;
@@ -267,6 +271,7 @@ The following table is a useful cheat sheet and will give you an idea of the dif
 | `\%`   | print a percent sign               |
 
 ## Lab Submission
+
 - Answer the questions and complete the challenges found in the `README.md`.
 
 - The `README.md` walks you through creating a new file called `data.c` with some requirements. Show the source code and program execution of `data.c` to the TA.

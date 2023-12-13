@@ -49,18 +49,23 @@ ls /d
 After hitting `Tab` you should see that “/d” was extended to “/dev/”. Now type `Enter` to execute the command. When navigating deep directory hierarchies, tab completion can assist in typing what could otherwise be very long path names. For example, tab can be pressed multiple times to keep extending the path name after typing a few characters, enough to make the name unique.
 
 Command names can also be tab completed. In a terminal window, type the following and then hit `Tab`.
+
 ```bash
 mkd
 ```
+
 Pressing the tab key should complete the command to mkdir. Press `Enter` to start the web browser. If you press `Tab` and you don’t get a response, you have mistyped the leading characters or there are other options that are ambiguous. Typing `Tab` again a second time will list the remaining options that begin with the characters you have typed. For example type in 
+
 ```bash
 mk
 ```
+
 Now hit `Tab` a couple of times and you should see something like this:
 ```
 mkdir        mk_modmap    mksh         mktemp       mkvinfo      mkvpropedit  
 mkfifo       mknod        mksh-static  mkvextract   mkvmerge
 ```
+
 You can `Tab` through the possible commands and hit `Enter` to select the highlighted command. 
 
 ### Set and Read Environment Variables
@@ -69,16 +74,20 @@ The Linux environment holds configuration variables used by application programs
 ```bash
 export MYLAB=02
 ```
+
 After typing the command in the terminal, you can view the value that was last set by typing:
+
 ```bash
 echo $MYLAB
 ```
 Notice that you have to put a `$` in front of the variable name in order to refer to it. 
 
 You can also see your variable among all the others by typing:
+
 ```bash
 env
 ```
+
 You can read some more about environment variables [here](https://www.cherryservers.com/blog/how-to-set-list-and-manage-linux-environment-variables).
 
 ### Get Familiar with a Command Line Text Editor

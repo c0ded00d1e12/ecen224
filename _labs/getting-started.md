@@ -78,44 +78,42 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 
 1. Make sure you are able to find your Pi Z2W by opening up the **terminal** on your lab machine. This can be done either through finding it in the **Activities** menu or simply pressing `Ctrl+Alt+T`. Once the terminal has opened, search for it by entering the command:
 
-{% include code_header.html %}
-```bash
-ping doorbell-<your_netid>.local
-```
+    ```bash
+    ping doorbell-<your_netid>.local
+    ```
 
-If you receive a message like the following:
+    If you receive a message like the following:
 
-```
-ping: doorbell-kitras.local: Name or service not known
-```
+    ```
+    ping: doorbell-kitras.local: Name or service not known
+    ```
 
-then the Pi Z2W is not connected to the lab network. Check the ethernet cable and make sure that everything is plugged in correctly then try again. 
+    then the Pi Z2W is not connected to the lab network. Check the ethernet cable and make sure that everything is plugged in correctly then try again. 
 
-If you receive messages like:
+    If you receive messages like:
 
-```
-PING doorbell-kitras.local (192.168.86.48) 56(84) bytes of data.
-64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=1 ttl=64 time=95.7 ms
-64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=2 ttl=64 time=5.47 ms
-64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=3 ttl=64 time=25.0 ms
-64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=4 ttl=64 time=21.6 ms
-64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=5 ttl=64 time=6.53 ms
-```
+    ```
+    PING doorbell-kitras.local (192.168.86.48) 56(84) bytes of data.
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=1 ttl=64 time=95.7 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=2 ttl=64 time=5.47 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=3 ttl=64 time=25.0 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=4 ttl=64 time=21.6 ms
+    64 bytes from doorbell-kitras.local (192.168.86.48): icmp_seq=5 ttl=64 time=6.53 ms
+    ```
 
-press `Ctrl+C` to stop the command. This means your lab machine can see the Pi Z2W and you are able to login with `ssh`.
+    Press `Ctrl+C` to stop the command. This means your lab machine can see the Pi Z2W and you are able to login with `ssh`.
 
-2. Login to the Pi Z2W via `ssh` by typing in:
+1. Login to the Pi Z2W via `ssh` by typing in:
 
-{% include code_header.html %}
-```bash
-ssh <your_username>@doorbell-<your_netid>.local
-```
+    ```bash
+    ssh <your_username>@doorbell-<your_netid>.local
+    ```
 
-You will be asked to enter the password you chose earlier.  When you type your password in Linux you won't see anything show up in the Terminal window, but it is still being entered.  Just type your password and press `Enter` when you are done.
+    You will be asked to enter the password you chose earlier.  When you type your password in Linux you won't see anything show up in the Terminal window, but it is still being entered.  Just type your password and press `Enter` when you are done.
 
-3. A prompt will appear asking if you want to add the Pi Z2W to a list of trusted remote computers. Type in `yes` to add the Pi Z2W to the trusted list. 
+2. A prompt will appear asking if you want to add the Pi Z2W to a list of trusted remote computers. Type in `yes` to add the Pi Z2W to the trusted list. 
 
-4. After entering in your login credentials, you should receive a prompt like the following to show that you are inside of the Pi Z2W:
+3. After entering in your login credentials, you should receive a prompt like the following to show that you are inside of the Pi Z2W:
 
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/ssh.png %}" alt="ssh">
@@ -123,36 +121,35 @@ You will be asked to enter the password you chose earlier.  When you type your p
 
     You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
     
-5. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
+4. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
     First, run this command:
 
-{% include code_header.html %}
-```bash
-wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
-```
-*(For a long command like this, it's easiest to copy and paste it into the terminal.  Use `Ctrl+Shift+V` to paste into the terminal.)*
+    ```bash
+    wget https://byu-cpe.github.io/ecen224/assets/scripts/install.sh
+    ```
+
+    *(For a long command like this, it's easiest to copy and paste it into the terminal.  Use `Ctrl+Shift+V` to paste into the terminal.)*
 
    This will download the script to your Pi. 
    
    Next, run:
 
-{% include code_header.html %}
-```bash
-chmod +x install.sh
-```
-This command will change permissions on the script, allowing you to execute (run) the .sh file. Lastly, run the script with:
+    ```bash
+    chmod +x install.sh
+    ```
 
-{% include code_header.html %}
-```bash
-./install.sh
-```
-You will see print statements in the terminal logging the installation process. For the last step, it will ask for your password to apply all of the changes. This is the password you set on your Pi Z2W. Once you have entered your password and the script has finished, reboot your Pi with this command:
+    This command will change permissions on the script, allowing you to execute (run) the .sh file. Lastly, run the script with:
 
-{% include code_header.html %}
-```bash
-sudo reboot
-```
+    ```bash
+    ./install.sh
+    ```
+
+    You will see print statements in the terminal logging the installation process. For the last step, it will ask for your password to apply all of the changes. This is the password you set on your Pi Z2W. Once you have entered your password and the script has finished, reboot your Pi with this command:
+
+    ```bash
+    sudo reboot
+    ```
   
 ### Connect with Visual Studio Code
 Next, we will connect to your Pi Z2W using VSCode using the **Remote - SSH** extension. 
@@ -201,7 +198,6 @@ In order to allow our Pi Z2W to speak with GitHub, we will need to create an **S
 
 1. To generate an SSH key, use the VSCode terminal (by clicking Terminal > New Terminal) - this creates a new instance of a terminal that is connected to your Pi Z2W. Type in the following:
 
-{% include code_header.html %}
 ```bash
 ssh-keygen -t ed25519 -C "your_email_address"
 ```
@@ -210,7 +206,6 @@ The tool will ask you several questions. For our purposes, the default values wi
 
 2. Once this is done you can find the contents of your new SSH keys by typing in
 
-{% include code_header.html %}
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
@@ -234,7 +229,6 @@ Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our P
 
 1. If the terminal window on VSCode is not already open, press `` Ctrl+` `` and then enter in the command:
 
-{% include code_header.html %}
 ```bash
 sudo apt install git
 ```
@@ -251,7 +245,6 @@ Once `git` has installed, we use this to download the first the repository (or c
 
 4. Back on the Pi Z2W's terminal type in
 
-{% include code_header.html %}
 ```bash
 git clone <GitHub Repo SSH URL>
 ```
@@ -266,7 +259,6 @@ In future labs, any starter code or special resources for completing that lab wi
 
 Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
 
-{% include code_header.html %}
 ```
 sudo shutdown -h now
 ```
