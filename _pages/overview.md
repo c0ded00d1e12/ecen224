@@ -55,7 +55,7 @@ All communication will be done over Slack. Slack is intended to be used for anno
 This is a sophomore-level class, so I expect participation. I expect all students to attend every lecture and be engaged in the lecture. Asking and answering questions in class is essential. When you are in a lecture, I expect your attention, so students should not be on their phones or doing non-class related things on laptops.
 
 ## Late Policy
-Don't be late. For lab assignments, 20% of the grade will be subtracted for each day late, not including weekends. Please reach out to the lab instructor or TA if you feel like you are falling behind. For any lab turned in late, I can not guarantee when I will grade it, so any mistake you make in a earlier lab might be compounded over multiple labs. Just don't turn them in late!
+Don't be late. Homeworks will not receive any late credit. For lab and programming assignments, 10% of the grade will be subtracted for each day late, not including weekends, upto 5 days (1 week). After that, we still want you to do the labs, so you can still turn them in for 50%. However, do not fall behind. The labs all build on one another, so you will not be able to complete the next lab if you have not completed a previous one. Please reach out to the lab instructor or TA if you feel like you are falling behind. Please, just don't turn them in late!
 
 ## Source Code Sharing
 No source code should be shared between students. Students can work on assignments together, but no direct or indirect copying from another student is allowed. This class will use a code similarity checker to determine if students are copying code.
