@@ -198,42 +198,42 @@ In order to allow our Pi Z2W to speak with GitHub, we will need to create an **S
 
 1. To generate an SSH key, use the VSCode terminal (by clicking Terminal > New Terminal) - this creates a new instance of a terminal that is connected to your Pi Z2W. Type in the following:
 
-```bash
-ssh-keygen -t ed25519 -C "your_email_address"
-```
+    ```bash
+    ssh-keygen -t ed25519 -C "your_email_address"
+    ```
 
-The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter` until it finishes) unless you desire to protect your key with a password (not recommended for this class; it would require you to enter in a password any time you want to use the SSH key).
+    The tool will ask you several questions. For our purposes, the default values will suffice (i.e. just hit `Enter` until it finishes) unless you desire to protect your key with a password (not recommended for this class; it would require you to enter in a password any time you want to use the SSH key).
 
 2. Once this is done you can find the contents of your new SSH keys by typing in
 
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
+    ```bash
+    cat ~/.ssh/id_ed25519.pub
+    ```
 
-**NOTE:** Make sure that you `cat` the values of `id_ed25519.pub` and **NOT** `id_ed25519`. The contents in the `.pub` are meant to be shared with the `pub`lic and the contents of the other file are not meant to be shared with anyone else.
+    **NOTE:** Make sure that you `cat` the values of `id_ed25519.pub` and **NOT** `id_ed25519`. The contents in the `.pub` are meant to be shared with the `pub`lic and the contents of the other file are not meant to be shared with anyone else.
 
-1. Copy the output of this file by selecting it and pressing `Ctrl-Shift-C`. Then navigate in a web browser to your GitHub [keys console](https://github.com/settings/keys) (you must be signed into GitHub for this step to work).
+3. Copy the output of this file by selecting it and pressing `Ctrl-Shift-C`. Then navigate in a web browser to your GitHub [keys console](https://github.com/settings/keys) (you must be signed into GitHub for this step to work).
 
-2. At the top of the page will be a big green button that says **New SSH key**. Click on this and then you should be taken to page like the one below:
+4. At the top of the page will be a big green button that says **New SSH key**. Click on this and then you should be taken to page like the one below:
 
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/github-ssh-key.png %}" alt="github-ssh-key">
     </figure>
 
-3. Paste the contents that we copied into the **Key** box and feel free to add whatever value you desire into the **Title**. Make sure the dropdown menu for **Key type** is set to `Authentication Key`. 
+5. Paste the contents that we copied into the **Key** box and feel free to add whatever value you desire into the **Title**. Make sure the dropdown menu for **Key type** is set to `Authentication Key`. 
 
-4. Finally, click **Add SSH key** and now your Pi Z2W should be able to talk to your GitHub account.
+6. Finally, click **Add SSH key** and now your Pi Z2W should be able to talk to your GitHub account.
 
 ### Setup GitHub Repository
 Next, we need to ensure that [`git`](https://git-scm.com/) is installed on our Pi Z2W. This will be the terminal program that we use to communicate with GitHub to version control and submit our assignments. 
 
 1. If the terminal window on VSCode is not already open, press `` Ctrl+` `` and then enter in the command:
 
-```bash
-sudo apt install git
-```
-
-Once `git` has installed, we use this to download the first the repository (or code-base) for this lab. Since this lab requires no code to be written, the repository will be pretty uneventful. But remember these steps as future labs will use these steps to be set up.
+    ```bash
+    sudo apt install git
+    ```
+    
+    Once `git` has installed, we use this to download the first the repository (or code-base) for this lab. Since this lab requires no code to be written, the repository will be pretty uneventful. But remember these steps as future labs will use these steps to be set up.
 
 2. Click on the **GitHub Classroom Link** located on Learning Suite for the "Getting Started Lab" assignment. You will be taken to a page that asks you to accept the assignment. Accept it and then you will be transferred to a page with a link of your repository for this assignment. Click on that link and you should be brought to the default view of the repository.
 
@@ -332,7 +332,7 @@ Your kit should look something like this:
       <img src="{% link assets/getting-started/assembly/step_10_ribbon %}" alt="Step 10 - ribbon cable inserted, locked.">
     </figure>
 
-10. Gently wrap the ribbon cable between the Raspberry Pi and the display HAT. Be careful not to bend the mental part of the ribbon cable that is coming out of the Raspberry Pi.
+10. Gently wrap the ribbon cable between the Raspberry Pi and the display HAT. Be careful not to bend the metal part of the ribbon cable that is coming out of the Raspberry Pi.
     <figure class="image mx-auto" style="max-width: 750px">
       <img src="{% link assets/getting-started/assembly/step_11_bent.jpeg %}" alt="Bent ribbon cable">
     </figure>
