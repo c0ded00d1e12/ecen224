@@ -117,7 +117,7 @@ In order to complete this lab, you will need to use Google. If you don’t know 
 
 - Pass off to a TA by showing the correct output of your `tree` command.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 ## Explore More!
 
