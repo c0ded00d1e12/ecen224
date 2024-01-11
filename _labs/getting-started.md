@@ -257,7 +257,8 @@ This downloads a copy of the lab files from to your Pi Z2W. Since this lab is fo
 
 In future labs, any starter code or special resources for completing that lab will be included alongside that lab's `README.md`.
 
-Now that you have confirmed your Pi has a working operating installed, shut it down with this command:
+
+Now it is time to start assembling the other parts of the kit. Shut down your Raspberry Pi with this command:
 
 ```
 sudo shutdown -h now
