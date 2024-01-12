@@ -276,7 +276,7 @@ The following table is a useful cheat sheet and will give you an idea of the dif
 
 - The `README.md` walks you through creating a new file called `data.c` with some requirements. Show the source code and program execution of `data.c` to the TA.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 ## Explore More!
 
