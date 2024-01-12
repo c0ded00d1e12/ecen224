@@ -91,15 +91,11 @@ env
 You can read some more about environment variables [here](https://www.cherryservers.com/blog/how-to-set-list-and-manage-linux-environment-variables).
 
 ### Get Familiar with a Command Line Text Editor
-Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, and `vim`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. (Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work.)
+Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, `vim`, and `emacs`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. **Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work because they require a GUI. `emacs` can also be terminal based (and is a great option - google the debate between `vim` and `emacs`) - but will need to be installed before you can use it.**
 
 Open a new file in the cloned lab directory using `nano` and create a note to yourself. Experiment with deleting text, copying, and pasting. Save the file. Quit out of `nano` and type `ls -l` to see details about the text file you created.
 
 ### Shell Challenge
-
-To round out your shell learning experience, you are **required** to complete the shell puzzle. In the lab repo, uncompress the `challenge.tar.xz` package. Complete the challenge at each level to beat this challenge.
-
-In order to complete this lab, you will need to use Google. If you don't know how to do something, Google will help you find the answer. You will likely want to search things like:
 
 To round out your shell learning experience, you are **required** to complete the shell challenge. In the lab repo, uncompress the `challenge.tar.xz` package; you will want to Google on how to do this. Notice that the file has two layers - the .tar and the .xz. In order to view the contents of the folder you must remove both (this can be done in one command). Inside the resulting directory, complete the various levels of the challenge to finish the lab. 
 
@@ -117,7 +113,7 @@ In order to complete this lab, you will need to use Google. If you don’t know 
 
 - Pass off to a TA by showing the correct output of your `tree` command.
 
-- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** and **Tagging Submissions** section.
+- To successfully submit your lab, you will need to follow the instructions in the [Lab Setup]({{ site.baseurl }}/lab-setup) page, especially the **Committing and Pushing Files** section.
 
 ## Explore More!
 
