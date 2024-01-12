@@ -97,10 +97,6 @@ Open a new file in the cloned lab directory using `nano` and create a note to yo
 
 ### Shell Challenge
 
-To round out your shell learning experience, you are **required** to complete the shell puzzle. In the lab repo, uncompress the `challenge.tar.xz` package. Complete the challenge at each level to beat this challenge.
-
-In order to complete this lab, you will need to use Google. If you don't know how to do something, Google will help you find the answer. You will likely want to search things like:
-
 To round out your shell learning experience, you are **required** to complete the shell challenge. In the lab repo, uncompress the `challenge.tar.xz` package; you will want to Google on how to do this. Notice that the file has two layers - the .tar and the .xz. In order to view the contents of the folder you must remove both (this can be done in one command). Inside the resulting directory, complete the various levels of the challenge to finish the lab. 
 
 In order to complete this lab, you will need to use Google. If you don’t know how to do something, Google will help you find the answer. You will likely want to search things like:
