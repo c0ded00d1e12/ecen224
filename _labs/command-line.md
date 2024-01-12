@@ -91,7 +91,7 @@ env
 You can read some more about environment variables [here](https://www.cherryservers.com/blog/how-to-set-list-and-manage-linux-environment-variables).
 
 ### Get Familiar with a Command Line Text Editor
-Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, and `vim`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. (Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work.)
+Several text editors are installed on your system, for example, `code`, `gedit`, `nano`, `vim`, and `emacs`. Some applications can only be run from the command line, while others can be launched graphically by clicking on its icon in the application screen. Choose an editor, and use it to create a new file. (Hint: If you are doing this lab SSHed into your Pi Z2W, `code` and `gedit` will not work because they require a GUI. `emacs` can also be terminal based (and is a great option - google the debate between `vim` and `emacs`) - but will need to be installed before you can use it.)
 
 Open a new file in the cloned lab directory using `nano` and create a note to yourself. Experiment with deleting text, copying, and pasting. Save the file. Quit out of `nano` and type `ls -l` to see details about the text file you created.
 
