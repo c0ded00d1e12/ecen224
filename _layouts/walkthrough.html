@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href={{ "/css/walkthrough.css" | relative_url }}>
+    <link rel="icon" type="image/png" sizes="96x96" href={{ "/icon/favicon-96x96.png" | relative_url }}>
+    <link rel="icon" type="image/png" sizes="32x32" href={{ "/icon/favicon-32x32.png" | relative_url }}>
+    <link rel="icon" type="image/png" sizes="16x16" href={{ "/icon/favicon-16x16.png" | relative_url }}>
+</head>
+
+<body>
+    <div id="frame">
+        <header>
+            <div class="siteblock">
+                <h1><a href={{ "/" | relative_url }}>BYU ECEn 224</a></h1>
+            </div>
+        </header>
+        <main>
+            <div class="title">{{ page.title }}</div>
+            <article>
+                {{ content }}
+            </article>
+        </main>
+    </div>
+
+</body>
+
+</html>
