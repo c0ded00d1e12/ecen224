@@ -1,6 +1,7 @@
 ---
 title: Git Walkthrough
 layout: walkthrough
+permalink: /:path/:basename
 ---
 Git is a Distributed Version Control System which means that it:
 

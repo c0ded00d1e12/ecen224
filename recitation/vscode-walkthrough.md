@@ -1,6 +1,7 @@
 ---
 title: Visual Studio Code Walkthrough
 layout: walkthrough
+permalink: /:path/:basename
 ---
 Visual Studio Code is a text and code editor introduced by Microsoft in 2015. It very rapidly became the most popular editor in the programming world. As of 2023 74% of programmers surveyed by Stack Overflow were using it. VS Code runs on Windows, Linux, and macOS.
 
@@ -29,7 +30,7 @@ Click the ![Explorer](images/vsc-explorer.png) Explorer icon if it has not alrea
 
 Select `File > Auto Save` in the menu. If it is checked, then any changes you make to files will be saved automatically whenever you pause for a moment in your editing. If it is unchecked, then you must save changes by clicking `File > Save`, `File > Save All` or `Ctrl+S` to save or `Ctrl+K S` to save all.
 
-Click the ![Search](images/vsc-search.png) Search icon on the left. This opens a search panel that lets you search all files in the project. You can also press `Ctrl-F` to just search the current file. Expand the single file search box to get search and replace. If you're familiar with **Regular Expressions** you can do a regular expression search and replace. And if you want to learn regular expressions (they're really powerful) you can try the [IT&C 210 Regular Expression Walkthrough](https://byu-itc-210.github.io/walkthrough/Regex) which uses VS Code for practicing.
+Click the ![Search](images/vsc-search.png) Search icon on the left. This opens a search panel that lets you search all files in the project. You can click the small `.*` icon to switch to use Regular Expressions in your search pattern.
 
 Click the ![Source Control](images/vsc-sourcecontrol.png) Source Control icon on the left. If the directory you're working on is already under source control this is where you can commit and push changes or pull changes from GitHub. If it's not under source control you can create a repository and push it to GitHub. For more detail, see the [Git Walkthrough](git-walkthrough) from last week.
 
@@ -47,7 +48,7 @@ Select some text by clicking and dragging the mouse. You can also select by hold
 
 Select some text and press `Ctrl-/`. This will comment out the text using whatever comment format is appropriate for the file format you are using.
 
-Press `Ctrl-F` and experiment with **Find** and **Replace**. Remember, `Ctrl-F` will bring up the **Find** box at the top of the screen and clicking the `>` Expand icon will open the box to include **Replace**.
+Press `Ctrl-F` and experiment with **Find** and **Replace**. Remember, `Ctrl-F` will bring up the **Find** box at the top of the screen and clicking the `>` Expand icon will open the box to include **Replace**. If you click the `.*` icon you can use **Regular Expressions** for search and replace which is quite powerful. If you want to learn regular expressions you can try the [BYU IT&C 210 Regular Expression Walkthrough](https://byu-itc-210.github.io/walkthrough/Regex) which uses VS Code for regular expression practice.
 
 Click somewhere in the text, hold `Shift-Alt`, and drag your mouse. You can select a rectangular area and then **Delete**, **Copy**, or **Cut**.
 
