@@ -71,9 +71,9 @@ The process of taking all the code you have written in C and translating it into
 
 Although it may seem compilers only perform the simple task of converting a higher level language to machine language, the truth is that they are much more robust and advanced than that. Many compilers analyze the code being passed in and optimize it so that it can be executed in the fewest amount of instructions possible.
 
-Another thing that compilers do is look at special statements called **directives**. Directives aid in deciding which parts of a written program in C are included during the compilation process. You can normally spot these because they start with a `#` sign.
+Before compiling your code, a pre-compiler is run which handles special statements called **directives**. Directives aid in deciding which parts of a written program in C are included during the compilation process. You can normally spot these because they start with a `#` sign.
 
-The `#include` directive looks at a file that exists in the operating system and includes it (essentially copying and pasting it) into your code. The `stdio.h` deals with the **st**andar**d** **i**nput and **o**utput that can be used in your program (i.e. reading from your keyboard and writing to a terminal). This is where the definition of the `printf()` function resides. Without including `stdio.h`, the "hello world" code above would not be able to execute correctly.
+The `#include` directive looks at a file that exists in the operating system and includes it (essentially copying and pasting it) into your code. For example, `stdio.h` is a file that contains code that deals with the **st**andar**d** **i**nput and **o**utput that can be used in your program (i.e. reading from your keyboard and writing to a terminal). This is where the definition of the `printf()` function resides. Without including `stdio.h`, the "hello world" code would not know what the `printf()` function was or where it was defined and thus would not be able to execute correctly.
 
 Other interesting compiler directives are `#define`, `#if`/`#else`/`#endif`. You will need to look these up and know what they mean for the lab questions.
 
@@ -100,7 +100,7 @@ printf("Hello, World!\n");
 prints out `Hello, World!` and then moves the cursor to the next line.
 
 #### Return Values
-Every function that completes execution in a C program must have a value passed up to the function that calls it. For example if I wanted to write a quick function that took the sum of two numbers, I could write it like so:
+Functions that completes execution in a C program have a single (optional) return value that is passed up to the function that calls it. For example if I wanted to write a quick function that took the sum of two numbers, I could write it like so:
 
 ```c
 int sum(int a, int b)
@@ -130,7 +130,7 @@ float sum(float a, float b)
 }
 ```
 
-Since the `main()` function is the outermost function that we can have in a C program, why does it matter if it has a return value? The fact of the matter is, return values can be used as a way to indicate if a program crashed in a specific way. Take the following example:
+If the `main()` function is the outermost function that we can have in a C program, why does it have a return value? Well, this return value is often used to indicate if the program finished correctly or crashed in a specific way. Take the following example:
 
 ```c
 // This is example code, it will not run because some of these values have not been defined.
@@ -158,7 +158,7 @@ If the program runs into specific errors, it will return different values to the
 #### Compiling with GCC
 Now that we understand what each line of our simple C program does, it is time to run it. In your lab repository, create a new file called `simple.c` in your lab directory. Inside that file, copy and paste the code at the top of the **A Simple C Program** section and save and close the file.
 
-To compile this code, we will use `gcc` to turn it into a binary, specifically:
+To compile this code, we will use `gcc` to turn it into a binary executable program:
 
 ```bash
 gcc simple.c
@@ -204,14 +204,14 @@ It would be impractical to go over every data type that exists in C and explain 
 #### Casting
 Sometimes it will be necessary to take the result of one number and represent it in a different type of variable. The process of the translating from one data type to another is known as **casting** and will be a very useful tool in this and other labs.
 
-For example, let's say I have a variable that was stored as a `int` and another variable that is a `float`. :
+For example, let's say I have a variable that was stored as an `int` and another variable that is a `float`. :
 
 ```c
 int num = 7;
 float num_f = 0;
 ```
 
-If I want to create a new variable where the `7` in in `num` is treated as a floating point number, (i.e. `7.0`), I can cast it by doing the following.
+If I want to create a new variable where the `7` in `num` is treated as a floating point number, (i.e. `7.0`), I can cast it by doing the following.
 
 ```c
 num_f = (float) num;
@@ -220,7 +220,7 @@ num_f = (float) num;
 #### stdint.h
 Another treasure trove of information on data types exists in the `stdint.h` library. This contains specialized data types such as `uint8_t` and others that have specialized characteristics for specific needs.
 
-For example, if you need to store a data **t**ype as an **int**eger that is **u**nsigned (can never been negative) and is only **8** bits long, you would `#include <stdint.h>` and use the `uint8_t` type. 
+For example, if you need to use a data **t**ype that stores an **int**eger that is **u**nsigned (can never be negative) and has  **8** bit length, you would `#include <stdint.h>` and use the `uint8_t` type. This can be useful because the all of the bit patterns possibly contained in the 8 bit value are used to represent numbers above 0 (ex. 0-255). In a normal int, **about but not quite** half of those bit paterns map to negative numbers (thus decreasing the maximum number that can be represented). You should be learning more about this in the lecture portion of class!
 
 To understand more about the types of data types that exist in `stdint.h`, you can check out the [documentation for this file](https://man7.org/linux/man-pages/man0/stdint.h.0p.html).
 
@@ -238,9 +238,9 @@ int grade = 87;
 printf("Final grade:\t%d", grade);  // This should print out "Final grade:    87"
 ```
 
-Characters with a `%` followed by a letter represent a placeholder for certain types of data which are injected into our `printf()` message. For example, `%d` means that the place holder can be replaced by a **d**ecimal number. In our example above, the `%d` would be replaced with the variable `grade`.
+Characters with a `%` followed by a letter represent a placeholder/format specifier for certain types of data which are additionally passed into our `printf()` message as arguments. For example, `%d` means that the value of the passed in argument should be interpreted as **d**ecimal number when it is printed to the screen. In our example above, the `%d` would be replaced with the variable `grade`.
 
-For multiple placeholders in the `printf()` statement, multiple variables will need to be provided:
+Multiple values can also be passed into the `printf()` statement, as shown below:
 
 ```c
 int num1 = 0;
@@ -254,7 +254,7 @@ printf("First num:\t%d\nSecond num:\t%d\nThird num:\t%d\n", num1, num2, num3);
 // Third num:    2
 ```
 
-The following table is a useful cheat sheet and will give you an idea of the different types of placeholders that can exist in the `printf()` statement:
+The following table is a useful cheat sheet and will give you an idea of the different types of formatting specifiers that can be used in the `printf()` statement:
 
 | Symbol | Description                        |
 | ------ | ---------------------------------- |
