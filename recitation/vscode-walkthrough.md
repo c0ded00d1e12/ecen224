@@ -62,7 +62,26 @@ Press `Ctrl-K O`. You get a whole new window with the same source file. If you h
 
 Press `Ctrl-Shift-P`. The **Command Palette** opens with list of all commands (there are a lot) along with shortcuts. You can type the name of a command to execute it. Through the `File > Preferences > Keyboard Shortcuts` menu you can assign commands to keyboard shortcuts.
 
-## Terminal
+## 4. Launching From the Command Line
+
+You can launch VS code from the CLI. Commands are the same regardless of which command line you are running (Bash on Linux, Zsh on macOS, Windows Powershell, Git Bash, or even Linux Subsystem for Windows).
+
+```
+code <filename>
+```
+This will open the specified file in VS Code
+
+```
+code .
+```
+Open the current directory in VS Code.
+
+```
+Code <directory path>
+```
+Open the specified directory path in VS Code.
+
+## 5. Terminal
 
 You can open a terminal directly in VS code. Just select `View > Terminal` in the menu or use the keyboard shortcut. On Windows, the terminal defaults to PowerShell while on Linux and macOS it defaults to Bash and Zsh respectively. But if you have multiple CLIs installed it you can change which terminal or open multiple terminals. For example, on Windows you can open the old DOS "Command Prompt", PowerShell, JavaScript, and (if you have them installed), Git Bash, and the Linux Subsystem for Windows.
 
