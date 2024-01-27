@@ -8,7 +8,7 @@ layout: lab
 
 - Become familiar with the different styles of debugging
 - Become familiar with GDB through VSCode and the terminal
-- Gain exposure of analyzing the assembly of a compiled C program
+- Gain exposure to the process of analyzing the assembly of a compiled C program
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Use the GitHub Classroom link posted in the Learning Suite for the lab to accept
 
 ## Overview
 
-Debugging is an essential part of software development, and debugging in C programming language requires a combination of tools and techniques to identify and fix errors in the code. The process of debugging involves identifying the cause of the problem, developing a hypothesis, testing the hypothesis, and implementing a solution. By using intentional and incremental programming, print statements, and GDB, you can effectively debug your programs and ensure that they run as expected.
+Debugging is an essential part of software development, and debugging in C or assembly requires you to be able to use a combination of tools and techniques to identify and fix errors in the code. The process of debugging involves identifying the cause of the problem, developing a hypothesis, testing the hypothesis, and implementing a solution. By using intentional and incremental programming, print statements, and GDB, you can effectively debug your programs and ensure that they run as expected.
 
 ### Intentional and Incremental Programming
 Intentional and incremental programming are two important mindsets to have while diving into software development. Intentional programming is a mindset that prioritizes writing code that is **clear, concise, and easy to understand**. In other words, the emphasis is on writing code that accurately reflects the your intentions rather than trying whatever and seeing if it sticks. Approaching a solution in code intentionally will inevitably be a lot more productive and easier to maintain and extend in the future. 
@@ -46,7 +46,7 @@ printf("Modified Str:\t%s\n", original_str);    // <--- Trace debug print statem
 
 ```
 
-And that's really all there is to this method! You'll be surprised to see how effective the simple logging of variable values as you go can ensure a smoother development experience. By using trace debugging, you can quickly identify and fix bugs, improve the performance of your program, and improve the overall reliability of your software.
+And that's really all there is to this method! You'll be surprised to see how effectively simply logging/printing variable values as you go can ensure a smoother development experience. By using trace debugging, you can quickly identify and fix bugs, improve the performance of your program, and improve the overall reliability of your software.
 
 **In the lab files for this repository, there are three files of interest: `main.c`, `math.c`, and `math.h`. Buggy functions have been included in the `math.c` file. Your job is to debug them using the trace debugging method and ensure that all of them work properly. To compile the program, you can pass both C files to gcc:**
 
@@ -58,7 +58,7 @@ gcc main.c math.c
 
 ### Using a Debugger
 
-While trace debugging may seem like the most practical way to address small bugs or issues in your code, sometimes it is not enough. Have you every printed out the contents of a double or even triple-nested `for` loop to try and find out where your logic went wrong? If not: congratulations! Like all others who have, we can assure it is no fun, especially when the terminal window fills up with unnecessary print statements that makes the bug more difficult to find.
+While trace debugging may seem like the most practical way to address small bugs or issues in your code, sometimes it is not enough. Have you every printed out the contents of a double or even triple-nested `for` loop and tried to find out where your logic went wrong? Sometimes there are so many values to test or the code gets so complicated that having too many print statements makes things even harder. 
 
 The simple solution to this is to use a debugger! A debugger is a program that controls the execution of a program, and allows us to pause it whenever we want and examine the values of variables and how they change during runtime. For this class we will be using the GDB debugger. To ensure it is installed on your Pi Z2W, run the following command:
 
@@ -66,10 +66,10 @@ The simple solution to this is to use a debugger! A debugger is a program that c
 sudo apt install gdb
 ```
 
-According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This the default program we will be using to debug the code in this class. This program has several modes of operation, including a terminal and graphical interface. You will be using GDB for the [Bomb programming assignment]({% link _programming-assignments/bomb-lab.md %}), so it is worth spending some time now to get familiar with it.
+According to their [homepage](https://www.sourceware.org/gdb/), "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed." This is the default program we will be using to debug the code in this class. This program has several modes of operation, including a terminal and graphical interface. You will be using GDB for the [Bomb programming assignment]({% link _programming-assignments/bomb-lab.md %}), so it is worth spending some time now to get familiar with it.
 
 #### VSCode C/C++
-More modern tools like VSCode have built-in extensions to interface with GDB and provide a more modern experience. To use this, VSCode requires the "C/C++" extension. You should have installed this in the last lab, but if you haven't, using the following steps. These steps should be run from the VSCode session that is connected to your Raspberry Pi:
+More modern tools like VSCode have built-in extensions to interface with GDB and provide a more modern experience. To use this, VSCode requires the "C/C++" extension. You should have installed this in the last lab, but if you haven't, do so using the following steps. These steps should be run from the VSCode session that is connected to your Raspberry Pi:
 
 1. Click on the Extensions button on the left-side menu.
 
@@ -82,13 +82,13 @@ Once you have ensured the extension is installed, open the `main.c` file (if it 
 **Follow the corresponding questions on the README.md for this lab as you learn the following techniques of graphical debugging.**
 
 #### Breakpoints
-A breakpoint is a point in the code where the debugger stops the execution of the program. Breakpoints can be set in VSCode by clicking next to the line number of the code that you want your debugger to pause on.
+A breakpoint is a point in the code where the debugger stops the execution of the program. Breakpoints can be set in VSCode by clicking next to the line number of the code that you want your debugger to pause on. Once the program has stopped at a breakpoint you can step through one line at a time.
 
 #### Step Over
-Stepping over a function means that you will run a function and receive its outputs in one step. If you are certain that a function is working well or you do not want to step into system function definitions, use this option. This is done by clicking on the button with the arched arrow and circle.
+Stepping over a function means that you will call/execute the full function and receive its outputs in one step. If you are certain that a function is working well or you do not want to step into system/library functions, use this option. This is done by clicking on the button with the arched arrow and circle.
 
 #### Step In/Out
-If you come across a function that you want to examine, put a breakpoint on where it is called. Then when you reach the paused line, click on the down arrow in the debug ribbon at the top of the screen. This will allow you to look at how the function is executing. To leave this function and continue the flow of the program, click on the up button.
+If you come across a function that you want to examine, put a breakpoint on where it is called. Then when you reach the paused line, click on the down arrow in the debug ribbon at the top of the screen. This will allow you to look at how the function is executing. To finish the function and continue the flow of the program, click on the up button.
 
 **Answer the questions on the `README.md` and don't forget to include screenshots.**
 
@@ -96,7 +96,7 @@ If you come across a function that you want to examine, put a breakpoint on wher
 
 **This exercise will be done on the `unknown` binary in your lab repo.**
 
-Not only can you build your project to analyze the source code, you can also use it to analyze the machine instructions that are getting passed to the processor. This is useful, especially in digital forensics and penetration testing. 
+Not only can you build your project to analyze the source code, you can also use it to analyze the machine instructions (also called assembly instructions) that are getting passed to the processor. This is useful, especially in digital forensics, penetration testing, and reverse engineering. We will be doing this alot later in the Bomb and Attack Programming Assignments!
 <!-- Not every executable you want to analyze was compiled with the `-g` option to let a debugger look at the source code. -->
 
 Analyzing assembly in VSCode tends to be a little trickier and require you to use `gdb` in the terminal. You can get started by typing in your terminal
@@ -111,7 +111,7 @@ Once you are inside of the command line version of `gdb`, you will see another s
 (gdb)> _
 ```
 
-To view the assembly instructions of the file, type in `layout asm`. To view the register values, type in `layout reg`. You will want to run these commands every time you bring up `gdb`.
+To view the assembly instructions of the file, type in `layout asm`. To view the register values (or hardware processor variables - you'll learn more about this later on), type in `layout reg`. You will want to run these commands every time you bring up `gdb`.
 
 Some helpful GDB commands to get you going:
 
@@ -137,7 +137,7 @@ run
 
 This sets up your GDB session and puts a breakpoint at the beginning of main. It then runs the executable, running until the program finishes or until it hits a breakpoint.
 
- **In this exercise, you are expected to apply your knowledge about debugging that you learned in the last section and apply that to an unfamiliar environment like ASM. Answer the corresponding questions on the `README.md` file to finish this section.**
+ **In this exercise, you are expected to apply your knowledge about debugging that you learned in the last section to the unfamiliar environment of assembly. Answer the corresponding questions on the `README.md` file to finish this section.**
 
 ## Submission
 
