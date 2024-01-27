@@ -1,6 +1,7 @@
 ---
 title: Git Walkthrough
 layout: walkthrough
+permalink: /:path/:basename
 ---
 Git is a Distributed Version Control System which means that it:
 
@@ -10,7 +11,7 @@ Git is a Distributed Version Control System which means that it:
 * Saves you from mistakes
 * Protects you from hardware or software failures
 
-[Git](https://git-scm.com/) isn't the first or only Version Control system. An early and popular one was CVS (Concurrent Versions System). [Mercurial](https://www.mercurial-scm.org/) remains popular and Microsoft SourcSafe was integrated into Visual Studio for many years.
+[Git](https://git-scm.com/) isn't the first or only Version Control system. An early and popular one was CVS (Concurrent Versions System). [Mercurial](https://www.mercurial-scm.org/) remains popular and Microsoft SourceSafe was integrated into Visual Studio for many years.
 
 Git was created in 2005 by Linus Torvalds as a better system for managing development of Linux. Since then it has gained enormous popularity.
 

@@ -12,8 +12,9 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 
 ## R02 - Git (Part 1)
 * 🖼️[Slides](https://1drv.ms/p/s!AsDairlA1Y6-lt5C62GnRKqxmMd5rg?e=awlxz9)
-* 🚶‍♀️[Git Walkthrough](/ecen224/recitation/git-walkthrough/)
+* 🚶‍♀️[Git Walkthrough](/ecen224/recitation/git-walkthrough)
 
-## R03 - VS Code
+## R03 - VS Code and Two's Complement
 * 📟[Visual Studio Code Installer](https://code.visualstudio.com/Download)
-* 🖼️Slides coming soon.
+* 🚶‍♀️[VS Code Walkthrough](/ecen224/recitation/vscode-walkthrough)
+* 🖼️[Two's Complement Slides](https://1drv.ms/p/s!AsDairlA1Y6-lt8KKe5ruOoEQXpvLw?e=cTwUlv)
