@@ -217,4 +217,4 @@ It rebuilds the whole project from scratch.
 
 ## More Make
 
-Make has a lot of options for more sophisticated Makefiles than these. It has variables, pattern rules, string substitution and more. The [Makefile Tutorial](https://makefiletutorial.com) is an excellent resource for learning the details. But for our purposes, the simple rules in the walkthrough are sufficient.
+Make has a lot of options for more sophisticated Makefiles than these. It has variables, pattern rules, string substitution and more. The [Makefile Tutorial](https://makefiletutorial.com) is an excellent resource for learning the details. But for our purposes, the simple rules in this walkthrough are sufficient.

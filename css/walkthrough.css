@@ -94,6 +94,7 @@ footer, header, hgroup, menu, nav, section {
 /* Images */
 img {
     border-style: none;
+    max-width: 100%;
 }
 
 /* ==== Body Defaults ==== */
