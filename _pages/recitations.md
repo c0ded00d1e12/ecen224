@@ -18,3 +18,6 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 * 📟[Visual Studio Code Installer](https://code.visualstudio.com/Download)
 * 🚶‍♀️[VS Code Walkthrough](/ecen224/recitation/vscode-walkthrough)
 * 🖼️[Two's Complement Slides](https://1drv.ms/p/s!AsDairlA1Y6-lt8KKe5ruOoEQXpvLw?e=cTwUlv)
+
+## R04 - Make and C Programming
+* 🚶‍♀️[Make Walkthrough](/ecen224/recitation/make-walkthrough)
