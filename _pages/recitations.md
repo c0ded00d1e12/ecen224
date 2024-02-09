@@ -21,3 +21,6 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 
 ## R04 - Make and C Programming
 * 🚶‍♀️[Make Walkthrough](/ecen224/recitation/make-walkthrough)
+
+## R06 - C Programming
+* Source code from in-class programming coming soon!
