@@ -145,6 +145,9 @@ Before the buttons can be used, you will need to call the `buttons_init()` funct
 ### Device delay
 You will see in your `main.c` function that your code will loop infinitely. This means that anything inside the `while(true)` loop will repeat over and over until the program is terminated by the user through the shell. Running a `while(true)` loop without any sort of control can cause system resources to be eaten up and cause your program to be run inefficiently. For this, we have provided the `delay_ms()` inside the `device.h` library. This will allow you to essentially create a wait time in the execution of your loop. This is handy if you want to draw something to the screen and have it only appear for a certain amount of time before the logic in your program goes on.
 
+### Logging
+We also give you `log.h` and `log.c` files that you can find under the `/lib` folder. The functions in these files (`log_info()` or `log_debug()` for example) can be used like printfs to output data to the terminal (or optionally a log file). However, these only print to the terminal if the log **level** specifies that they should be. For example, `log_debug()` won't print to the terminal if the level is set to `LOG_INFO`, but it will if the current level is set to `LOG_DEBUG`. You can change the level with the `log_set_level()` function. These tools can be used to have printfs that you don't need to remove, but that can be turned on/off when you are debugging.
+
 ## Requirements
 
 You must demonstrate your understanding of the `display` and `buttons` libraries and how to use them by accomplishing the following:
