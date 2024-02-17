@@ -23,7 +23,8 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 * 🚶‍♀️[Make Walkthrough](/ecen224/recitation/make-walkthrough)
 
 ## R05 - C Programming
-* Source code from in-class programming coming soon!
+* [Source code from Noon Session](/ecen224/recitation/recitation05_Noon.c){: download="stuff.c"}
+* [Source Code from 3:00 Session](/ecen224/recitation/recitation05_Three.c){: download="stuff_1.c"}
 
 ## R06 - Introduction to Assembly Language
 * 🖼️[Slides - Assembly Language](https://1drv.ms/p/s!AsDairlA1Y6-luYxDcaLb5bN0-1QIQ?e=upwXCQ)
