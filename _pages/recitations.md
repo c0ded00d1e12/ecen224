@@ -28,3 +28,6 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 
 ## R06 - Introduction to Assembly Language
 * 🖼️[Slides - Assembly Language](https://1drv.ms/p/s!AsDairlA1Y6-luYxDcaLb5bN0-1QIQ?e=upwXCQ)
+
+## R07 - Assembly Language, Memory Layout, and Calling Conventions
+* 🖼️[Slides - Assembly, Memory, Calling Conventions](https://1drv.ms/p/s!AsDairlA1Y6-lucjA2anwgYeap_fjA?e=ruQuIY)
