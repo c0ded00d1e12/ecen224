@@ -31,3 +31,6 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 
 ## R07 - Assembly Language, Memory Layout, and Calling Conventions
 * 🖼️[Slides - Assembly, Memory, Calling Conventions](https://1drv.ms/p/s!AsDairlA1Y6-lucjA2anwgYeap_fjA?e=ruQuIY)
+
+## R08 - GDB Gnu Debugger
+* 🚶‍♀️[GDB Walkthrough](/ecen224/recitation/gdb-walkthrough)
