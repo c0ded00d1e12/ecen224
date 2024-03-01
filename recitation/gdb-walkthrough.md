@@ -82,7 +82,7 @@ You will notice that the object file has three sections. The `.text` section con
 Loads a program and lets you examine it while running including setting breakpoints, examining register contents, examining variables, changing values and so forth.
 
 ### Example
-Create a file called `add.c` with the following contents:
+Update `add.c` with the following contents:
 ```
 #include <stdio.h>
 
@@ -104,7 +104,7 @@ gcc -O0 -fno-asynchronous-unwind-tables -fno-pie -no-pie -ggdb add.c
 
 Start gdb by specifying the program to be debugged on the command line.
 ```
-**gdb** a.out
+gdb a.out
 ```
 
 ### Common GDB Commands
@@ -121,7 +121,9 @@ Once GDB is loaded you type commands to debug the code. Here are some of the mos
 * `step`<br/>Step through the next source code line, diving into functions when called
 * `next`<br/>Step through the next source code line skipping over function calls
 * `info registers`<br/>Show the contents of all registers
-* `set`<br/>Set the value of a variable or register
+* `print a`<br/>Print the value of a variable
+* `set $rax = 42`<br/>Set the value of a register
+* `set var a = 42`<br/>Set the value of a variable
 * `layout asm`<br/>Change the screen layout to show the disassembly.
 * `layout regs`<br/>Change the screen layout to show the registers.
 * `set disassembly-flavor intel`<br/>Disassemble in Intel syntax
