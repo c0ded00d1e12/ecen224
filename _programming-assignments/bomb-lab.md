@@ -62,8 +62,12 @@ to `stdin`. In a moment of weakness, Dr. Evil added this feature so you don’t 
 To avoid accidentally detonating the bomb, you will need to learn how to single-step through the assembly code and how to set breakpoints. You will also need to learn how to inspect both the registers and the memory states. One of the nice side-effects of doing the lab is that you will get very good at using a
 debugger. This is a crucial skill that will pay big dividends the rest of your career.
 
-## Grading
+## Scoring Grading
 The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on LearningSuite assignment.)
+
+The scoreboard includes penalties for setting off the bomb. This is for the friendly competition with your classmates. Penalities will not be applied to your grade on this assignment.
+
+When you have completed the assignment (fully or partially) submit the answers to your bomb in the assignment on LearningSuite.
 
 ## Hints *(Please read this!)*
 There are many ways of defusing your bomb. You can examine it in great detail without ever running the program, and figure out exactly what it does. This is a useful technique, but it not always easy to do. You can also run it under a debugger, watch what it does step by step, and use this information to defuse it. This is probably the fastest way of defusing it.

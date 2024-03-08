@@ -20,9 +20,10 @@ The options are:
 
 Before trying to decode assembly, it's valuable to have a reference for the opcodes. Here are some good choices:
 
-* [Alphabetical Instruction Reference](https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf)
+* [Alphabetical Instruction Reference](https://www.felixcloutier.com/x86/)
 * [Stanford X86-64 Reference Sheet](https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf)
 * [X86 opcode and Instruction Reference](http://ref.x86asm.net/)
+* [X86 Instruction Listings (https://en.wikipedia.org/wiki/X86_instruction_listings)](https://web.stanford.edu/class/cs107/resources/)
 
 > For most instructions, the opcode is the same in AT&T and Intel syntax except that AT&T syntax adds a suffix representing the size of the operand. One exception is `cltq` which means "Convert Long to Quad". In Intel syntax the opcode is `cdqe` meaning "Convert Double to Quad Extend". Just another way of saying the same thing. When no operand is given, `cdqe` operates on `rax`. Related instructions are `cwde` (Intel `cwtl`) which converts 16-bit words to 32-bit double-words and `cbw` (Intel `cbtw`) which converts bytes to 16-bit words.
 
