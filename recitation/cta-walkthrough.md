@@ -42,7 +42,7 @@ void loop() {
 
 Compile it to assembly:
 ```
-gcc -S -fverbose-asm -fno-asynchronous-unwind-tables -fno-pie yourcode.c
+gcc -S -O0 -fverbose-asm -fno-asynchronous-unwind-tables -fno-pie loop.c
 ```
 
 The annotated assembly code will be in a text file named `loop.s`. Examine the contents. Notice how it places a test for `i<=9` (instead of `i<10`) at the end of the loop and jumps to the end before looping back to the top of the loop.

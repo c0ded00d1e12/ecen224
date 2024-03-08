@@ -20,7 +20,7 @@ Assuming your CAEDM username is foo and the Digital Lab computer you want to log
 
 
 ### Download Instructions
-I will post the website to download the assignment and view the scoreboard on Learning Suite.
+Go to the Bomb Lab assignment in the LearningSuite schedule. There you will find links to the assignment and the scoreboard.
 
 
 ## Introduction
@@ -63,7 +63,7 @@ To avoid accidentally detonating the bomb, you will need to learn how to single-
 debugger. This is a crucial skill that will pay big dividends the rest of your career.
 
 ## Grading
-The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on the web page for this lab.)
+The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on LearningSuite assignment.)
 
 ## Hints *(Please read this!)*
 There are many ways of defusing your bomb. You can examine it in great detail without ever running the program, and figure out exactly what it does. This is a useful technique, but it not always easy to do. You can also run it under a debugger, watch what it does step by step, and use this information to defuse it. This is probably the fastest way of defusing it.

@@ -34,3 +34,6 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 
 ## R08 - GDB Gnu Debugger
 * 🚶‍♀️[GDB Walkthrough](/ecen224/recitation/gdb-walkthrough)
+
+## R09 - Compile to Assembly
+* 🚶‍♀️[Compile-To-Assembly Walkthrough](/ecen224/recitation/cta-walkthrough)
