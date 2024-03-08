@@ -121,6 +121,7 @@ Once GDB is loaded you type commands to debug the code. Here are some of the mos
 * `step`<br/>Step through the next source code line, diving into functions when called
 * `next`<br/>Step through the next source code line skipping over function calls
 * `info registers`<br/>Show the contents of all registers
+* `info register rax`<br/>Show the contents of one register
 * `print a`<br/>Print the value of a variable
 * `set $rax = 42`<br/>Set the value of a register
 * `set var a = 42`<br/>Set the value of a variable
