@@ -192,7 +192,7 @@ The `x` command stands for "eXamine." It is used for examining the contents of m
 ```
 x/16xb add
 ```
-This tells the debugger to eXamine 16 bytes in hexadecimal format starting at the beginning of the function `add`. To detauks on the options for formatting (hex, decimal, etc.) word size (byte, half word, word, etc.), amount to print and address type `help x`.
+This tells the debugger to eXamine 16 bytes in hexadecimal format starting at the beginning of the function `add`. For detail on the options for formatting (hex, decimal, etc.) word size (byte, half word, word, etc.), amount to print and address type `help x`.
 
 Try different display modes. Place breakpoints in different places. Change values in registers and in variables. See if you can get the program to crash.
 
