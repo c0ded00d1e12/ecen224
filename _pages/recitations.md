@@ -42,5 +42,5 @@ Recitations are on Fridays at Noon and 3:00pm in EB 423 (same room as the labs).
 ## R11 - Compile to Assembly
 * 🚶‍♀️[Compile-To-Assembly Walkthrough](/ecen224/recitation/cta-walkthrough)
 
-## R10 - Midterm Review Kahoot
+## R12 - Midterm Review Kahoot
 * 🖼️[Kahoot Midterm Review](/ecen224/recitation/Kahoot-Midterm-Review.pdf)
