@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AttackLab Getting Started</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href=/ecen224/css/walkthrough.css>
+    <link rel="icon" type="image/png" sizes="96x96" href=/ecen224/icon/favicon-96x96.png>
+    <link rel="icon" type="image/png" sizes="32x32" href=/ecen224/icon/favicon-32x32.png>
+    <link rel="icon" type="image/png" sizes="16x16" href=/ecen224/icon/favicon-16x16.png>
+</head>
+
+<body>
+    <div id="frame">
+        <header>
+            <div class="siteblock">
+                <h1><a href="/ecen224/">BYU ECEn 224</a></h1>
+            </div>
+        </header>
+        <main>
+            <div class="title">AttackLab Getting Started</div>
+            <article>
+                <p>You must complete this lab on the CAEDM server, <code class="language-plaintext highlighter-rouge">ssh.et.byu.edu</code> because it has the right configuration to allow stack execution exploits. Conveniently, this server is available through SSH from on or off campus. We recommend completing the task in the lab due to the availabilty of TAs but access from other locations is available.</p>
+
+<p>In <a href="https://learningsuite.byu.edu/" target="_blank" rel="noopener noreferrer">LearningSuite</a>, click on the “Attack Programming Assignment” to download your target. It will be a <code class="language-plaintext highlighter-rouge">.tar</code> file with a name like <code class="language-plaintext highlighter-rouge">targetK.tar</code> where <code class="language-plaintext highlighter-rouge">K</code> is a number. You must be in the lab or on the campus network for the download and scoreboard links to work.</p>
+
+<p>Copy your target to your home directory. This directory is shared between the lab computers and the CAEDM server. So, if you download using a lab computer you can just drop the file where you want it.</p>
+
+<h3 id="copying-the-file-from-a-personal-computer">Copying the file from a personal computer</h3>
+
+<p>If you are working from your own computer, use <a href="https://www.man7.org/linux/man-pages/man1/scp.1.html" target="_blank" rel="noopener noreferrer">scp</a> to transfer files. For example, to copy targetK from the current local directory to the server use this command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp targetK.tar username@ssh.et.byu.edu:~
+</code></pre></div></div>
+
+<p>Substitute your CADEM username for <code class="language-plaintext highlighter-rouge">username</code> and the actual name of your target .tar file for <code class="language-plaintext highlighter-rouge">targetK.tar</code>. The ~ tilde character at the end of the path indicates to copy into your home directory on the server. It will prompt you for your password.</p>
+
+<p>In similar manner, you can use <code class="language-plaintext highlighter-rouge">scp</code> to copy other files both ways between computers.</p>
+
+<h3 id="connect-to-the-cadem-server">Connect to the CADEM server</h3>
+
+<p>Now, make an SSH connection to your server</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh username@ssh.et.byu.edu
+</code></pre></div></div>
+
+<p>Now, you are ready to begin the lab.</p>
+
+<h2 id="unpacking-the-package">Unpacking the package</h2>
+<p>On the server use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar -xvf targetK.tar
+</code></pre></div></div>
+<p>(Substitute the actual name of your <code class="language-plaintext highlighter-rouge">.tar</code> file.)</p>
+
+<p>This will result in a folder called <code class="language-plaintext highlighter-rouge">targetK</code> containing six files:</p>
+
+<ul>
+  <li>README.txt: A file describing the contents of the directory.</li>
+  <li>ctarget: The target executable program for Phases 1-3.</li>
+  <li>rtarget: The target executable program for Phases 4-5.</li>
+  <li>hex2raw: A utility to generate attack strings from hexadecimal source</li>
+  <li>cookie.txt: The number of your specific cookie to be used in Phases 2 and up.</li>
+  <li>farm.c: Source code to the “gadget farm” for uses in Phases 4 and 5.</li>
+</ul>
+
+<h2 id="finding-values-for-phase-1">Finding values for Phase 1</h2>
+<p>To solve Phase 1 you need to know the size of your buffer and the location of the <code class="language-plaintext highlighter-rouge">touch1</code> function. You can find both of these values using objdump.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>objdump -d ctarget &gt; ctarget.txt
+</code></pre></div></div>
+<p>This will disassemble <code class="language-plaintext highlighter-rouge">ctarget</code> and put the result in <code class="language-plaintext highlighter-rouge">ctarget.txt</code>. In the text file it produced, look for the <code class="language-plaintext highlighter-rouge">getbuf</code> function. The first instruction will subtract some value from register <code class="language-plaintext highlighter-rouge">rsp</code>. This is to make room for local variables. Since the only local variable is the buffer, then the amount subtracted from <code class="language-plaintext highlighter-rouge">rsp</code> is the size of your buffer.</p>
+
+<p>Now, in <code class="language-plaintext highlighter-rouge">ctarget.txt</code> look for the <code class="language-plaintext highlighter-rouge">touch1</code> function. The disassembly will show the address of that function.</p>
+
+<h3 id="finding-the-values-using-gdb">Finding the values using gdb</h3>
+<p>You can find these same two values using <code class="language-plaintext highlighter-rouge">gdb</code> with the following commands:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdb ctarget
+disassemble getbuf
+disassemble touch1
+</code></pre></div></div>
+
+<p>The first disassemble will give you the code for <code class="language-plaintext highlighter-rouge">getbuf</code> from which you can deduce the size of the buffer by looking at how much is subtracted from <code class="language-plaintext highlighter-rouge">rsp</code>.</p>
+
+<p>The second disassemble will give you the address of touch1.</p>
+
+<h3 id="hint-jumping-to-addresses">Hint: Jumping to addresses</h3>
+<p>All jumps in x86 machine code are relative. That is, the address in the <code class="language-plaintext highlighter-rouge">jmp</code> command is added to the current <code class="language-plaintext highlighter-rouge">rip</code> instruction pointer. A negative number will jump to a lower address and a positive number will jump to a higher address. This is done so that code can be <em>relocated</em> without having to change all of the jump commands.</p>
+
+<p>Because of this, when you follow the tips in <em>Appendix B</em> to generate machine code, it’s hard to a <code class="language-plaintext highlighter-rouge">jmp</code> that will go to an exact address. To do so, you need to know the address of where your code will land and then take the difference between the two addresses. An easy alternative is to <code class="language-plaintext highlighter-rouge">push</code> the address you want on the stack and then use <code class="language-plaintext highlighter-rouge">ret</code> to go to that address.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pushq $0xabcdefgh
+retq
+</code></pre></div></div>
+
+<h3 id="solving-the-phases">Solving the Phases</h3>
+<p>Follow the instructions to understand the challenges of the other Phases. For some of them, you’ll need to run the target under the <code class="language-plaintext highlighter-rouge">gdb</code> debugger and set breakpoints to find the values and addresses you need.</p>
+
+
+            </article>
+        </main>
+    </div>
+
+</body>
+
+</html>
