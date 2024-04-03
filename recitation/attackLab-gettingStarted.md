@@ -9,8 +9,6 @@ In [LearningSuite](https://learningsuite.byu.edu/), click on the "Attack Program
 
 Copy your target to your home directory. This directory is shared between the lab computers and the CAEDM server. So, if you download using a lab computer you can just drop the file where you want it.
 
-For more detail, view the [Attack Lab - Getting Started](/ecen224/recitation/attackLab-gettingStarted) script from class.
-
 ### Copying the file from a personal computer
 
 If you are working from your own computer, use [scp](https://www.man7.org/linux/man-pages/man1/scp.1.html) to transfer files. For example, to copy targetK from the current local directory to the server use this command:

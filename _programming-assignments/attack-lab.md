@@ -20,6 +20,7 @@ Replace `<caedm_username>` with your actual CAEDM username. Your home directory 
 ### Download Instructions
 Go to the `Attack Programming Assignment` entry in *LearningSuite* where you will find a link to download your attack target and one to view the scoreboard.
 
+For more detail, view the [Attack Lab - Getting Started](/ecen224/recitation/attackLab-gettingStarted) script from class.
 
 ## 1. Introduction
 This assignment involves generating a total of five attacks on two programs having different security vulnerabilities. Outcomes you will gain from this lab include:
