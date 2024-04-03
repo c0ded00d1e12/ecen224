@@ -14,11 +14,11 @@ You must complete this lab on the CAEDM server (`ssh.et.byu.edu`) to perform thi
 ssh <caedm_username>@ssh.et.byu.edu
 ```
 
-Replacing `<caedm_username>` with your actual CAEDM username. Your home directory is mounted between `ssh.et.byu.edu`, the Digital Lab computers, and the Embedded Lab computers, so you can download the target from any of those locations.
+Replace `<caedm_username>` with your actual CAEDM username. Your home directory is mounted between `ssh.et.byu.edu`, the Digital Lab computers, and the Embedded Lab computers, so you can download the target from any of those locations.
 
 
 ### Download Instructions
-I will post the website to download the assignment and view the scoreboard on Learning Suite.
+Go to the `Attack Programming Assignment` entry in *LearningSuite* where you will find a link to download your attack target and one to view the scoreboard.
 
 
 ## 1. Introduction
@@ -39,7 +39,7 @@ You will want to study Sections 3.10.3 and 3.10.4 of the CS:APP3e book as refere
 ## 2. Logistics
 
 ### 2.1 Getting Files
-To obtain the unique file for your team, follow the instructions on the webpage for this lab. (You point your Web browser at a particular server and the server builds your files and returns them to your browser in a `tar` file called `targetK.tar`, where `K` is the unique number of your target programs.)
+To obtain the your unique file, follow the instructions on the webpage for this lab. (You point your Web browser at a particular server and the server builds your files and returns them to your browser in a `tar` file called `targetK.tar`, where `K` is the unique number of your target programs.)
 
 Save the `targetK`.tar file in a (protected) Linux directory in which you plan to do your work. Then give the command: `tar -xvf targetK.tar`. This will extract a directory `targetK` containing the files described below.
 
@@ -48,7 +48,6 @@ You should only download one set of files. If for some reason you download multi
 <div class="alert alert-danger" role="alert">
     <b>Warning:</b> If you expand your <code>targetK.tar</code> on a PC, by using a utility such as Winzip, or letting your browser do the extraction, you’ll risk resetting permission bits on the executable files.
 </div>
-
 
 The files in `targetK` include:
 - `README.txt`: A file describing the contents of the directory
@@ -129,7 +128,7 @@ The server will test your exploit string to make sure it really works, and it wi
 
 You can view the scoreboard by pointing your Web browser at the link given on the class Web page for this class. Unlike the Bomb Lab, there is no penalty for making mistakes in this lab. Feel free to fire away at `CTARGET` and `RTARGET` with any strings you like.
 
-IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order to submit your solution, you will need to be running on one of the ECEn Department’s spice machines.
+<!-- IMPORTANT NOTE: You can work on your solution on any Linux machine, but in order to submit your solution, you will need to be running on one of the ECEn Department’s spice machines. -->
 
 [Figure 1](#figure-1-summary-of-attack-lab-phases) summarizes the five phases of the lab. As can be seen, the first three involve code-injection (CI) attacks on CTARGET, while the last two involve return-oriented-programming (ROP) attacks on `RTARGET`.
 
@@ -203,7 +202,7 @@ ROP: Return-oriented programming
 ## 4. Part I: Code Injection Attacks
 For the first three phases, your exploit strings will attack `CTARGET`. This program is set up in a way that the stack positions will be consistent from one run to the next and so that data on the stack can be treated as executable code. These features make the program vulnerable to attacks where the exploit strings contain the byte encodings of executable code.
 
-### 4.1 Level 1
+### 4.1 Phase 1 Level 1
 For Phase 1, you will not inject new code. Instead, your exploit string will redirect the program to execute an existing procedure.
 
 Function `getbuf` is called within `CTARGET` by a function `test` having the following C code:
@@ -236,7 +235,7 @@ Your task is to get `CTARGET` to execute the code for `touch1` when `getbuf` exe
 - You might want to use GDB to step the program through the last few instructions of `getbuf` to make sure it is doing the right thing.
 - The placement of `buf` within the stack frame for `getbuf` depends on the value of compile-time constant `BUFFER_SIZE`, as well the allocation strategy used by GCC. You will need to examine the disassembled code to determine its position.
 
-### 4.2 Level 2
+### 4.2 Phase 2 Level 2
 Phase 2 involves injecting a small amount of code as part of your exploit string.
 
 Within the file `ctarget` there is code for a function `touch2` having the following C representation:
@@ -263,7 +262,7 @@ Your task is to get `CTARGET` to execute the code for `touch2` rather than retur
 - Do not attempt to use `jmp` or `call` instructions in your exploit code. The encodings of destination addresses for these instructions are difficult to formulate. Use `ret` instructions for all transfers of control, even when you are not returning from a call.
 - See the discussion in [Appendix B](#appendix-b-generating-byte-codes) on how to use tools to generate the byte-level representations of instruction sequences.
 
-### 4.3 Level 3
+### 4.3 Phase 3 Level 3
 Phase 3 also involves a code injection attack, but passing a string as argument.
 
 Within the file `ctarget` there is code for functions `hexmatch` and `touch3` having the following C representations:
@@ -342,7 +341,7 @@ Your code for `RTARGET` contains a number of functions similar to the `setval_21
 </div>
 
 
-### 5.1 Level 2
+### 5.1 Phase 4 Level 2
 For Phase 4, you will repeat the attack of Phase 2, but do so on program `RTARGET` using gadgets from your gadget farm. You can construct your solution using gadgets consisting of the following instruction types, and using only the first eight x86-64 registers (`%rax`–`%rdi`).
 
 - `movq` : The codes for these are shown in [Figure 3-A](#figure-3-a).
@@ -669,10 +668,10 @@ Figure 3: Byte encodings of instructions. All values are shown in hexadecimal.
 - You can do this attack with just two gadgets.
 - When a gadget uses a `popq` instruction, it will pop data from the stack. As a result, your exploit string will contain a combination of gadget addresses and data.
 
-### 5.2 - Level 3 (Extra Credit)
-Before you take on the Phase 5, pause to consider what you have accomplished so far. In Phases 2 and 3, you caused a program to execute machine code of your own design. If `CTARGET` had been a network server, you could have injected your own code into a distant machine. In Phase 4, you circumvented two of the main devices modern systems use to thwart buffer overflow attacks. Although you did not inject your own code, you were able inject a type of program that operates by stitching together sequences of existing code.
+### 5.2 - Phase 5 Level 3 (Extra Credit)
+Before you take on Phase 5, pause to consider what you have accomplished so far. In Phases 2 and 3, you caused a program to execute machine code of your own design. If `CTARGET` had been a network server, you could have injected your own code into a distant machine. In Phase 4, you circumvented two of the main devices modern systems use to thwart buffer overflow attacks. Although you did not inject your own code, you were able inject a type of program that operates by stitching together sequences of existing code.
 
-Phase 5 requires you to do an ROP attack on `RTARGET` to invoke function `touch3` with a pointer to a string representation of your cookie. That may not seem significantly more difficult than using an ROP attack to invoke `touch2`, except that we have made it so. Moreover, Phase 5 counts for only 5 points, which is not a true measure of the effort it will require. This phase is challenging. If you have other pressing obligations consider stopping right now.
+Phase 5 requires you to do an ROP attack on `RTARGET` to invoke function `touch3` with a pointer to a string representation of your cookie. That may not seem significantly more difficult than using an ROP attack to invoke `touch2`, except that we have made it so. Moreover, Phase 5 counts for only 5 extra credit points, which is not a true measure of the effort it will require. This phase is challenging. If you have other pressing obligations consider stopping right now.
 
 To solve Phase 5, you can use gadgets in the region of the code in `rtarget` demarcated by functions `start_farm` and `end_farm`. In addition to the gadgets used in Phase 4, this expanded farm includes the encodings of different `movl` instructions, as shown in [Figure 3-C](#figure-3-c). The byte sequences in this part of the
 farm also contain 2-byte instructions that serve as *functional nops*, i.e., they do not change any register or memory values. These include instructions, shown in [Figure 3-D](#figure-3-d), such as `andb %al,%al`, that operate on the low-order bytes of some of the registers but do not change their values.
