@@ -65,7 +65,7 @@ debugger. This is a crucial skill that will pay big dividends the rest of your c
 ## Scoring Grading
 The bomb will notify your instructor automatically about your progress as you work on it. You can keep track of how you are doing by looking at the class scoreboard. (A link to the scoreboard is given on LearningSuite assignment.)
 
-The scoreboard includes penalties for setting off the bomb. This is for the friendly competition with your classmates. Penalities will not be applied to your grade on this assignment.
+The scoreboard includes penalties for setting off the bomb. This is for the friendly competition with your classmates. Penalties will not be applied to your grade on this assignment.
 
 When you have completed the assignment (fully or partially) submit the answers to your bomb in the assignment on LearningSuite.
 
