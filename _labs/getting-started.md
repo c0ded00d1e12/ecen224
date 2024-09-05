@@ -85,7 +85,7 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
 1. Login to the Pi Z2W via `ssh` by typing in:
 
     ```bash
-    ssh <your_username>@doorbell-<your_netid>.local
+    ssh <your_netid>@doorbell-<your_netid>.local
     ```
 
     You will be asked to enter the password you chose earlier.  When you type your password in Linux you won't see anything show up in the Terminal window, but it is still being entered.  Just type your password and press `Enter` when you are done.
@@ -98,7 +98,7 @@ Now that your Pi Z2W has Raspberry Pi OS Lite installed and is connected to the 
       <img src="{% link assets/getting-started/ssh.png %}" alt="ssh">
     </figure>
 
-    You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_username>@doorbell-<your_netid>` on the Pi Z2W.
+    You can tell you are inside the Pi Z2W by looking at the string before the cursor. It should be `username@computer_name` or specifically `<your_netid>@doorbell-<your_netid>` on the Pi Z2W.
     
 4. Now that you are logged into your Pi Z2W, we will download a script that will install all the dependencies we will need for future labs.
 
