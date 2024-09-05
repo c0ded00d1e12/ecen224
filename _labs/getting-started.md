@@ -30,46 +30,25 @@ In this class we will be using the [Raspberry Pi Zero 2 W](https://www.raspberry
 ### Setting up the SD Card 
 In order to make use of the Pi Z2W, we will need to put an operating system onto its SD card. An [**operating system**](https://en.wikipedia.org/wiki/Operating_system) (OS), simply put, is a collection of programs which allows a user to interact with a device's hardware. For users of PCs, this collection of programs is called [Microsoft Windows](https://www.microsoft.com/en-us/windows?r=1), for Mac users [macOS](https://www.apple.com/za/macos/what-is/), and for Linux users there exists a wide variety of [distros](https://itsfoss.com/what-is-linux-distribution/#:~:text=Your%20distributions%20also%20takes%20the,as%20Linux%2Dbased%20operating%20systems.) to choose from. 
 
-In this lab we will become familiar with a distinct version of Linux called [Raspberry Pi OS](https://www.raspberrypi.com/software/) (formerly known as Raspbian) which was made specifically for devices like the Pi Z2W. 
+In this lab we will become familiar with a distinct version of Linux called [Raspberry Pi OS](https://www.raspberrypi.com/software/) (formerly known as Raspbian) which was made specifically for devices like the Pi Z2W.
 
-1. In order to load Raspberry Pi OS to the SD card we will use the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/) tool. On your lab machine go to the **Activities** menu (in the upper lefthand corner) and then type in `imager`. Click on the icon that looks like a raspberry. You should see the following window open:
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/imager-start.png %}" alt="imager-start">
-    </figure>
-2. Select the **CHOOSE OS** option. Then click on **Raspberry Pi OS (other) > Raspberry Pi OS Lite (64-bit)**. This is the OS that will be written to the SD card. Note that the **Lite** option means that there will be no point-and-click navigation with the OS like you would be used to in Windows and macOS. Instead we will use the **command line** to get around.
+Normally, we would encourage you to use the [Raspberry Pi Imager](https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/) tool to download the image and write it to the SD card. However, due to the limitations of the lab machines, we will need to do it a different way.
 
-3. Next we will configure some of the OS settings by clicking on the ![gear]({% link assets/getting-started/config-gear.png %}){:width="6%"} icon. This brings you to the **Advanced Options** menu:
+1.  Download the script that will walk you through the process of imaging your SD card. A script is like a recipe of commands that will run on your computer. You will download the script by opening up the **terminal** on your lab machine. This can be done either through finding it in the **Activities** menu or simply pressing `Ctrl+Alt+T`. Once you have the terminal open, copy and paste the following commands:
 
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/advanced-options.png %}" alt="advanced-options">
-    </figure>
+    ```bash
+    wget https://byu-cpe.github.io/ecen224/assets/scripts/imager.sh
+    chmod +x imager.sh
+    ./imager.sh
+    ```
 
-4. Change the following values in the menu according to the table below:
+    *(For a long command like this, it's easiest to copy and paste it into the terminal.  Use the copy button on the top right of the command box to copy the command. Use `Ctrl+Shift+V` to paste into the terminal.)*
 
-    | Setting                    | Value                                                                       | Description                                                                                                                                                                                                               |
-    | -------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Set hostname:              | `doorbell-<your_netid>`                                                     | This will be the name of your Pi Z2W. This will make it easier to find on the network. Replace `<your_netid>` with your actual BYU NetID.                                                                                 |
-    | Enable SSH:                | Check **Enable SSH** and select **Use password authentication**             | This allows you to login into your Pi Z2W from anywhere on the network with the `ssh` tool by using a username and password.                                                                                              |
-    | Set username and password: | Any username and password you desire (make sure it is secure).              | We change these values from the default so that you can protect your projects. You are responsible for remembering this username and password! **Any loss of these credentials may require you to re-setup your Pi Z2W.** |
-    | Configure Wireless LAN*    | SSID: **name of WiFi network at home**<br/>Password:**password of network** | In case you want to work with the Pi Z2W outside of the Digital Lab.                                                                                                                                                      |
-    | Set locale settings:       | Timezone: **America/Denver**<br/>Keyboard Layout: **us**                    | This makes sure that the region the Pi Z2W is in the MDT timezone with the US keyboard layout.                                                                                                                            |
+2. This script will take a long time to run and will ask you some questions along the way.
 
-    <p style="text-align: right; font-size: 10pt;">*optional configurations</p>
+3. Once the writing process finishes, remove the SD card from your laptop and insert it into the SD card slot of the Pi Z2W. 
 
-
-5. Now that we have correctly configured the OS settings, we will write the OS to the SD card that came with your Pi Z2W kit. Make sure that your SD card is plugged into the USB adapter and that the adapter is plugged into the lab computer. 
-
-6. Select **CHOOSE STORAGE** on the imager. A window that allows you to select the SD card will pop up:
-
-    <figure class="image mx-auto" style="max-width: 750px">
-      <img src="{% link assets/getting-started/select-device.png %}" alt="select-device">
-    </figure>
-
-7. Select the SD card and click **WRITE** to start writing the OS to the SD card. A pop-up window will ask you if you want to erase all contents on the SD card before continuing, select **YES** and continue with the write process. The writing process will take a while. 
-
-8. Once the writing process finishes, remove the SD card from your laptop and insert it into the SD card slot of the Pi Z2W. 
-
-9. Plug in the Power over Ethernet (PoE) adapter (the white brick) into the **first** micro USB port (the only one *not* circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. Power over Ethernet is a technology that provides both Internet and power at the same time. Only some Ethernet ports have it, but all of the ports in the Digital Lab do. It is not necessary to have power and the PoE adapter plugged in at the same time. 
+4. Plug in the Power over Ethernet (PoE) adapter (the white brick) into the **first** micro USB port (the only one *not* circled in the figure at the beginning of this lab) to power up and supply internet to Pi Z2W. Power over Ethernet is a technology that provides both Internet and power at the same time. Only some Ethernet ports have it, but all of the ports in the Digital Lab do. It is not necessary to have power and the PoE adapter plugged in at the same time. 
 
 The boot process will take a while, so wait at least two minutes (or until the green light starts flashing) to move to the next section.
 
