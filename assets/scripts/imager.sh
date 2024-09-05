@@ -17,7 +17,6 @@ function echo_green {
     echo -e "\033[32m$1\033[0m"
 }
 
-
 echo_green "Welcome to the ECEn 225 Raspberry Pi Imager! This script will image your SD card and create a new user on your Raspberry Pi. Enter in your NetID and a password for the user you want to create on the Pi."
 echo_red "Use a DIFFERENT password than you did for your BYU or CAEDM account."
 echo_green ""
@@ -31,7 +30,6 @@ fi
 echo_green "Start by plugging in the SD card and adapter into the USB slot."
 read -p "Press enter to continue..." proceed
 
-
 # Prompt for username
 read -p "Enter NetID: " username
 
@@ -41,7 +39,7 @@ while true; do
     echo ""
     read -sp "Confirm password: " password_confirm
     echo ""
-    
+
     if [ "$password" == "$password_confirm" ]; then
         break
     else
@@ -97,12 +95,10 @@ echo_green "You now need to press on the flash drive icon on the side of your sc
 
 read -p "Press enter to continue..." proceed
 
-set -x
-
 # Write the firstrun.sh file dynamically with the user's username and hashed password
 echo_green "Writing the firstrun.sh file..."
 
-cat <<EOF | tee $BOOT_PARTITION/firstrun.sh > /dev/null
+cat <<EOF | tee $BOOT_PARTITION/firstrun.sh >/dev/null
 #!/bin/bash
 
 set +e
