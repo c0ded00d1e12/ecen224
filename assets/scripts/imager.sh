@@ -27,10 +27,14 @@ if [[ "$proceed" != "y" ]]; then
     exit 0
 fi
 
+echo ""
 echo_green "Start by plugging in the SD card and adapter into the USB slot."
-read -p "Press enter to continue..." proceed
+read -p "Press enter once you have plugged in the SD card..." proceed
+echo ""
 
 # Prompt for username
+echo_green "We will now set up the credentials for the new account we will create on the Raspberry Pi."
+echo ""
 read -p "Enter NetID: " username
 
 # Prompt for password and confirm it
@@ -51,6 +55,7 @@ done
 hashed_password=$(echo "$password" | openssl passwd -5 -stdin)
 
 # List available drives using lsblk, filtering for sdX drives only
+echo ""
 echo_green "Checking for available drives..."
 available_drives=$(lsblk -d -o NAME,SIZE,MODEL | grep -E '^sd' || true)
 
@@ -61,8 +66,10 @@ if [[ -z "$available_drives" ]]; then
 fi
 
 # Display the list of available drives
+echo ""
 echo "Available drives:"
 echo "$available_drives"
+echo ""
 
 # Prompt user for the target drive (must match sdX pattern)
 read -p "Enter the target drive (e.g., sda): " drive
@@ -80,22 +87,27 @@ if [ ! -b "/dev/$drive" ]; then
 fi
 
 # Download the Raspberry Pi OS Lite (64-bit) image
+echo ""
 echo_green "Downloading Raspberry Pi OS Lite..."
 wget -O "$IMG_FILE_XZ" $RPI_OS_URL
 
 # Uncompress the xz file (this might take a few minutes)
+echo ""
 echo_green "Uncompressing the image file... This may take a few minutes."
 xz -d "$IMG_FILE_XZ"
 
 # Write the image to the selected drive (this may also take a few minutes)
+echo ""
 echo_green "Writing the image to /dev/$drive... This may take a few minutes."
 dd if="$IMG_FILE" of=/dev/$drive bs=4M status=progress conv=fsync
 
-echo_green "You now need to press on the flash drive icon on the side of your screen. There should be two icons. You might have to pull out your USB drive and plug it back in. You can tell them apart by hovering your mouse over them. Click on the \"bootfs\" icon. This will mount the drive."
+echo ""
+echo_green "Next, we need to mount the drive. First, unplug your USB drive and plug it back in. After plugging it in, there should be two USB drive icons in the toolbar on the left. You can tell them apart by hovering your mouse over them. Click on the \"bootfs\" icon. This will mount the drive."
 
-read -p "Press enter to continue..." proceed
+read -p "Press enter once you have mounted the drive..." proceed
 
 # Write the firstrun.sh file dynamically with the user's username and hashed password
+echo ""
 echo_green "Writing the firstrun.sh file..."
 
 cat <<EOF | tee $BOOT_PARTITION/firstrun.sh >/dev/null
@@ -165,12 +177,16 @@ EOF
 chmod +x $BOOT_PARTITION/firstrun.sh
 
 # Edit cmdline.txt
+echo ""
 echo_green "Updating cmdline.txt to configure firstrun.sh..."
 sed -i '1 s/$/ systemd.run=\/boot\/firstrun.sh systemd.run_success_action=reboot systemd.unit=kernel-command-line.target/' $BOOT_PARTITION/cmdline.txt
 
 # Cleanup
+echo ""
 echo_green "Cleaning up..."
 rm -f "$IMG_FILE" "$IMG_FILE_XZ"
 
-echo_green "Raspberry Pi OS Lite (64-bit) has been written to /dev/$drive, and firstrun.sh has been configured to run on first boot."
-echo_green "Eject the drive by right clicking on the flash drive icon and select \"Eject\"."
+echo ""
+echo_green "Raspberry Pi OS Lite (64-bit) has been written to /dev/$drive."
+echo ""
+echo_green "Eject the drive by right clicking on the USB drive icon and select \"Eject\"."
