@@ -17,7 +17,7 @@ function echo_green {
     echo -e "\033[32m$1\033[0m"
 }
 
-echo_green "Welcome to the ECEn 225 Raspberry Pi Imager! This script will image your SD card and create a new user on your Raspberry Pi. Enter in your NetID and a password for the user you want to create on the Pi."
+echo_green "Welcome to the ECEn 225 Raspberry Pi Imager! This script will image your SD card and create a new user on your Raspberry Pi. You will be asked for a username and password for the user."
 echo_red "Use a DIFFERENT password than you did for your BYU or CAEDM account."
 echo_green ""
 
