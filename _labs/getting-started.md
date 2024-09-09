@@ -321,7 +321,12 @@ Your kit should look something like this:
       <img src="{% link assets/getting-started/assembly/step_9_ribbon %}" alt="Step 9 - ribbon cable inserted but not locked">
     </figure>
 
-12. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit.
+12. There is a small adhesive strip on the back of the camera. Remove the protective layer and stick it to the camera's PCB. This will ensure the camera stays in place.
+    <figure class="image mx-auto" style="max-width: 750px">
+      <img src="{% link assets/getting-started/assembly/camera_sticker.jpeg %}" alt="Attach camera to PCB board.">
+    </figure>
+
+13. In this lab, you were also given a 3D printed enclosure for your Pi Z2W kit.
     <!-- Import maps polyfill -->
     <!-- Remove this when import maps will be widely supported -->
     <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
